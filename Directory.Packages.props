@@ -17,6 +17,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- System packages -->
+    <PackageVersion Include="ARWNI2S.Serialization" Version="1.0.0-dev-202501160818" />
     <PackageVersion Include="FSharp.Core" Version="9.0.101" />
     <PackageVersion Include="Google.Protobuf" Version="3.29.3" />
     <PackageVersion Include="MessagePack" Version="3.1.1" />
