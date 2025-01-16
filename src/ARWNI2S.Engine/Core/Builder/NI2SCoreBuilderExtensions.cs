@@ -1,5 +1,5 @@
 ﻿using ARWNI2S.Core.Builder;
-using ARWNI2S.Plugins;
+using ARWNI2S.Extensibility.Plugins;
 using Microsoft.Extensions.Configuration;
 
 namespace ARWNI2S.Core.Builder

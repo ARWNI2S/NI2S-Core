@@ -1,12 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <PackageId>ARWNI2S.Core.Abstractions</PackageId>
+    <Title>ARWNI2S Core Abstractions</Title>
+    <Description>Core abstractions and base classes for ARWNI2S</Description>
     <TargetFrameworks>$(DefaultTargetFrameworks)</TargetFrameworks>
     <RootNamespace>ARWNI2S</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="ARWNI2S.Serialization" />
+  </ItemGroup>
+  
+  <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
     <PackageReference Include="Microsoft.Extensions.FileProviders.Abstractions" />

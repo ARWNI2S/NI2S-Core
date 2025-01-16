@@ -1,6 +1,6 @@
 ﻿using ARWNI2S.Caching;
 
-namespace ARWNI2S.Plugins
+namespace ARWNI2S.Extensibility.Plugins
 {
     /// <summary>
     /// Represents default values related to plugins

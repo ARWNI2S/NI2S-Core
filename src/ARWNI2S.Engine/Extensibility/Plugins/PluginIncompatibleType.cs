@@ -1,4 +1,4 @@
-﻿namespace ARWNI2S.Plugins
+﻿namespace ARWNI2S.Extensibility.Plugins
 {
     public enum PluginIncompatibleType
     {

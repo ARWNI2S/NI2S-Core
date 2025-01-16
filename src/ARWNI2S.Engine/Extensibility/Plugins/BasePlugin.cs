@@ -1,32 +1,40 @@
-﻿namespace ARWNI2S.Plugins
+﻿namespace ARWNI2S.Extensibility.Plugins
 {
     /// <summary>
-    /// Interface denoting plug-in attributes that are displayed throughout 
-    /// the editing interface.
+    /// Base plugin
     /// </summary>
-    public interface IPlugin
+    public abstract partial class BasePlugin : IPlugin
     {
         /// <summary>
         /// Gets a configuration page URL
         /// </summary>
-        string GetConfigurationPageUrl();
+        public virtual string GetConfigurationPageUrl()
+        {
+            return null;
+        }
 
         /// <summary>
         /// Gets or sets the plugin descriptor
         /// </summary>
-        PluginDescriptor PluginDescriptor { get; set; }
+        public virtual PluginDescriptor PluginDescriptor { get; set; }
 
         /// <summary>
         /// Install plugin
         /// </summary>
         /// <returns>A task that represents the asynchronous operation</returns>
-        Task InstallAsync();
+        public virtual Task InstallAsync()
+        {
+            return Task.CompletedTask;
+        }
 
         /// <summary>
         /// Uninstall plugin
         /// </summary>
         /// <returns>A task that represents the asynchronous operation</returns>
-        Task UninstallAsync();
+        public virtual Task UninstallAsync()
+        {
+            return Task.CompletedTask;
+        }
 
         /// <summary>
         /// Update plugin
@@ -34,12 +42,21 @@
         /// <param name="currentVersion">Current version of plugin</param>
         /// <param name="targetVersion">New version of plugin</param>
         /// <returns>A task that represents the asynchronous operation</returns>
-        Task UpdateAsync(string currentVersion, string targetVersion);
+        public virtual Task UpdateAsync(string currentVersion, string targetVersion)
+        {
+            return Task.CompletedTask;
+        }
 
         /// <summary>
         /// Prepare plugin to the uninstallation
         /// </summary>
         /// <returns>A task that represents the asynchronous operation</returns>
-        Task PreparePluginToUninstallAsync();
+        public virtual Task PreparePluginToUninstallAsync()
+        {
+            //any can put any custom validation logic here
+            //throw an exception if this plugin cannot be uninstalled
+            //for example, requires some other certain plugins to be uninstalled first
+            return Task.CompletedTask;
+        }
     }
 }

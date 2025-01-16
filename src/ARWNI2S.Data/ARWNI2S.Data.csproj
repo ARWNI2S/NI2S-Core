@@ -1,6 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <PackageId>ARWNI2S.Core.Data</PackageId>
+    <Title>ARWNI2S Core Data</Title>
+    <Description>Core database framework for ARWNI2S</Description>
     <TargetFrameworks>$(DefaultTargetFrameworks)</TargetFrameworks>
   </PropertyGroup>
 
@@ -16,10 +19,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ARWNI2S.Abstractions\ARWNI2S.Abstractions.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Caching\" />
   </ItemGroup>
 
 </Project>

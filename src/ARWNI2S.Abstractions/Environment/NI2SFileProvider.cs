@@ -1,5 +1,6 @@
 ﻿using ARWNI2S.Hosting;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.Hosting;
 using System.Runtime.Versioning;
 using System.Security.AccessControl;
 using System.Text;
@@ -28,12 +29,24 @@ namespace ARWNI2S.Environment
         }
 
         private static INiisFileProvider _defaultFileProvider = null;
+
         #endregion
 
         /// <summary>
         /// Initializes a new instance of a EngineFileProvider
         /// </summary>
-        /// <param name="niisHostEnvironment">Hosting environment</param>
+        /// <param name="hostEnvironment">Hosting environment</param>
+        public NI2SFileProvider(IHostEnvironment hostEnvironment)
+            : base(File.Exists(hostEnvironment.ContentRootPath) ? Path.GetDirectoryName(hostEnvironment.ContentRootPath) : hostEnvironment.ContentRootPath)
+        {
+            if (hostEnvironment is not INodeHostEnvironment niisHostEnvironment)
+                throw new InvalidOperationException($"Hosting application must be implementng {nameof(INodeHostEnvironment)} as {nameof(IHostEnvironment)}, default implementationos of {nameof(IHostEnvironment)} are not allowed in the default {nameof(NI2SFileProvider)}");
+
+            RootPath = File.Exists(niisHostEnvironment.ContentRootPath)
+                ? Path.GetDirectoryName(niisHostEnvironment.ContentRootPath)
+                : niisHostEnvironment.ContentRootPath;
+        }
+
         public NI2SFileProvider(INodeHostEnvironment niisHostEnvironment)
             : base(File.Exists(niisHostEnvironment.ContentRootPath) ? Path.GetDirectoryName(niisHostEnvironment.ContentRootPath) : niisHostEnvironment.ContentRootPath)
         {

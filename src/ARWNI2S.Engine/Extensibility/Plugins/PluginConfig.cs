@@ -1,7 +1,7 @@
 ﻿using ARWNI2S.Configuration;
 using Newtonsoft.Json;
 
-namespace ARWNI2S.Plugins
+namespace ARWNI2S.Extensibility.Plugins
 {
     /// <summary>
     /// Represents plugin configuration parameters

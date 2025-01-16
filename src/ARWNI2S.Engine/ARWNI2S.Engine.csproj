@@ -1,6 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <PackageId>ARWNI2S.Core.Engine</PackageId>
+    <Title>ARWNI2S engine core system</Title>
+    <Description>Core system and framework base for ARWNI2S</Description>
     <TargetFrameworks>$(DefaultTargetFrameworks)</TargetFrameworks>
     <RootNamespace>ARWNI2S</RootNamespace>
   </PropertyGroup>

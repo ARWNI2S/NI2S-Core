@@ -1,4 +1,6 @@
 ﻿using ARWNI2S.Builder;
+using ARWNI2S.Environment;
+using ARWNI2S.Extensibility;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ARWNI2S.Context
@@ -32,6 +34,20 @@ namespace ARWNI2S.Context
         public void InitializeContext(INiisBuilder engine)
         {
             ServiceProvider = engine.EngineServices;
+
+            //find startup configurations provided by other assemblies
+            var typeFinder = Singleton<ITypeFinder>.Instance;
+            var startupConfigurations = typeFinder.FindClassesOfType<IConfigureEngine>();
+
+            //create and sort instances of startup configurations
+            var instances = startupConfigurations
+                .Select(startup => (IConfigureEngine)Activator.CreateInstance(startup))
+                .Where(startup => startup != null)
+                .OrderBy(startup => startup.Order);
+
+            //configure request pipeline
+            foreach (var instance in instances)
+                instance.Configure(engine);
         }
 
         /// <summary>

@@ -1,9 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <PackageId>ARWNI2S.Core</PackageId>
+    <Title>ARWNI2S Core</Title>
+    <Description>Core package for all ARWNI2S components</Description>
     <TargetFrameworks>$(DefaultTargetFrameworks)</TargetFrameworks>
-    <IsFrameworkPart>false</IsFrameworkPart>
-    <IsPackable>true</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>

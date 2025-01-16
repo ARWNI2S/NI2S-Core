@@ -7,7 +7,11 @@ namespace ARWNI2S.Context
     {
         IServiceProvider ServiceProvider { get; }
 
-        void InitializeContext(INiisBuilder engine);
+        /// <summary>
+        /// Initializes the NI2S context
+        /// </summary>
+        /// <param name="builder">The current NI2S builder</param>
+        void InitializeContext(INiisBuilder builder);
 
         /// <summary>
         /// Resolve dependency

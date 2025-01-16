@@ -4,7 +4,7 @@ using ARWNI2S.Environment;
 using ARWNI2S.Extensibility.Parts;
 using System.Reflection;
 
-namespace ARWNI2S.Plugins
+namespace ARWNI2S.Extensibility.Plugins
 {
     /// <summary>
     /// Represents engine part manager extensions
