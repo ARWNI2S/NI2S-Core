@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARWNI2S.Abstractions", "src
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARWNI2S.Data", "src\ARWNI2S.Data\ARWNI2S.Data.csproj", "{652AD28C-C56A-4830-8483-242DF18009A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARWNI2S.Engine", "src\ARWNI2S.Engine\ARWNI2S.Engine.csproj", "{EEA7C0E2-E4EC-4F98-8B70-D4D6746345F2}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{652AD28C-C56A-4830-8483-242DF18009A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{652AD28C-C56A-4830-8483-242DF18009A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{652AD28C-C56A-4830-8483-242DF18009A5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EEA7C0E2-E4EC-4F98-8B70-D4D6746345F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EEA7C0E2-E4EC-4F98-8B70-D4D6746345F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EEA7C0E2-E4EC-4F98-8B70-D4D6746345F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EEA7C0E2-E4EC-4F98-8B70-D4D6746345F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
