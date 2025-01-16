@@ -22,7 +22,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ARWNI2S.Abstractions\ARWNI2S.Abstractions.csproj" />
-    <ProjectReference Include="..\ARWNI2S.Serialization\ARWNI2S.Serialization.csproj" />
   </ItemGroup>
 
 </Project>
