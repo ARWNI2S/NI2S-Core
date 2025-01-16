@@ -18,5 +18,5 @@ using System.Runtime.InteropServices;
 
 [assembly: Guid("4293aaa7-3039-410a-a461-ce525f3a5bde")]
 
-[assembly: InternalsVisibleTo("ARWNI2S.Core")]
+[assembly: InternalsVisibleTo("ARWNI2S.Engine")]
 [assembly: InternalsVisibleTo("ARWNI2S.Data")]

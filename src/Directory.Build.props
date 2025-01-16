@@ -17,7 +17,7 @@
 
   <PropertyGroup>
     <IsPackable Condition=" '$(IsPackable)'=='' ">false</IsPackable>
-    <IsFrameworkPart Condition=" '$(IsFrameworkPart)'=='' ">false</IsFrameworkPart>
+    <IsFrameworkPart Condition=" '$(IsFrameworkPart)'=='' ">true</IsFrameworkPart>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -30,7 +30,7 @@
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(IsFrameworkPart)'=='true' ">
-    <AssemblyAttribute Include="ARWNI2S.Metadata.FrameworkPartAttribute" />
+    <AssemblyAttribute Include="ARWNI2S.FrameworkPartAttribute" />
   </ItemGroup>
 
 </Project>

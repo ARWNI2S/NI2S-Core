@@ -2,10 +2,14 @@
 
   <PropertyGroup>
     <TargetFrameworks>$(DefaultTargetFrameworks)</TargetFrameworks>
+    <IsFrameworkPart>false</IsFrameworkPart>
+    <IsPackable>true</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ARWNI2S.Abstractions\ARWNI2S.Abstractions.csproj" />
+    <ProjectReference Include="..\ARWNI2S.Data\ARWNI2S.Data.csproj" />
+    <ProjectReference Include="..\ARWNI2S.Engine\ARWNI2S.Engine.csproj" />
   </ItemGroup>
 
 </Project>

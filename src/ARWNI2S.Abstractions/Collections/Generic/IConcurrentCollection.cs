@@ -1,17 +1,4 @@
-﻿/* Cambio no fusionado mediante combinación del proyecto 'ARWNI2S.Abstractions (net9.0)'
-Antes:
-namespace ARWNI2S.Collections.Generic
-{
-Después:
-using ARWNI2S;
-using ARWNI2S.Collections;
-using ARWNI2S.Collections;
-using ARWNI2S.Collections.Generic;
-
-namespace ARWNI2S.Collections
-{
-*/
-namespace ARWNI2S.Collections.Generic
+﻿namespace ARWNI2S.Collections.Generic
 {
     /// <summary>
     /// Represents a thread-safe collection
