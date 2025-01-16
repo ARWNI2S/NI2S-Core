@@ -5,7 +5,7 @@
 . ./common.ps1
 
 $scriptDir = Split-Path $script:MyInvocation.MyCommand.Path
-$solution = Join-Path $scriptDir "NI2S-Serialization.sln"
+$solution = Join-Path $scriptDir "NI2S-Core.sln"
 
 # Define build flags & config
 if ($null -eq $env:BUILD_FLAGS)
