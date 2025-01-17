@@ -1,7 +1,7 @@
 ﻿using ARWNI2S.Environment;
 using System.Reflection;
 
-namespace ARWNI2S.Core
+namespace ARWNI2S.Engine
 {
     /// <summary>
     /// Provides information about types in the current niis node. 

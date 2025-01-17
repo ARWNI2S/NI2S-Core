@@ -1,12 +1,11 @@
-﻿using ARWNI2S.Context;
-using ARWNI2S.Core;
+﻿using ARWNI2S.Core;
 using ARWNI2S.Environment;
 using ARWNI2S.Environment.Mapper;
 using AutoMapper;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ARWNI2S.Engine
+namespace ARWNI2S.Context
 {
     internal static class NI2SContextExtensions
     {
@@ -18,7 +17,7 @@ namespace ARWNI2S.Engine
         internal static void ConfigureServices(this INiisContext context, IServiceCollection services, IConfiguration configuration)
         {
             //register engine context
-            services.AddSingleton<INiisContext>(context);
+            services.AddSingleton(context);
 
             //find startup configurations provided by other assemblies
             var instances = services.GetOrCreateTypeFinder().GetStartupConfigurationInstancess();

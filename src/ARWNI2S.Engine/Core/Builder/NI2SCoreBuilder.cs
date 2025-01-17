@@ -9,10 +9,10 @@ namespace ARWNI2S.Core.Builder
         /// Initializes a new <see cref="NI2SCoreBuilder"/> instance.
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection" /> to add services to.</param>
-        /// <param name="manager">The <see cref="EnginePartManager"/> of the application.</param>
+        /// <param name="manager">The <see cref="NI2SPartManager"/> of the application.</param>
         public NI2SCoreBuilder(
             IServiceCollection services,
-            EnginePartManager manager)
+            NI2SPartManager manager)
         {
             ArgumentNullException.ThrowIfNull(services);
             ArgumentNullException.ThrowIfNull(manager);
@@ -22,7 +22,7 @@ namespace ARWNI2S.Core.Builder
         }
 
         /// <inheritdoc />
-        public EnginePartManager PartManager { get; }
+        public NI2SPartManager PartManager { get; }
 
         /// <inheritdoc />
         public IServiceCollection Services { get; }

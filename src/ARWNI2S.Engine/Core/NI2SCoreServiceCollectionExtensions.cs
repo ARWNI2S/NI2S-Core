@@ -1,8 +1,18 @@
-﻿using ARWNI2S.Core.Builder;
+﻿using ARWNI2S.Caching;
+using ARWNI2S.Core.Actions;
+using ARWNI2S.Core.Builder;
+using ARWNI2S.Core.Caching;
+using ARWNI2S.Core.Configuration;
+using ARWNI2S.Core.Models;
+using ARWNI2S.Diagnostics;
+using ARWNI2S.Engine;
+using ARWNI2S.Engine.Configuration;
+using ARWNI2S.Engine.Object;
 using ARWNI2S.Extensibility.Parts;
 using ARWNI2S.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Options;
 using System.Buffers;
 
 namespace ARWNI2S.Core
@@ -13,7 +23,7 @@ namespace ARWNI2S.Core
         {
             ArgumentNullException.ThrowIfNull(services, nameof(services));
             INodeHostEnvironment serviceFromCollection = GetServiceFromCollection<INodeHostEnvironment>(services);
-            EnginePartManager applicationPartManager = GetEnginePartManager(services, serviceFromCollection);
+            NI2SPartManager applicationPartManager = GetEnginePartManager(services, serviceFromCollection);
             services.TryAddSingleton(applicationPartManager);
             ConfigureDefaultProviders(applicationPartManager);
             ConfigureDefaultServices(services);
@@ -21,7 +31,7 @@ namespace ARWNI2S.Core
             return new NI2SCoreBuilder(services, applicationPartManager);
         }
 
-        private static void ConfigureDefaultProviders(EnginePartManager manager)
+        private static void ConfigureDefaultProviders(NI2SPartManager manager)
         {
             //if (!manager.ServiceProviders.OfType<EntityServiceProvider>().Any())
             //{
@@ -29,12 +39,12 @@ namespace ARWNI2S.Core
             //}
         }
 
-        private static EnginePartManager GetEnginePartManager(IServiceCollection services, INodeHostEnvironment environment)
+        private static NI2SPartManager GetEnginePartManager(IServiceCollection services, INodeHostEnvironment environment)
         {
-            EnginePartManager applicationPartManager = GetServiceFromCollection<EnginePartManager>(services);
+            NI2SPartManager applicationPartManager = GetServiceFromCollection<NI2SPartManager>(services);
             if (applicationPartManager == null)
             {
-                applicationPartManager = new EnginePartManager();
+                applicationPartManager = new NI2SPartManager();
                 string text = environment?.ApplicationName;
                 if (string.IsNullOrEmpty(text))
                 {
@@ -50,67 +60,72 @@ namespace ARWNI2S.Core
             return (T)(services.LastOrDefault((d) => d.ServiceType == typeof(T))?.ImplementationInstance);
         }
 
-        //public static INiisCoreBuilder AddNI2SCore(this IServiceCollection services, Action<MvcOptions> setupAction)
-        //{
-        //    ArgumentNullException.ThrowIfNull(services, "services");
-        //    ArgumentNullException.ThrowIfNull(setupAction, "setupAction");
-        //    INiisCoreBuilder result = services.AddNI2SCore();
-        //    services.Configure(setupAction);
-        //    return result;
-        //}
+        ////public static INiisCoreBuilder AddNI2SCore(this IServiceCollection services, Action<NI2SOptions> setupAction)
+        ////{
+        ////    ArgumentNullException.ThrowIfNull(services, "services");
+        ////    ArgumentNullException.ThrowIfNull(setupAction, "setupAction");
+        ////    INiisCoreBuilder result = services.AddNI2SCore();
+        ////    services.Configure(setupAction);
+        ////    return result;
+        ////}
 
         internal static void AddNI2SCoreServices(IServiceCollection services)
         {
-            //services.AddSingleton<IObjectFactory<INiisObject>, DefaultObjectFactory>();
+            services.AddSingleton<IObjectFactory<INiisObject>, DefaultObjectFactory>();
 
-            //// Registrar el servicio genérico de resolución de factorías
-            //services.AddTransient(typeof(IObjectFactory<>), sp =>
-            //{
-            //    var requestedType = sp.GetService(typeof(IObjectFactory<>))?.GetType();
-            //    var specificFactory = sp.GetService(requestedType);
-            //    return specificFactory ?? sp.GetRequiredService<IObjectFactory<INiisObject>>();
-            //});
+            // Registrar el servicio genérico de resolución de factorías
+            services.AddTransient(typeof(IObjectFactory<>), sp =>
+            {
+                var requestedType = sp.GetService(typeof(IObjectFactory<>))?.GetType();
+                var specificFactory = sp.GetService(requestedType);
+                return specificFactory ?? sp.GetRequiredService<IObjectFactory<INiisObject>>();
+            });
 
 
-            ////services.TryAddEnumerable(ServiceDescriptor.Transient<IConfigureOptions<MvcOptions>, MvcCoreMvcOptionsSetup>());
-            ////services.TryAddEnumerable(ServiceDescriptor.Transient<IPostConfigureOptions<MvcOptions>, MvcCoreMvcOptionsSetup>());
-            ////services.TryAddEnumerable(ServiceDescriptor.Transient<IConfigureOptions<AiBehaviorOptions>, AiBehaviorOptionsSetup>());
-            ////services.TryAddEnumerable(ServiceDescriptor.Transient<IConfigureOptions<RouteOptions>, MvcCoreRouteOptionsSetup>());
-            //services.TryAddSingleton<EngineModelFactory>();
-            //services.TryAddEnumerable(ServiceDescriptor.Transient<IEngineModelProvider, DefaultEngineModelProvider>());
-            //services.TryAddEnumerable(ServiceDescriptor.Transient<IEngineModelProvider, AiBehaviorEngineModelProvider>());
-            //services.TryAddEnumerable(ServiceDescriptor.Transient<IActionDescriptorProvider, ActorActionDescriptorProvider>());
-            //services.TryAddSingleton<IActionDescriptorCollectionProvider, DefaultActionDescriptorCollectionProvider>();
-            //services.TryAddSingleton<IActionSelector, ActionSelector>();
-            //services.TryAddSingleton<ActionConstraintCache>();
-            //services.TryAddEnumerable(ServiceDescriptor.Transient<IActionConstraintProvider, DefaultActionConstraintProvider>());
-            //services.TryAddEnumerable(ServiceDescriptor.Singleton<MatcherPolicy, ActionConstraintMatcherPolicy>());
-            //services.TryAddSingleton<IActorFactory, DefaultActorFactory>();
-            //services.TryAddTransient<IActorActivator, DefaultActorActivator>();
-            //services.TryAddSingleton<IActorFactoryProvider, ActorFactoryProvider>();
-            //services.TryAddSingleton<IActorActivatorProvider, ActorActivatorProvider>();
-            //services.TryAddEnumerable(ServiceDescriptor.Transient<IActorStateActivator, DefaultActorStateActivator>());
-            //services.TryAddSingleton<IActionInvokerFactory, ActionInvokerFactory>();
-            //services.TryAddEnumerable(ServiceDescriptor.Transient<IActionInvokerProvider, ActorActionInvokerProvider>());
-            //services.TryAddSingleton<ActorActionInvokerCache>();
-            ////services.TryAddEnumerable(ServiceDescriptor.Singleton<IFilterProvider, DefaultFilterProvider>());
-            //services.TryAddSingleton<IActionResultTypeMapper, ActionResultTypeMapper>();
+            services.TryAddEnumerable(ServiceDescriptor.Transient<IConfigureOptions<NI2SOptions>, NI2SCoreNI2SOptionsSetup>());
+            services.TryAddEnumerable(ServiceDescriptor.Transient<IPostConfigureOptions<NI2SOptions>, NI2SCoreNI2SOptionsSetup>());
+            services.TryAddEnumerable(ServiceDescriptor.Transient<IConfigureOptions<BehaviorOptions>, BehaviorOptionsSetup>());
+            ////services.TryAddEnumerable(ServiceDescriptor.Transient<IConfigureOptions<RouteOptions>, NI2SCoreRouteOptionsSetup>());
+
+            ////services.TryAddSingleton<EngineModelFactory>();
+            ////services.TryAddEnumerable(ServiceDescriptor.Transient<IEngineModelProvider, DefaultEngineModelProvider>());
+            ////services.TryAddEnumerable(ServiceDescriptor.Transient<IEngineModelProvider, AiBehaviorEngineModelProvider>());
+
+            services.TryAddEnumerable(ServiceDescriptor.Transient<IActionDescriptorProvider, ActorActionDescriptorProvider>());
+            services.TryAddSingleton<IActionDescriptorCollectionProvider, DefaultActionDescriptorCollectionProvider>();
+            services.TryAddSingleton<IActionSelector, ActionSelector>();
+            services.TryAddSingleton<ActionConstraintCache>();
+            services.TryAddEnumerable(ServiceDescriptor.Transient<IActionConstraintProvider, DefaultActionConstraintProvider>());
+            services.TryAddEnumerable(ServiceDescriptor.Singleton<MatcherPolicy, ActionConstraintMatcherPolicy>());
+
+            services.TryAddSingleton<IActorFactory, DefaultActorFactory>();
+            services.TryAddTransient<IActorActivator, DefaultActorActivator>();
+            services.TryAddSingleton<IActorFactoryProvider, ActorFactoryProvider>();
+            services.TryAddSingleton<IActorActivatorProvider, ActorActivatorProvider>();
+
+            services.TryAddEnumerable(ServiceDescriptor.Transient<IActorStateActivator, DefaultActorStateActivator>());
+
+            services.TryAddSingleton<IActionInvokerFactory, ActionInvokerFactory>();
+            services.TryAddEnumerable(ServiceDescriptor.Transient<IActionInvokerProvider, ActorActionInvokerProvider>());
+            services.TryAddSingleton<ActorActionInvokerCache>();
+            services.TryAddEnumerable(ServiceDescriptor.Singleton<IActionFilterProvider, DefaultFilterProvider>());
+            services.TryAddSingleton<IActionResultTypeMapper, ActionResultTypeMapper>();
 
             ////services.TryAddTransient<RequestSizeLimitFilter>();
             ////services.TryAddTransient<DisableRequestSizeLimitFilter>();Update
             ////services.TryAddTransient<RequestFormLimitsFilter>();
-            //services.TryAddSingleton<IModelMetadataProvider, DefaultModelMetadataProvider>();
-            //services.TryAdd(ServiceDescriptor.Transient((Func<IServiceProvider, ICompositeMetadataDetailsProvider>)((s) => new DefaultCompositeMetadataDetailsProvider(s.GetRequiredService<NodeSettings>().Get<EngineConfig>().ModelMetadataDetailsProviders))));
-            //services.TryAddSingleton<IModelBinderFactory, ModelBinderFactory>();
-            //services.TryAddSingleton((Func<IServiceProvider, IObjectModelValidator>)delegate (IServiceProvider s)
-            //{
-            //    var config = Singleton<NodeSettings>.Instance.Get<EngineConfig>();
-            //    return new DefaultObjectValidator(s.GetRequiredService<IModelMetadataProvider>(), config.ModelValidatorProviders, config);
-            //});
+            services.TryAddSingleton<IModelMetadataProvider, DefaultModelMetadataProvider>();
+            services.TryAdd(ServiceDescriptor.Transient((Func<IServiceProvider, ICompositeMetadataDetailsProvider>)((s) => new DefaultCompositeMetadataDetailsProvider(s.GetRequiredService<NI2SOptions>().ModelMetadataDetailsProviders))));
+            services.TryAddSingleton<IModelBinderFactory, ModelBinderFactory>();
+            services.TryAddSingleton((Func<IServiceProvider, IObjectModelValidator>)delegate (IServiceProvider s)
+            {
+                var options = s.GetRequiredService<NI2SOptions>();
+                return new DefaultObjectValidator(s.GetRequiredService<IModelMetadataProvider>(), options.ModelValidatorProviders, options);
+            });
             ////services.TryAddSingleton<ClientValidatorCache>();
             //services.TryAddSingleton<ParameterBinder>();
             //services.TryAddSingleton<NI2SMarkerService, NI2SMarkerService>();
-            //services.TryAddSingleton<ITypeActivatorCache, TypeActivatorCache>();
+            services.TryAddSingleton<ITypeActivatorCache, TypeActivatorCache>();
 
             ////services.TryAddSingleton<IUrlHelperFactory, UrlHelperFactory>();
             ////services.TryAddSingleton<IHttpRequestStreamReaderFactory, MemoryPoolHttpRequestStreamReaderFactory>();
@@ -130,9 +145,10 @@ namespace ARWNI2S.Core
             ////services.TryAddSingleton<IActionResultExecutor<RedirectToPageResult>, RedirectToPageResultExecutor>();
             ////services.TryAddSingleton<IActionResultExecutor<ContentResult>, ContentResultExecutor>();
             ////services.TryAddSingleton<IActionResultExecutor<JsonResult>, SystemTextJsonResultExecutor>();
-            //services.TryAddSingleton<IRemoteErrorFactory, ProblemDetailsRemoteErrorFactory>();
+            services.TryAddSingleton<IRemoteErrorFactory, ProblemDetailsRemoteErrorFactory>();
             ////services.TryAddSingleton<MvcRouteHandler>();
             ////services.TryAddTransient<MvcAttributeRouteHandler>();
+
             //services.TryAddSingleton<ActorActionUpdateDataSourceFactory>();
             //services.TryAddSingleton<OrderedUpdatesSequenceProviderCache>();
             //services.TryAddSingleton<ActorActionUpdateDataSourceIdProvider>();
@@ -144,7 +160,7 @@ namespace ARWNI2S.Core
             ////services.TryAddSingleton<MiddlewareFilterConfigurationProvider>();
             ////services.TryAddSingleton<MiddlewareFilterBuilder>();
             ////services.TryAddEnumerable(ServiceDescriptor.Singleton<IStartupFilter, MiddlewareFilterBuilderStartupFilter>());
-            //services.TryAddSingleton<ProblemDetailsFactory, DefaultProblemDetailsFactory>();
+            services.TryAddSingleton<ProblemDetailsFactory, DefaultProblemDetailsFactory>();
             ////services.TryAddEnumerable(ServiceDescriptor.Singleton<IProblemDetailsWriter, DefaultApiProblemDetailsWriter>());
         }
 

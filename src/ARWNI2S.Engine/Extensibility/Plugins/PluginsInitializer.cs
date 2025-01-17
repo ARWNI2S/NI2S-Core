@@ -105,7 +105,7 @@ namespace ARWNI2S.Extensibility.Plugins
         /// <param name="assemblyFile">Path to the assembly file</param>
         /// <param name="useUnsafeLoadAssembly">Indicating whether to load an assembly into the load-from context, bypassing some security checks</param>
         /// <returns>Assembly</returns>
-        private static Assembly AddEngineParts(EnginePartManager enginePartManager, string assemblyFile, bool useUnsafeLoadAssembly)
+        private static Assembly AddEngineParts(NI2SPartManager enginePartManager, string assemblyFile, bool useUnsafeLoadAssembly)
         {
             //try to load a assembly
             Assembly assembly;
@@ -154,7 +154,7 @@ namespace ARWNI2S.Extensibility.Plugins
                     $"The plugin directory for the {fileProvider.GetFileName(assemblyFile)} file exists in a directory outside of the allowed dragonCorp directory hierarchy");
 
             var assembly =
-                AddEngineParts(enginePartManager as EnginePartManager, assemblyFile, pluginConfig.UseUnsafeLoadAssembly);
+                AddEngineParts(enginePartManager as NI2SPartManager, assemblyFile, pluginConfig.UseUnsafeLoadAssembly);
 
             // delete the .deps file
             if (assemblyFile.EndsWith(".dll"))

@@ -6,7 +6,7 @@ namespace ARWNI2S.Extensibility.Parts
     /// <summary>
     /// Manages the parts and features of an NI2S engine.
     /// </summary>
-    public class EnginePartManager : INiisPartManager
+    public class NI2SPartManager : INiisPartManager
     {
         /// <summary>
         /// Gets the list of <see cref="INiisFeatureProvider"/>s.
@@ -27,7 +27,7 @@ namespace ARWNI2S.Extensibility.Parts
         /// <summary>
         /// Populates the given <paramref name="feature"/> using the list of
         /// <see cref="INiisFeatureProvider{TFeature}"/>s configured on the
-        /// <see cref="EnginePartManager"/>.
+        /// <see cref="NI2SPartManager"/>.
         /// </summary>
         /// <typeparam name="TFeature">The type of the feature.</typeparam>
         /// <param name="feature">The feature instance to populate.</param>
@@ -73,8 +73,8 @@ namespace ARWNI2S.Extensibility.Parts
             var entryAssembly = Assembly.Load(new AssemblyName(entryAssemblyName));
 
             // Use EnginePartAttribute to get the closure of direct or transitive dependencies
-            // that reference MVC.
-            var assembliesFromAttributes = entryAssembly.GetCustomAttributes<EnginePartAttribute>()
+            // that reference NI2S.
+            var assembliesFromAttributes = entryAssembly.GetCustomAttributes<NI2SPartAttribute>()
                 .Select(name => Assembly.Load(name.AssemblyName))
                 .OrderBy(assembly => assembly.FullName, StringComparer.Ordinal)
                 .SelectMany(GetAssemblyClosure);
