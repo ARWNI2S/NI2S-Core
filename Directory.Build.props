@@ -66,9 +66,11 @@
   </PropertyGroup>
 
   <!-- Set output folder for distributed test apps -->
-  <!-- <PropertyGroup>
-    <DistributedTestsOutputPath Condition=" '$(DistributedODistributedTestsOutputPathutputPath)'=='' ">$(SourceRoot)/Artifacts/DistributedTests</DistributedTestsOutputPath>
-  </PropertyGroup> -->
+  <PropertyGroup>
+    <DistributedTestsOutputPath Condition=" '$(DistributedODistributedTestsOutputPathutputPath)'=='' ">$(SourceRoot)../Artifacts/DistributedTests</DistributedTestsOutputPath>
+  </PropertyGroup>
+
+  <Import Condition=" '$(NI2SBuildTimeCodeGen)' == 'true' " Project="$(MSBuildThisFileDirectory)src/ARWNI2S.Sdk/build/ARWNI2S.Sdk.props" />
 
   <Choose>
     <When Condition="'$(OfficialBuild)' != 'true'">

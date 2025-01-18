@@ -85,7 +85,7 @@ namespace ARWNI2S.Engine.Lifecycle
             if (Logger.IsEnabled(LogLevel.Trace))
             {
                 Logger.LogTrace(
-                    (int)EventCode.StartPerformanceMeasure,
+                    (int)TraceCode.StartPerformanceMeasure,
                     "Starting lifecycle stage '{Stage}' took '{Elapsed}'.",
                     GetStageName(stage),
                     elapsed);
@@ -120,7 +120,7 @@ namespace ARWNI2S.Engine.Lifecycle
             catch (Exception ex) when (ex is not LifecycleCanceledException)
             {
                 Logger.LogError(
-                    (int)ErrorCode.LifecycleStartFailure,
+                    (int)TraceCode.LifecycleStartFailure,
                     ex,
                     "Lifecycle start canceled due to errors at stage '{Stage}'.",
                     _highStage is { } highStage ? GetStageName(highStage) : "Unknown");
@@ -156,7 +156,7 @@ namespace ARWNI2S.Engine.Lifecycle
             if (Logger.IsEnabled(LogLevel.Trace))
             {
                 Logger.LogTrace(
-                    (int)EventCode.StartPerformanceMeasure,
+                    (int)TraceCode.StartPerformanceMeasure,
                     "Stopping lifecycle stage '{Stage}' took '{Elapsed}'.",
                     GetStageName(stage),
                     elapsed);
@@ -193,7 +193,7 @@ namespace ARWNI2S.Engine.Lifecycle
                 catch (Exception ex)
                 {
                     Logger.LogWarning(
-                        (int)ErrorCode.LifecycleStopFailure,
+                        (int)TraceCode.LifecycleStopFailure,
                         ex,
                         "Stopping lifecycle encountered an error at stage '{Stage}'. Continuing to stop.",
                         _highStage is { } highStage ? GetStageName(highStage) : "Unknown");

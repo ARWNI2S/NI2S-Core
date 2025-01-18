@@ -5,6 +5,7 @@
     /// </summary>
     /// <typeparam name="T">T</typeparam>
     [Serializable]
+    [GenerateSerializer]
     public class PagedList<T> : List<T>, IPagedList<T>
     {
         /// <summary>

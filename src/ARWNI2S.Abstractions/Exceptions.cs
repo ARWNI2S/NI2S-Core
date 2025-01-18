@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Net;
 using System.Runtime.ExceptionServices;
 using System.Runtime.Serialization;
 
@@ -147,6 +148,47 @@ namespace ARWNI2S
         public override string ToString()
         {
             return $"{nameof(WrappedException)} OriginalType: {OriginalExceptionType}, Message: {Message}";
+        }
+    }
+
+    internal static class ExceptionExtensions
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        public static List<Exception> FlattenAggregate(this Exception exc)
+        {
+            var result = new List<Exception>();
+            if (exc is AggregateException)
+                result.AddRange(exc.InnerException.FlattenAggregate());
+            else
+                result.Add(exc);
+            return result;
+        }
+
+        /// <summary>
+        /// Parse a Uri as an IPEndpoint.
+        /// </summary>
+        /// <param name="uri">The input Uri</param>
+        /// <returns></returns>
+        public static IPEndPoint ToIPEndPoint(this Uri uri)
+        {
+            switch (uri.Scheme)
+            {
+                case "gwy.tcp":
+                    return new IPEndPoint(IPAddress.Parse(uri.Host), uri.Port);
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Represent an IP end point in the gateway URI format..
+        /// </summary>
+        /// <param name="ep">The input IP end point</param>
+        /// <returns></returns>
+        public static Uri ToGatewayUri(this IPEndPoint ep)
+        {
+            return new Uri(string.Format("gwy.tcp://{0}:{1}/0", ep.Address, ep.Port));
         }
     }
 }

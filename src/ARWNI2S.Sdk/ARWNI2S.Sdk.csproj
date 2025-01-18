@@ -13,7 +13,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ARWNI2S.Abstractions\ARWNI2S.Abstractions.csproj" />
     <ProjectReference Include="..\ARWNI2S.Core\ARWNI2S.Core.csproj" />
+    <ProjectReference Include="..\ARWNI2S.Data\ARWNI2S.Data.csproj" />
     <PackageReference Include="ARWNI2S.Analyzers" PrivateAssets="None" />
     <PackageReference Include="ARWNI2S.CodeGenerator" PrivateAssets="None" />
   </ItemGroup>

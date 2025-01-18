@@ -53,6 +53,7 @@ namespace ARWNI2S
     }
 
     [Serializable]
+    [GenerateSerializer]
     internal class ModuleDependencyException : NI2SException
     {
         public string SystemName { get; }
