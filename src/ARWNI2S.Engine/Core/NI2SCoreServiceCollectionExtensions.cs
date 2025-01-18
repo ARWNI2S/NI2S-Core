@@ -8,12 +8,12 @@ using ARWNI2S.Diagnostics;
 using ARWNI2S.Engine;
 using ARWNI2S.Engine.Configuration;
 using ARWNI2S.Engine.Object;
-using ARWNI2S.Extensibility.Parts;
 using ARWNI2S.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 using System.Buffers;
+using ARWNI2S.EngineParts;
 
 namespace ARWNI2S.Core
 {
@@ -23,7 +23,7 @@ namespace ARWNI2S.Core
         {
             ArgumentNullException.ThrowIfNull(services, nameof(services));
             INodeHostEnvironment serviceFromCollection = GetServiceFromCollection<INodeHostEnvironment>(services);
-            NI2SPartManager applicationPartManager = GetEnginePartManager(services, serviceFromCollection);
+            EnginePartManager applicationPartManager = GetEnginePartManager(services, serviceFromCollection);
             services.TryAddSingleton(applicationPartManager);
             ConfigureDefaultProviders(applicationPartManager);
             ConfigureDefaultServices(services);
@@ -31,7 +31,7 @@ namespace ARWNI2S.Core
             return new NI2SCoreBuilder(services, applicationPartManager);
         }
 
-        private static void ConfigureDefaultProviders(NI2SPartManager manager)
+        private static void ConfigureDefaultProviders(EnginePartManager manager)
         {
             //if (!manager.ServiceProviders.OfType<EntityServiceProvider>().Any())
             //{
@@ -39,12 +39,12 @@ namespace ARWNI2S.Core
             //}
         }
 
-        private static NI2SPartManager GetEnginePartManager(IServiceCollection services, INodeHostEnvironment environment)
+        private static EnginePartManager GetEnginePartManager(IServiceCollection services, INodeHostEnvironment environment)
         {
-            NI2SPartManager applicationPartManager = GetServiceFromCollection<NI2SPartManager>(services);
+            EnginePartManager applicationPartManager = GetServiceFromCollection<EnginePartManager>(services);
             if (applicationPartManager == null)
             {
-                applicationPartManager = new NI2SPartManager();
+                applicationPartManager = new EnginePartManager();
                 string text = environment?.ApplicationName;
                 if (string.IsNullOrEmpty(text))
                 {

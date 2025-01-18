@@ -9,7 +9,7 @@
     }
 
     /// <summary>
-    /// Represents a reason for initiating grain deactivation.
+    /// Represents a reason for initiating actor deactivation.
     /// </summary>
     public readonly struct DeactivationReason
     {

@@ -1,0 +1,9 @@
+<Project>
+
+  <ItemGroup Condition="'$(ImplicitUsings)' == 'enable' or '$(ImplicitUsings)' == 'true'">
+    <Using Include="ARWNI2S"/>
+    <Using Include="ARWNI2S.Hosting"/>
+    <Using Include="ARWNI2S.Engine"/>
+  </ItemGroup>
+
+</Project>

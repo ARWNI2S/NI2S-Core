@@ -5,14 +5,13 @@
     <Title>ARWNI2S Core Abstractions</Title>
     <Description>Core abstractions and base classes for ARWNI2S</Description>
     <TargetFrameworks>$(DefaultTargetFrameworks)</TargetFrameworks>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <RootNamespace>ARWNI2S</RootNamespace>
+    <NI2SBuildTimeCodeGen>true</NI2SBuildTimeCodeGen>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="ARWNI2S.Serialization" />
-  </ItemGroup>
-  
-  <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
     <PackageReference Include="Microsoft.Extensions.FileProviders.Abstractions" />

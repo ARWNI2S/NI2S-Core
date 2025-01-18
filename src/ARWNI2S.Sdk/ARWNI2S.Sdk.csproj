@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>ARWNI2S.Sdk</PackageId>
+    <Description>ARWNI2S meta package to bring in the base ARWNI2S packages for all project types.</Description>
+    <TargetFrameworks>$(DefaultTargetFrameworks)</TargetFrameworks>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+    <IncludeSymbols>false</IncludeSymbols>
+    <IncludeSource>false</IncludeSource>
+    <IsFrameworkPart>false</IsFrameworkPart>
+    <NoWarn>MSB3277</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ARWNI2S.Core\ARWNI2S.Core.csproj" />
+    <PackageReference Include="ARWNI2S.Analyzers" PrivateAssets="None" />
+    <PackageReference Include="ARWNI2S.CodeGenerator" PrivateAssets="None" />
+  </ItemGroup>
+
+</Project>

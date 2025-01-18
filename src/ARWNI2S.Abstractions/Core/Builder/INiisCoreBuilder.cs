@@ -1,9 +1,9 @@
-﻿using ARWNI2S.Extensibility.Parts;
+﻿using ARWNI2S.EngineParts;
 
 namespace ARWNI2S.Core.Builder
 {
     public interface INiisCoreBuilder
     {
-        INiisPartManager PartManager { get; }
+        IEnginePartManager PartManager { get; }
     }
 }

@@ -1,7 +1,7 @@
-﻿using ARWNI2S.Engine.Core;
+﻿using ARWNI2S.Core;
 using System.Diagnostics;
 
-namespace ARWNI2S.Engine.Environment.Internal
+namespace ARWNI2S.Environment.Internal
 {
     internal struct Handle<TTag>
     {
@@ -20,7 +20,7 @@ namespace ARWNI2S.Engine.Environment.Internal
 
         public readonly int Magic
         {
-            get => (_handle >> MAX_BITS) & MAX_VALUE; // Extraemos los bits altos
+            get => _handle >> MAX_BITS & MAX_VALUE; // Extraemos los bits altos
         }
 
         public Handle() { _handle = 0; }

@@ -17,7 +17,9 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- Narrative Interactive Intelligent Simulator packages -->
-    <PackageVersion Include="ARWNI2S.Serialization" Version="1.0.0-dev-202501161932" />
+    <PackageVersion Include="ARWNI2S.Analyzers" Version="1.0.0" />
+    <PackageVersion Include="ARWNI2S.CodeGenerator" Version="1.0.0" />
+    <PackageVersion Include="ARWNI2S.Serialization" Version="1.0.0" />
     <!-- System packages -->
     <PackageVersion Include="FSharp.Core" Version="9.0.101" />
     <PackageVersion Include="Google.Protobuf" Version="3.29.3" />

@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace ARWNI2S.Engine.Environment.Internal
+namespace ARWNI2S.Environment.Internal
 {
     internal class HandleManager<TData, TTag>
     {

@@ -6,13 +6,8 @@
     <Description>Core system and framework base for ARWNI2S</Description>
     <TargetFrameworks>$(DefaultTargetFrameworks)</TargetFrameworks>
     <RootNamespace>ARWNI2S</RootNamespace>
+    <NI2SBuildTimeCodeGen>true</NI2SBuildTimeCodeGen>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="Environment\Internal\**" />
-    <EmbeddedResource Remove="Environment\Internal\**" />
-    <None Remove="Environment\Internal\**" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Autofac.Extensions.DependencyInjection" />

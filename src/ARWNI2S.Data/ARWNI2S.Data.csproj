@@ -5,6 +5,7 @@
     <Title>ARWNI2S Core Data</Title>
     <Description>Core database framework for ARWNI2S</Description>
     <TargetFrameworks>$(DefaultTargetFrameworks)</TargetFrameworks>
+    <NI2SBuildTimeCodeGen>true</NI2SBuildTimeCodeGen>
   </PropertyGroup>
 
   <ItemGroup>

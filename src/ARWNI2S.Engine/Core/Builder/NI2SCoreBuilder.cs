@@ -1,4 +1,4 @@
-﻿using ARWNI2S.Extensibility.Parts;
+﻿using ARWNI2S.EngineParts;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ARWNI2S.Core.Builder
@@ -9,10 +9,10 @@ namespace ARWNI2S.Core.Builder
         /// Initializes a new <see cref="NI2SCoreBuilder"/> instance.
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection" /> to add services to.</param>
-        /// <param name="manager">The <see cref="NI2SPartManager"/> of the application.</param>
+        /// <param name="manager">The <see cref="EnginePartManager"/> of the application.</param>
         public NI2SCoreBuilder(
             IServiceCollection services,
-            NI2SPartManager manager)
+            EnginePartManager manager)
         {
             ArgumentNullException.ThrowIfNull(services);
             ArgumentNullException.ThrowIfNull(manager);
@@ -22,11 +22,11 @@ namespace ARWNI2S.Core.Builder
         }
 
         /// <inheritdoc />
-        public NI2SPartManager PartManager { get; }
+        public EnginePartManager PartManager { get; }
 
         /// <inheritdoc />
         public IServiceCollection Services { get; }
 
-        INiisPartManager INiisCoreBuilder.PartManager => PartManager;
+        IEnginePartManager INiisCoreBuilder.PartManager => PartManager;
     }
 }

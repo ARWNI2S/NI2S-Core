@@ -4,6 +4,7 @@
     {
         LifecycleStartFailure,
 
-        HeartbeatError
+        HeartbeatError,
+        LifecycleStopFailure
     }
 }
