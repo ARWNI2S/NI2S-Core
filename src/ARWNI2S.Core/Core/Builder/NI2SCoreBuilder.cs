@@ -1,4 +1,5 @@
-﻿using ARWNI2S.EngineParts;
+﻿using ARWNI2S.Engine.EngineParts;
+using ARWNI2S.Engine.Parts;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ARWNI2S.Core.Builder

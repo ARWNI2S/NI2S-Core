@@ -1,6 +1,7 @@
 ﻿using ARWNI2S.ComponentModel;
 using ARWNI2S.Data.Mapping;
-using ARWNI2S.EngineParts;
+using ARWNI2S.Engine.EngineParts;
+using ARWNI2S.Engine.Parts;
 using ARWNI2S.Environment;
 using System.Reflection;
 

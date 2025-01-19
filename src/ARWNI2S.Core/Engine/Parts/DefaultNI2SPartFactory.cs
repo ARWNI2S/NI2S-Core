@@ -1,6 +1,7 @@
-﻿using System.Reflection;
+﻿using ARWNI2S.Engine.EngineParts;
+using System.Reflection;
 
-namespace ARWNI2S.EngineParts
+namespace ARWNI2S.Engine.Parts
 {
     /// <summary>
     /// Default <see cref="EnginePartFactory"/>.

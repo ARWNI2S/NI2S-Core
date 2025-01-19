@@ -1,4 +1,6 @@
-﻿namespace ARWNI2S.EngineParts
+﻿using ARWNI2S.Engine.EngineParts;
+
+namespace ARWNI2S.Engine.Features
 {
     /// <summary>
     /// Marker interface for <see cref="IEngineFeatureProvider"/>

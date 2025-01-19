@@ -1,6 +1,7 @@
-﻿using System.Reflection;
+﻿using ARWNI2S.Engine.EngineParts;
+using System.Reflection;
 
-namespace ARWNI2S.EngineParts
+namespace ARWNI2S.Engine.Parts
 {
     /// <summary>
     /// Exposes a set of types from an <see cref="EnginePart"/>.

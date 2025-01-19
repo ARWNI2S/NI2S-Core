@@ -1,4 +1,4 @@
-﻿namespace ARWNI2S.EngineParts
+﻿namespace ARWNI2S.Engine.Parts
 {
     /// <summary>
     /// Provides a <see cref="EnginePartFactory"/> type.

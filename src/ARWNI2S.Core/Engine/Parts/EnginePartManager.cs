@@ -1,6 +1,8 @@
-﻿using System.Reflection;
+﻿using ARWNI2S.Engine.EngineParts;
+using ARWNI2S.Engine.Features;
+using System.Reflection;
 
-namespace ARWNI2S.EngineParts
+namespace ARWNI2S.Engine.Parts
 {
     /// <summary>
     /// Manages the parts and features of an NI2S engine.

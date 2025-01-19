@@ -1,4 +1,6 @@
-﻿namespace ARWNI2S.EngineParts
+﻿using ARWNI2S.Engine.Features;
+
+namespace ARWNI2S.Engine.EngineParts
 {
     public interface IEnginePartManager
     {

@@ -7,11 +7,11 @@ using ARWNI2S.Core.Models;
 using ARWNI2S.Diagnostics;
 using ARWNI2S.Engine.Configuration;
 using ARWNI2S.Engine.Object;
+using ARWNI2S.Engine.Parts;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 using System.Buffers;
-using ARWNI2S.EngineParts;
 
 namespace ARWNI2S.Core
 {
@@ -31,10 +31,10 @@ namespace ARWNI2S.Core
 
         private static void ConfigureDefaultProviders(EnginePartManager manager)
         {
-            //if (!manager.ServiceProviders.OfType<EntityServiceProvider>().Any())
-            //{
-            //    manager.ServiceProviders.Add(new EntityServiceProvider());
-            //}
+            if (!manager.FeatureProviders.OfType<ActorFeatureProvider>().Any())
+            {
+                manager.FeatureProviders.Add(new ActorFeatureProvider());
+            }
         }
 
         private static EnginePartManager GetEnginePartManager(IServiceCollection services, INodeHostEnvironment environment)

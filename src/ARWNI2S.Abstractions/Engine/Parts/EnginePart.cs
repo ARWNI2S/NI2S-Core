@@ -1,4 +1,4 @@
-﻿namespace ARWNI2S.EngineParts
+﻿namespace ARWNI2S.Engine.EngineParts
 {
     /// <summary>
     /// A part of an NI2S application.

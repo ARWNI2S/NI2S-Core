@@ -1,4 +1,6 @@
-﻿namespace ARWNI2S.EngineParts
+﻿using ARWNI2S.Engine.EngineParts;
+
+namespace ARWNI2S.Engine.Parts
 {
     /// <summary>
     /// Exposes one or more reference paths from an <see cref="EnginePart"/>.

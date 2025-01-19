@@ -11,6 +11,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="IO\**" />
+    <EmbeddedResource Remove="IO\**" />
+    <None Remove="IO\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Utilities.Interop.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="ARWNI2S.Serialization" />
     <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
