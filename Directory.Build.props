@@ -1,11 +1,18 @@
 <Project>
+  <PropertyGroup>
+    <ParentDirectoryBuildPropsPath Condition="'$(_DirectoryBuildPropsFile)' != ''">
+      $([System.IO.Path]::Combine('..', '$(_DirectoryBuildPropsFile)'))
+    </ParentDirectoryBuildPropsPath>
+  </PropertyGroup>
+  <Import Project="$(_ParentDirectoryBuildPropsPath)" Condition="Exists('$(_ParentDirectoryBuildPropsPath)')"/>
+
   <!-- Set the repository root into a variable -->
   <PropertyGroup>
     <SourceRoot>$(MSBuildThisFileDirectory)</SourceRoot>
   </PropertyGroup>
 
   <!-- Set common properties regarding assembly information -->
-  <PropertyGroup>
+  <PropertyGroup Condition="$(NI2SFullBuild) == ''">
     <Authors>ManOguaR and the Alternate Reallity Worlds team</Authors>
     <Product>Narrative Interactive Intelligent Simulator</Product>
     <Copyright>© Alternate Reallity Worlds All rights reserved.</Copyright>

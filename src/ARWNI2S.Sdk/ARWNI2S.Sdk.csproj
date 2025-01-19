@@ -13,11 +13,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ARWNI2S.Abstractions\ARWNI2S.Abstractions.csproj" />
-    <ProjectReference Include="..\ARWNI2S.Core\ARWNI2S.Core.csproj" />
-    <ProjectReference Include="..\ARWNI2S.Data\ARWNI2S.Data.csproj" />
+    <ProjectReference Include="$(SourceRoot)src\ARWNI2S.Abstractions\ARWNI2S.Abstractions.csproj" />
+    <ProjectReference Include="$(SourceRoot)src\ARWNI2S.Core\ARWNI2S.Core.csproj" />
+    <ProjectReference Include="$(SourceRoot)src\ARWNI2S.Data\ARWNI2S.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(NI2SFullBuild) == '' OR $(SelializationSourceRoot) == ''">
     <PackageReference Include="ARWNI2S.Analyzers" PrivateAssets="None" />
     <PackageReference Include="ARWNI2S.CodeGenerator" PrivateAssets="None" />
+  </ItemGroup>
+  <ItemGroup Condition="$(NI2SFullBuild) == 'true' AND $(SelializationSourceRoot) != ''">
+    <ProjectReference Include="$(SelializationSourceRoot)src\ARWNI2S.Analyzers\ARWNI2S.Analyzers.csproj" />
+    <ProjectReference Include="$(SelializationSourceRoot)src\ARWNI2S.CodeGenerator\ARWNI2S.CodeGenerator.csproj" />
   </ItemGroup>
 
 </Project>

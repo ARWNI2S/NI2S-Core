@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ARWNI2S.Abstractions\ARWNI2S.Abstractions.csproj" />
+    <ProjectReference Include="$(SourceRoot)src\ARWNI2S.Abstractions\ARWNI2S.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>

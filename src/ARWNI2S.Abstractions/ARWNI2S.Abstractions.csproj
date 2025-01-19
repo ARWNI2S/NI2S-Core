@@ -21,13 +21,20 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="ARWNI2S.Serialization" />
     <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
     <PackageReference Include="Microsoft.Extensions.FileProviders.Abstractions" />
     <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" />
+    <PackageReference Include="Microsoft.Orleans.Core.Abstractions" />
     <PackageReference Include="Newtonsoft.Json" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(NI2SFullBuild) == '' OR $(SelializationSourceRoot) == ''">
+    <PackageReference Include="ARWNI2S.Serialization" />
+  </ItemGroup>
+  <ItemGroup Condition="$(NI2SFullBuild) == 'true' AND $(SelializationSourceRoot) != ''">
+    <ProjectReference Include="$(SelializationSourceRoot)src\ARWNI2S.Serialization\ARWNI2S.Serialization.csproj" />
   </ItemGroup>
 
   <ItemGroup>
