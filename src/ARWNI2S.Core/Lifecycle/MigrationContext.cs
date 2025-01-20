@@ -1,4 +1,5 @@
 #nullable enable
+using ARWNI2S;
 using ARWNI2S.Serialization.Buffers;
 using ARWNI2S.Serialization.Codecs;
 using ARWNI2S.Serialization.Session;
@@ -6,7 +7,7 @@ using System.Buffers;
 using System.Collections;
 using System.Runtime.InteropServices;
 
-namespace ARWNI2S.Engine.Lifecycle;
+namespace ARWNI2S.Lifecycle;
 
 [GenerateSerializer, Immutable, Alias("MigrationCtx"), SerializationCallbacks(typeof(SerializationHooks))]
 internal sealed class MigrationContext : IDeflationContext, IInflationContext, IDisposable, IEnumerable<string>, IBufferWriter<byte>

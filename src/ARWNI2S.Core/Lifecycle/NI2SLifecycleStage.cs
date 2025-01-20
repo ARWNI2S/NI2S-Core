@@ -1,4 +1,4 @@
-namespace ARWNI2S.Engine.Lifecycle
+namespace ARWNI2S.Lifecycle
 {
     /// <summary>
     /// Lifecycle stages of an Orleans client or silo.

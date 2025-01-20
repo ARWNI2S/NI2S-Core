@@ -21,10 +21,6 @@
     <PackageVersion Include="ARWNI2S.CodeGenerator" Version="1.0.0" />
     <PackageVersion Include="ARWNI2S.Serialization" Version="1.0.0" />
     <!-- System packages -->
-    <PackageVersion Include="FSharp.Core" Version="9.0.101" />
-    <PackageVersion Include="Google.Protobuf" Version="3.29.3" />
-    <PackageVersion Include="MessagePack" Version="3.1.1" />
-    <PackageVersion Include="Microsoft.Orleans.Core.Abstractions" Version="9.0.1" />
     <PackageVersion Include="System.Configuration.ConfigurationManager" Version="$(MicrosoftPackageLatestVersion)" />
     <PackageVersion Include="System.Linq.Async" Version="6.0.1" />
     <!-- Microsoft packages -->
@@ -33,7 +29,6 @@
     <PackageVersion Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="$(MicrosoftPackageLatestVersion)" />
     <PackageVersion Include="Microsoft.Extensions.Configuration.Binder" Version="$(MicrosoftPackageLatestVersion)" />
     <PackageVersion Include="Microsoft.Extensions.FileProviders.Physical" Version="$(MicrosoftPackageLatestVersion)" />
-    <PackageVersion Include="Microsoft.Extensions.Options" Version="$(MicrosoftPackageLatestVersion)" />
     <!-- Abstractions packages -->
     <PackageVersion Include="Microsoft.Extensions.Caching.Abstractions" Version="$(MicrosoftPackageLatestVersion)" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="$(MicrosoftPackageLatestVersion)" />
@@ -41,6 +36,9 @@
     <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="$(MicrosoftPackageLatestVersion)" />
     <!-- Azure packages -->
     <!-- Orleans packages -->
+    <PackageVersion Include="Microsoft.Orleans.Analyzers" Version="$(MicrosoftOrleansVersion)" />
+    <PackageVersion Include="Microsoft.Orleans.CodeGenerator" Version="$(MicrosoftOrleansVersion)" />
+    <PackageVersion Include="Microsoft.Orleans.Core.Abstractions" Version="$(MicrosoftOrleansVersion)" />
     <!-- 3rd party packages -->
     <PackageVersion Include="Autofac.Extensions.DependencyInjection" Version="10.0.0" />
     <PackageVersion Include="AutoMapper" Version="13.0.1" />

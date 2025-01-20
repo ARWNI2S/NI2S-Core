@@ -1,5 +1,5 @@
 ﻿using ARWNI2S.Builder;
-using ARWNI2S.Engine.Lifecycle;
+using ARWNI2S.Lifecycle;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ARWNI2S.Extensibility

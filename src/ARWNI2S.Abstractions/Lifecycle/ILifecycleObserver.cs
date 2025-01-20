@@ -1,4 +1,4 @@
-namespace ARWNI2S.Engine.Lifecycle
+namespace ARWNI2S.Lifecycle
 {
     /// <summary>
     /// Lifecycle observer used to handle start and stop notification.

@@ -1,4 +1,4 @@
-namespace ARWNI2S.Engine.Lifecycle
+namespace ARWNI2S.Lifecycle
 {
     /// <summary>
     /// Extensions for <see cref="ILifecycleParticipant{TLifecycleObservable}"/>.

@@ -4,10 +4,12 @@
     <InformationalVersion>$(Version). Commit Hash: $(GitHeadSha)</InformationalVersion>
   </PropertyGroup>
 
-  <Import Condition=" '$(NI2SBuildTimeCodeGen)' == 'true' " Project="$(MSBuildThisFileDirectory)src/ARWNI2S.Sdk/build/ARWNI2S.Sdk.targets" />
+  <Import Condition=" '$(NI2SBuildTimeCodeGen)' == 'true' AND $(NI2SFullBuild) == '' " Project="$(MSBuildThisFileDirectory)src/ARWNI2S.Sdk/build/ARWNI2S.Sdk.targets" />
+  <Import Condition=" '$(NI2SBuildTimeCodeGen)' == 'true' AND $(NI2SFullBuild) == 'true' " Project="$(SelializationSourceRoot)src/ARWNI2S.CodeGenerator/build/ARWNI2S.CodeGenerator.props" />
+  <Import Condition=" '$(NI2SBuildTimeCodeGen)' == 'true' AND $(NI2SFullBuild) == 'true' " Project="$(CoreSourceRoot)src/ARWNI2S.Sdk/build/ARWNI2S.Sdk.targets" />
 
-  <ItemGroup>
-    <!-- Enable code generator -->
+  <!-- Enable code generator -->
+  <ItemGroup Condition="$(NI2SFullBuild) == ''">
     <PackageReference
         Include="ARWNI2S.CodeGenerator"
         ReferenceOutputAssembly="false"
@@ -16,6 +18,21 @@
         Condition=" '$(NI2SBuildTimeCodeGen)' == 'true' "/>
     <PackageReference
       Include="ARWNI2S.Analyzers"
+      ReferenceOutputAssembly="false"
+      AssetTargetFallback="net6.0"
+      UndefineProperties="TargetFramework"
+      SkipGetTargetFrameworkProperties="true"
+      OutputItemType="Analyzer"
+      Condition=" '$(NI2SBuildTimeCodeGen)' == 'true' "/>
+  </ItemGroup>
+  <ItemGroup Condition="$(NI2SFullBuild) == 'true'">
+    <ProjectReference
+        Include="$(SelializationSourceRoot)src/ARWNI2S.CodeGenerator/ARWNI2S.CodeGenerator.csproj"
+        ReferenceOutputAssembly="false"
+        OutputItemType="Analyzer"
+        Condition=" '$(NI2SBuildTimeCodeGen)' == 'true' "/>
+    <ProjectReference
+      Include="$(SelializationSourceRoot)src/ARWNI2S.Analyzers/ARWNI2S.Analyzers.csproj"
       ReferenceOutputAssembly="false"
       AssetTargetFallback="net6.0"
       UndefineProperties="TargetFramework"

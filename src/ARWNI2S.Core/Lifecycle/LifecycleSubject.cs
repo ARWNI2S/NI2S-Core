@@ -3,7 +3,7 @@ using ARWNI2S.Diagnostics;
 using ARWNI2S.Timers;
 using Microsoft.Extensions.Logging;
 
-namespace ARWNI2S.Engine.Lifecycle
+namespace ARWNI2S.Lifecycle
 {
     /// <summary>
     /// Provides functionality for observing a lifecycle.
@@ -112,7 +112,7 @@ namespace ARWNI2S.Engine.Lifecycle
                     var stopWatch = ValueStopwatch.StartNew();
                     await Task.WhenAll(observerGroup.Select(orderedObserver => CallOnStart(orderedObserver, cancellationToken)));
                     stopWatch.Stop();
-                    this.PerfMeasureOnStart(stage, stopWatch.Elapsed);
+                    PerfMeasureOnStart(stage, stopWatch.Elapsed);
 
                     OnStartStageCompleted(stage);
                 }
@@ -188,7 +188,7 @@ namespace ARWNI2S.Engine.Lifecycle
                     var stopwatch = ValueStopwatch.StartNew();
                     await Task.WhenAll(observerGroup.Select(orderedObserver => orderedObserver?.Observer is not null ? CallObserverStopAsync(orderedObserver.Observer, cancellationToken) : Task.CompletedTask));
                     stopwatch.Stop();
-                    this.PerfMeasureOnStop(stage, stopwatch.Elapsed);
+                    PerfMeasureOnStop(stage, stopwatch.Elapsed);
                 }
                 catch (Exception ex)
                 {

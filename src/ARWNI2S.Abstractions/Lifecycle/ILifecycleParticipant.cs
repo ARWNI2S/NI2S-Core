@@ -1,4 +1,4 @@
-namespace ARWNI2S.Engine.Lifecycle
+namespace ARWNI2S.Lifecycle
 {
     /// <summary>
     /// Provides hook to take part in lifecycle.

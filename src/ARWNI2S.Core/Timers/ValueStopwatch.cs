@@ -5,7 +5,7 @@ namespace ARWNI2S.Timers
     /// <summary>
     /// Non-allocating stopwatch for timing durations.
     /// </summary>
-    internal struct ValueStopwatch
+    public struct ValueStopwatch
     {
         private static readonly double TimestampToTicks = TimeSpan.TicksPerSecond / (double)Stopwatch.Frequency;
         private long _value;

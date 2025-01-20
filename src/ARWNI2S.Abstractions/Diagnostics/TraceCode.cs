@@ -1,6 +1,6 @@
 ﻿namespace ARWNI2S.Diagnostics
 {
-    internal enum TraceCode : int
+    public enum TraceCode : int
     {
         LifecycleStagesReport,
 

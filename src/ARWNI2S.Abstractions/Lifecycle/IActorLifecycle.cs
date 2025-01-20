@@ -1,7 +1,8 @@
 #nullable enable
+using ARWNI2S;
 using System.Buffers;
 
-namespace ARWNI2S.Engine.Lifecycle
+namespace ARWNI2S.Lifecycle
 {
     /// <summary>
     /// The observable actor lifecycle.
