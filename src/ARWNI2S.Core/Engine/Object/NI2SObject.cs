@@ -4,6 +4,11 @@ namespace ARWNI2S.Engine.Object
 {
     public abstract class NI2SObject : ObjectBase, INiisObject
     {
+        public static bool IsValid(NI2SObject prerequisiteObject, bool v)
+        {
+            throw new NotImplementedException();
+        }
+
         public static T New<T>() where T : INiisObject
         {
             // Resolver la factoría específica o usar la predeterminada
