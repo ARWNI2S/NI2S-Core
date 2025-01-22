@@ -7,20 +7,20 @@ using System.Diagnostics.CodeAnalysis;
 namespace ARWNI2S.Collections.Generic
 {
     /// <summary>
-    /// BigList&lt;T&gt; provides a list of items, in order, with indices of the items ranging from 0 to one less
-    /// than the count of items in the collection. BigList&lt;T&gt; is optimized for efficient operations on large (&gt;100 items)
+    /// <see cref="BigList{T}"/> provides a list of items, in order, with indices of the items ranging from 0 to one less
+    /// than the count of items in the collection. <see cref="BigList{T}"/> is optimized for efficient operations on large (&gt;100 items)
     /// lists, especially for insertions, deletions, copies, and concatinations.
     /// </summary>
     /// <remarks>
-    /// <para>BigList&lt;T&gt; class is similar in functionality to the standard List&lt;T&gt; class. Both classes
+    /// <para><see cref="BigList{T}"/> class is similar in functionality to the standard <see cref="List{T}"/> class. Both classes
     /// provide a collection that stores an set of items in order, with indices of the items ranging from 0 to one less
     /// than the count of items in the collection. Both classes provide the ability to add and remove items from any index,
     /// and the get or set the item at any index.</para> 
-    /// <para>BigList&lt;T&gt; differs significantly from List&lt;T&gt; in the performance of various operations, 
-    /// especially when the lists become large (several hundred items or more). With List&lt;T&gt;, inserting or removing
+    /// <para><see cref="BigList{T}"/> differs significantly from <see cref="List{T}"/> in the performance of various operations, 
+    /// especially when the lists become large (several hundred items or more). With <see cref="List{T}"/>, inserting or removing
     /// elements from anywhere in a large list except the end is very inefficient -- every item after the point of inserting
-    /// or deletion has to be moved in the list. The BigList&lt;T&gt; class, however, allows for fast insertions
-    /// and deletions anywhere in the list. Furthermore, BigList&lt;T&gt; allows copies of a list, sub-parts
+    /// or deletion has to be moved in the list. The <see cref="BigList{T}"/> class, however, allows for fast insertions
+    /// and deletions anywhere in the list. Furthermore, <see cref="BigList{T}"/> allows copies of a list, sub-parts
     /// of a list, and concatinations of two lists to be very fast. When a copy is made of part or all of a BigList,
     /// two lists shared storage for the parts of the lists that are the same. Only when one of the lists is changed is additional
     /// memory allocated to store the distinct parts of the lists.</para>
@@ -840,7 +840,7 @@ namespace ARWNI2S.Collections.Generic
 
         /// <summary>
         /// Returns a view onto a sub-range of this list. Items are not copied; the
-        /// returned IList&lt;T&gt; is simply a different view onto the same underlying items. Changes to this list
+        /// returned <see cref="IList{T}"/> is simply a different view onto the same underlying items. Changes to this list
         /// are reflected in the view, and vice versa. Insertions and deletions in the view change the size of the 
         /// view, but insertions and deletions in the underlying list do not.
         /// </summary>
@@ -875,7 +875,7 @@ namespace ARWNI2S.Collections.Generic
         /// is much more efficient than accessing all items by index.</remarks>
         /// <param name="start">Index to start enumerating at.</param>
         /// <param name="maxItems">Max number of items to enumerate.</param>
-        /// <returns>An IEnumerator&lt;T&gt; that enumerates all the
+        /// <returns>An <see cref="IEnumerator{T}"/> that enumerates all the
         /// items in the given range.</returns>
         private IEnumerator<T> GetEnumerator(int start, int maxItems)
         {
@@ -990,7 +990,7 @@ namespace ARWNI2S.Collections.Generic
         /// <remarks>Enumerating all of the items in the list take time O(N), where
         /// N is the number of items in the list. Using GetEnumerator() or foreach
         /// is much more efficient than accessing all items by index.</remarks>
-        /// <returns>An IEnumerator&lt;T&gt; that enumerates all the
+        /// <returns>An <see cref="IEnumerator{T}"/> that enumerates all the
         /// items in the list.</returns>
         public sealed override IEnumerator<T> GetEnumerator()
         {
@@ -998,7 +998,7 @@ namespace ARWNI2S.Collections.Generic
         }
 
         /// <summary>
-        /// Given an IEnumerable&lt;T&gt;, create a new Node with all of the 
+        /// Given an <see cref="IEnumerable{T}"/>, create a new Node with all of the 
         /// items in the enumerable. Returns null if the enumerable has no items.
         /// </summary>
         /// <param name="collection">The collection to copy.</param>
@@ -1287,17 +1287,17 @@ namespace ARWNI2S.Collections.Generic
         /// </summary>
         /// <remarks><para>The Quicksort algorithm is used to sort the items. In virtually all cases,
         /// this takes time O(N log N), where N is the number of items in the list.</para>
-        /// <para>Values are compared by using the IComparable or IComparable&lt;T&gt;
+        /// <para>Values are compared by using the IComparable or <see cref="IComparable{T}"/>
         /// interface implementation on the type T.</para></remarks>
         /// <exception cref="InvalidOperationException">The type T does not implement either the IComparable or
-        /// IComparable&lt;T&gt; interfaces.</exception>
+        /// <see cref="IComparable{T}"/> interfaces.</exception>
         public void Sort()
         {
             Sort(Comparers.DefaultComparer<T>());
         }
 
         /// <summary>
-        /// Sorts the list in place. A supplied IComparer&lt;T&gt; is used
+        /// Sorts the list in place. A supplied <see cref="IComparer{T}"/> is used
         /// to compare the items in the list. 
         /// </summary>
         /// <remarks>The Quicksort algorithms is used to sort the items. In virtually all cases,
@@ -1310,7 +1310,7 @@ namespace ARWNI2S.Collections.Generic
         }
 
         /// <summary>
-        /// Sorts the list in place. A supplied Comparison&lt;T&gt; delegate is used
+        /// Sorts the list in place. A supplied <see cref="Comparison{T}"/> delegate is used
         /// to compare the items in the list.
         /// </summary>
         /// <remarks>The Quicksort algorithms is used to sort the items. In virtually all cases,
@@ -1332,7 +1332,7 @@ namespace ARWNI2S.Collections.Generic
         /// in the list, the bitwise complement of the first item larger than <paramref name="item"/> in the list is returned. If no item is 
         /// larger than <paramref name="item"/>, the bitwise complement of Count is returned.</returns>
         /// <exception cref="InvalidOperationException">The type T does not implement either the IComparable or
-        /// IComparable&lt;T&gt; interfaces.</exception>
+        /// <see cref="IComparable{T}"/> interfaces.</exception>
         public int BinarySearch(T item)
         {
             return BinarySearch(item, Comparers.DefaultComparer<T>());
@@ -1340,11 +1340,11 @@ namespace ARWNI2S.Collections.Generic
 
         /// <summary>
         /// Searches a sorted list for an item via binary search. The list must be sorted
-        /// by the ordering defined by the passed IComparer&lt;T&gt; interface; otherwise, 
+        /// by the ordering defined by the passed <see cref="IComparer{T}"/> interface; otherwise, 
         /// incorrect results will be returned.
         /// </summary>
         /// <param name="item">The item to search for.</param>
-        /// <param name="comparer">The IComparer&lt;T&gt; interface used to sort the list.</param>
+        /// <param name="comparer">The <see cref="IComparer{T}"/> interface used to sort the list.</param>
         /// <returns>Returns the index of the first occurence of <paramref name="item"/> in the list. If the item does not occur
         /// in the list, the bitwise complement of the first item larger than <paramref name="item"/> in the list is returned. If no item is 
         /// larger than <paramref name="item"/>, the bitwise complement of Count is returned.</returns>
@@ -1361,7 +1361,7 @@ namespace ARWNI2S.Collections.Generic
 
         /// <summary>
         /// Searches a sorted list for an item via binary search. The list must be sorted
-        /// by the ordering defined by the passed Comparison&lt;T&gt; delegate; otherwise, 
+        /// by the ordering defined by the passed <see cref="Comparison{T}"/> delegate; otherwise, 
         /// incorrect results will be returned.
         /// </summary>
         /// <param name="item">The item to search for.</param>
@@ -2812,7 +2812,7 @@ namespace ARWNI2S.Collections.Generic
         }
 
         /// <summary>
-        /// The class that is used to implement IList&lt;T&gt; to view a sub-range
+        /// The class that is used to implement <see cref="IList{T}"/> to view a sub-range
         /// of a BigList. The object stores a wrapped list, and a start/count indicating
         /// a sub-range of the list. Insertion/deletions through the sub-range view
         /// cause the count to change also; insertions and deletions directly on

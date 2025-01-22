@@ -5,9 +5,9 @@ namespace ARWNI2S.Collections
 {
     /// <summary>
     /// ReadOnlyListBase is an abstract class that can be used as a base class for a read-only collection that needs 
-    /// to implement the generic IList&lt;T&gt; and non-generic IList collections. The derived class needs
+    /// to implement the generic <see cref="IList{T}"/> and non-generic IList collections. The derived class needs
     /// to override the Count property and the get part of the indexer. The implementation
-    /// of all the other methods in IList&lt;T&gt; and IList are handled by ListBase.
+    /// of all the other methods in <see cref="IList{T}"/> and IList are handled by ListBase.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     [Serializable]
@@ -54,7 +54,7 @@ namespace ARWNI2S.Collections
         /// Enumerates all of the items in the list, in order. The item at index 0
         /// is enumerated first, then the item at index 1, and so on.
         /// </summary>
-        /// <returns>An IEnumerator&lt;T&gt; that enumerates all the
+        /// <returns>An <see cref="IEnumerator{T}"/> that enumerates all the
         /// items in the list.</returns>
         public override IEnumerator<T> GetEnumerator()
         {
@@ -70,7 +70,7 @@ namespace ARWNI2S.Collections
         /// The implementation simply checks whether IndexOf(item) returns a non-negative value.
         /// </summary>
         /// <remarks>Equality in the list is determined by the default sense of
-        /// equality for T. If T implements IComparable&lt;T&gt;, the
+        /// equality for T. If T implements <see cref="IComparable{T}"/>, the
         /// Equals method of that interface is used to determine equality. Otherwise, 
         /// object.Equals is used to determine equality.</remarks>
         /// <param name="item">The item to search for.</param>
@@ -264,7 +264,7 @@ namespace ARWNI2S.Collections
         /// Finds the index of the first item in the list that is equal to <paramref name="item"/>. 
         /// </summary>
         /// <remarks>The default implementation of equality for type T is used in the search. This is the
-        /// equality defined by IComparable&lt;T&gt; or object.Equals.</remarks>
+        /// equality defined by <see cref="IComparable{T}"/> or object.Equals.</remarks>
         /// <param name="item">The item to search fror.</param>
         /// <returns>The index of the first item in the list that that is equal to <paramref name="item"/>.  If no item is equal
         /// to <paramref name="item"/>, -1 is returned.</returns>
@@ -278,7 +278,7 @@ namespace ARWNI2S.Collections
         /// that is equal to <paramref name="item"/>. 
         /// </summary>
         /// <remarks>The default implementation of equality for type T is used in the search. This is the
-        /// equality defined by IComparable&lt;T&gt; or object.Equals.</remarks>
+        /// equality defined by <see cref="IComparable{T}"/> or object.Equals.</remarks>
         /// <param name="item">The item to search fror.</param>
         /// <param name="index">The starting index of the range to check.</param>
         /// <returns>The index of the first item in the given range that that is equal to <paramref name="item"/>.  If no item is equal
@@ -298,7 +298,7 @@ namespace ARWNI2S.Collections
         /// that is equal to <paramref name="item"/>. 
         /// </summary>
         /// <remarks>The default implementation of equality for type T is used in the search. This is the
-        /// equality defined by IComparable&lt;T&gt; or object.Equals.</remarks>
+        /// equality defined by <see cref="IComparable{T}"/> or object.Equals.</remarks>
         /// <param name="item">The item to search fror.</param>
         /// <param name="index">The starting index of the range to check.</param>
         /// <param name="count">The number of items in range to check.</param>
@@ -318,7 +318,7 @@ namespace ARWNI2S.Collections
         /// Finds the index of the last item in the list that is equal to <paramref name="item"/>. 
         /// </summary>
         /// <remarks>The default implementation of equality for type T is used in the search. This is the
-        /// equality defined by IComparable&lt;T&gt; or object.Equals.</remarks>
+        /// equality defined by <see cref="IComparable{T}"/> or object.Equals.</remarks>
         /// <param name="item">The item to search fror.</param>
         /// <returns>The index of the last item in the list that that is equal to <paramref name="item"/>.  If no item is equal
         /// to <paramref name="item"/>, -1 is returned.</returns>
@@ -332,7 +332,7 @@ namespace ARWNI2S.Collections
         /// of the list to <paramref name="index"/>, that is equal to <paramref name="item"/>. 
         /// </summary>
         /// <remarks>The default implementation of equality for type T is used in the search. This is the
-        /// equality defined by IComparable&lt;T&gt; or object.Equals.</remarks>
+        /// equality defined by <see cref="IComparable{T}"/> or object.Equals.</remarks>
         /// <param name="item">The item to search fror.</param>
         /// <param name="index">The ending index of the range to check.</param>
         /// <returns>The index of the last item in the given range that that is equal to <paramref name="item"/>.  If no item is equal
@@ -349,7 +349,7 @@ namespace ARWNI2S.Collections
         /// that is equal to <paramref name="item"/>. 
         /// </summary>
         /// <remarks>The default implementation of equality for type T is used in the search. This is the
-        /// equality defined by IComparable&lt;T&gt; or object.Equals.</remarks>
+        /// equality defined by <see cref="IComparable{T}"/> or object.Equals.</remarks>
         /// <param name="item">The item to search for.</param>
         /// <param name="index">The ending index of the range to check.</param>
         /// <param name="count">The number of items in range to check.</param>
@@ -367,7 +367,7 @@ namespace ARWNI2S.Collections
 
         /// <summary>
         /// Returns a view onto a sub-range of this list. Items are not copied; the
-        /// returned IList&lt;T&gt; is simply a different view onto the same underlying items. 
+        /// returned <see cref="IList{T}"/> is simply a different view onto the same underlying items. 
         /// </summary>
         /// <remarks>
         /// <para>This method can be used to apply an algorithm to a portion of a list. For example:</para>
@@ -440,7 +440,7 @@ namespace ARWNI2S.Collections
         /// Determines if the list contains any item that compares equal to <paramref name="value"/>.
         /// </summary>
         /// <remarks>Equality in the list is determined by the default sense of
-        /// equality for T. If T implements IComparable&lt;T&gt;, the
+        /// equality for T. If T implements <see cref="IComparable{T}"/>, the
         /// Equals method of that interface is used to determine equality. Otherwise, 
         /// object.Equals is used to determine equality.</remarks>
         /// <param name="value">The item to search for.</param>
@@ -457,7 +457,7 @@ namespace ARWNI2S.Collections
         /// in the list, and returns the index of that item.
         /// </summary>
         /// <remarks>Equality in the list is determined by the default sense of
-        /// equality for T. If T implements IComparable&lt;T&gt;, the
+        /// equality for T. If T implements <see cref="IComparable{T}"/>, the
         /// Equals method of that interface is used to determine equality. Otherwise, 
         /// object.Equals is used to determine equality.</remarks>
         /// <param name="value">The item to search for.</param>
@@ -512,7 +512,7 @@ namespace ARWNI2S.Collections
         /// indicating that the list is read-only.
         /// </summary>
         /// <remarks>Equality in the list is determined by the default sense of
-        /// equality for T. If T implements IComparable&lt;T&gt;, the
+        /// equality for T. If T implements <see cref="IComparable{T}"/>, the
         /// Equals method of that interface is used to determine equality. Otherwise, 
         /// object.Equals is used to determine equality.</remarks>
         /// <param name="value">The item to remove from the list.</param>

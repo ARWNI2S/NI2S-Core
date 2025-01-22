@@ -121,10 +121,10 @@
         /// have "a" and "b" associated with it, which key "bar" has values "b" and "c" associated with it.
         /// </summary>
         /// <remarks>The default ordering of keys and values will be used, as defined by TKey and TValue's implementation
-        /// of IComparable&lt;T&gt; (or IComparable if IComparable&lt;T&gt; is not implemented). If a different ordering should be
+        /// of <see cref="IComparable{T}"/> (or IComparable if <see cref="IComparable{T}"/> is not implemented). If a different ordering should be
         /// used, other constructors allow a custom Comparer or IComparer to be passed to changed the ordering.</remarks>
         /// <param name="allowDuplicateValues">Can the same value be associated with a key multiple times?</param>
-        /// <exception cref="InvalidOperationException">TKey or TValue does not implement either IComparable&lt;T&gt; or IComparable.</exception>
+        /// <exception cref="InvalidOperationException">TKey or TValue does not implement either <see cref="IComparable{T}"/> or IComparable.</exception>
         public MultiDictionary(bool allowDuplicateValues)
             : this(allowDuplicateValues, EqualityComparer<TKey>.Default, EqualityComparer<TValue>.Default)
         {
@@ -338,7 +338,7 @@
         #region Query items
 
         /// <summary>
-        /// Returns the IEqualityComparer&lt;T&gt; used to compare keys in this dictionary. 
+        /// Returns the <see cref="IEqualityComparer{T}"/> used to compare keys in this dictionary. 
         /// </summary>
         /// <value>If the dictionary was created using a comparer, that comparer is returned. Otherwise
         /// the default comparer for TKey (EqualityComparer&lt;TKey&gt;.Default) is returned.</value>
@@ -351,7 +351,7 @@
         }
 
         /// <summary>
-        /// Returns the IEqualityComparer&lt;T&gt; used to compare values in this dictionary. 
+        /// Returns the <see cref="IEqualityComparer{T}"/> used to compare values in this dictionary. 
         /// </summary>
         /// <value>If the dictionary was created using a comparer, that comparer is returned. Otherwise
         /// the default comparer for TValue (EqualityComparer&lt;TValue&gt;.Default) is returned.</value>

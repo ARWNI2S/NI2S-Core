@@ -3,15 +3,15 @@
 namespace ARWNI2S.Collections.Sorted
 {
     /// <summary>
-    /// OrderedSet&lt;T&gt; is a collection that contains items of type T. 
+    ///<see cref="OrderedSet{T}"/> is a collection that contains items of type T. 
     /// The item are maintained in a sorted order, and duplicate items are not allowed. Each item has
     /// an index in the set: the smallest item has index 0, the next smallest item has index 1,
     /// and so forth.
     /// </summary>
     /// <remarks>
-    /// <p>The items are compared in one of three ways. If T implements IComparable&lt;TKey&gt; or IComparable,
+    /// <p>The items are compared in one of three ways. If T implements <see cref="IComparable{TKey}"/> or IComparable,
     /// then the CompareTo method of that interface will be used to compare items. Alternatively, a comparison
-    /// function can be passed in either as a delegate, or as an instance of IComparer&lt;TKey&gt;.</p>
+    /// function can be passed in either as a delegate, or as an instance of <see cref="IComparer{TKey}"/>.</p>
     /// <p>OrderedSet is implemented as a balanced binary tree. Inserting, deleting, and looking up an
     /// an element all are done in log(N) type, where N is the number of keys in the tree.</p>
     /// <p><see cref="Generic.Set{T}"/> is similar, but uses hashing instead of comparison, and does not maintain
@@ -31,14 +31,14 @@ namespace ARWNI2S.Collections.Sorted
         #region Constructors
 
         /// <summary>
-        /// Creates a new OrderedSet. The T must implement IComparable&lt;T&gt;
+        /// Creates a new OrderedSet. The T must implement <see cref="IComparable{T}"/>
         /// or IComparable. 
         /// The CompareTo method of this interface will be used to compare items in this set.
         /// </summary>
         ///<remarks>
         /// Items that are null are permitted, and will be sorted before all other items.
         ///</remarks>
-        /// <exception cref="InvalidOperationException">T does not implement IComparable&lt;TKey&gt;.</exception>
+        /// <exception cref="InvalidOperationException">T does not implement <see cref="IComparable{TKey}"/>.</exception>
         public OrderedSet() :
             this(Comparers.DefaultComparer<T>())
         {
@@ -58,10 +58,10 @@ namespace ARWNI2S.Collections.Sorted
         /// will be used to compare items in this set.
         /// </summary>
         /// <remarks>
-        /// The GetHashCode and Equals methods of the provided IComparer&lt;T&gt; will never
+        /// The GetHashCode and Equals methods of the provided <see cref="IComparer{T}"/> will never
         /// be called, and need not be implemented.
         /// </remarks>
-        /// <param name="comparer">An instance of IComparer&lt;T&gt; that will be used to compare items.</param>
+        /// <param name="comparer">An instance of <see cref="IComparer{T}"/> that will be used to compare items.</param>
         public OrderedSet(IComparer<T> comparer)
         {
             if (comparer == null)
@@ -72,7 +72,7 @@ namespace ARWNI2S.Collections.Sorted
         }
 
         /// <summary>
-        /// Creates a new OrderedSet. The T must implement IComparable&lt;T&gt;
+        /// Creates a new OrderedSet. The T must implement <see cref="IComparable{T}"/>
         /// or IComparable. 
         /// The CompareTo method of this interface will be used to compare items in this set. The set is
         /// initialized with all the items in the given collection.
@@ -81,7 +81,7 @@ namespace ARWNI2S.Collections.Sorted
         /// Items that are null are permitted, and will be sorted before all other items.
         ///</remarks>
         /// <param name="collection">A collection with items to be placed into the OrderedSet.</param>
-        /// <exception cref="InvalidOperationException">T does not implement IComparable&lt;TKey&gt;.</exception>
+        /// <exception cref="InvalidOperationException">T does not implement <see cref="IComparable{TKey}"/>.</exception>
         public OrderedSet(IEnumerable<T> collection) :
             this(collection, Comparers.DefaultComparer<T>())
         {
@@ -104,11 +104,11 @@ namespace ARWNI2S.Collections.Sorted
         /// initialized with all the items in the given collection.
         /// </summary>
         /// <remarks>
-        /// The GetHashCode and Equals methods of the provided IComparer&lt;T&gt; will never
+        /// The GetHashCode and Equals methods of the provided <see cref="IComparer{T}"/> will never
         /// be called, and need not be implemented.
         /// </remarks>
         /// <param name="collection">A collection with items to be placed into the OrderedSet.</param>
-        /// <param name="comparer">An instance of IComparer&lt;T&gt; that will be used to compare items.</param>
+        /// <param name="comparer">An instance of <see cref="IComparer{T}"/> that will be used to compare items.</param>
         public OrderedSet(IEnumerable<T> collection, IComparer<T> comparer) :
             this(comparer)
         {
@@ -200,12 +200,12 @@ namespace ARWNI2S.Collections.Sorted
         #region Basic collection containment
 
         /// <summary>
-        /// Returns the IComparer&lt;T&gt; used to compare items in this set. 
+        /// Returns the <see cref="IComparer{T}"/> used to compare items in this set. 
         /// </summary>
         /// <value>If the set was created using a comparer, that comparer is returned. If the set was
         /// created using a comparison delegate, then a comparer equivalent to that delegate
         /// is returned. Otherwise
-        /// the default comparer for T (Comparer&lt;T&gt;.Default) is returned.</value>
+        /// the default comparer for T (<see cref="Comparer{T}.Default"/>) is returned.</value>
         public IComparer<T> Comparer
         {
             get
@@ -957,7 +957,7 @@ namespace ARWNI2S.Collections.Sorted
         /// at index 0. This view does not copy any data, and reflects any
         /// changes to the underlying OrderedSet.
         /// </summary>
-        /// <returns>A read-only IList&lt;T&gt; view onto this OrderedSet.</returns>
+        /// <returns>A read-only <see cref="IList{T}"/> view onto this OrderedSet.</returns>
         public IList<T> AsList()
         {
             return new ListView(this, _tree.EntireRangeTester, true, false);
@@ -1186,7 +1186,7 @@ namespace ARWNI2S.Collections.Sorted
         #region View nested class
 
         /// <summary>
-        /// The OrderedSet&lt;T&gt;.View class is used to look at a subset of the Items
+        /// The<see cref="OrderedSet{T}"/>.View class is used to look at a subset of the Items
         /// inside an ordered set. It is returned from the Range, RangeTo, RangeFrom, and Reversed methods. 
         /// </summary>
         ///<remarks>
@@ -1237,7 +1237,7 @@ namespace ARWNI2S.Collections.Sorted
             /// <summary>
             /// Enumerate all the items in this view.
             /// </summary>
-            /// <returns>An IEnumerator&lt;T&gt; with the items in this view.</returns>
+            /// <returns>An <see cref="IEnumerator{T}"/> with the items in this view.</returns>
             public sealed override IEnumerator<T> GetEnumerator()
             {
                 if (_reversed)
@@ -1458,7 +1458,7 @@ namespace ARWNI2S.Collections.Sorted
             /// at index 0. This view does not copy any data, and reflects any
             /// changes to the underlying OrderedSet.
             /// </summary>
-            /// <returns>A read-only IList&lt;T&gt; view onto this view.</returns>
+            /// <returns>A read-only <see cref="IList{T}"/> view onto this view.</returns>
             public IList<T> AsList()
             {
                 return new ListView(_mySet, _rangeTester, _entireTree, _reversed);

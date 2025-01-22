@@ -6,7 +6,7 @@ namespace ARWNI2S.Collections
 {
     /// <summary>
     /// ReadOnlyDictionaryBase is a base class that can be used to more easily implement the
-    /// generic IDictionary&lt;T&gt; and non-generic IDictionary interfaces.
+    /// generic <see cref="IDictionary{TKey, TValue}"/> and non-generic <see cref="IDictionary"/> interfaces.
     /// </summary>
     /// <remarks>
     /// <para>To use ReadOnlyDictionaryBase as a base class, the derived class must override

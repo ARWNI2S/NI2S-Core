@@ -5,9 +5,9 @@ namespace ARWNI2S.Collections
 {
     /// <summary>
     /// TreeNodeCollectionBase is an abstract class that can be used as a base class for a read-write collection that needs 
-    /// to implement the generic IList&lt;T&gt; and non-generic IList collections. The derived class needs
+    /// to implement the generic <see cref="IList{T}"/> and non-generic IList collections. The derived class needs
     /// to override the following methods: Count, Clear, Insert, RemoveAt, and the indexer. The implementation
-    /// of all the other methods in IList&lt;T&gt; and IList are handled by ListBase.
+    /// of all the other methods in <see cref="IList{T}"/> and IList are handled by ListBase.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     [Serializable]

@@ -1,13 +1,13 @@
 ﻿namespace ARWNI2S.Collections.Generic
 {
     /// <summary>
-    /// Set&lt;T&gt; is a collection that contains items of type T. 
+    /// <see cref="Set{T}"/> is a collection that contains items of type T. 
     /// The item are maintained in a haphazard, unpredictable order, and duplicate items are not allowed.
     /// </summary>
     /// <remarks>
-    /// <p>The items are compared in one of two ways. If T implements IComparable&lt;T&gt; 
+    /// <p>The items are compared in one of two ways. If T implements <see cref="IComparable{T}"/> 
     /// then the Equals method of that interface will be used to compare items, otherwise the Equals
-    /// method from object will be used. Alternatively, an instance of IComparer&lt;T&gt; can be passed
+    /// method from object will be used. Alternatively, an instance of <see cref="IComparer{T}"/> can be passed
     /// to the constructor to use to compare items.</p>
     /// <p>Set is implemented as a hash table. Inserting, deleting, and looking up an
     /// an element all are done in approximately constant time, regardless of the number of items in the Set.</p>
@@ -43,7 +43,7 @@
         /// Creates a new Set. The Equals and GetHashCode method of the passed comparer object
         /// will be used to compare items in this set.
         /// </summary>
-        /// <param name="equalityComparer">An instance of IEqualityComparer&lt;T&gt; that will be used to compare items.</param>
+        /// <param name="equalityComparer">An instance of <see cref="IEqualityComparer{T}"/> that will be used to compare items.</param>
         public Set(IEqualityComparer<T> equalityComparer)
         {
             if (equalityComparer == null)
@@ -72,7 +72,7 @@
         /// initialized with all the items in the given collection.
         /// </summary>
         /// <param name="collection">A collection with items to be placed into the Set.</param>
-        /// <param name="equalityComparer">An instance of IEqualityComparer&lt;T&gt; that will be used to compare items.</param>
+        /// <param name="equalityComparer">An instance of <see cref="IEqualityComparer{T}"/> that will be used to compare items.</param>
         public Set(IEnumerable<T> collection, IEqualityComparer<T> equalityComparer)
            : this(equalityComparer)
         {
@@ -164,10 +164,10 @@
         #region Basic collection containment
 
         /// <summary>
-        /// Returns the IEqualityComparer&lt;T&gt; used to compare items in this set. 
+        /// Returns the <see cref="IEqualityComparer{T}"/> used to compare items in this set. 
         /// </summary>
         /// <value>If the set was created using a comparer, that comparer is returned. Otherwise
-        /// the default comparer for T (EqualityComparer&lt;T&gt;.Default) is returned.</value>
+        /// the default comparer for T (<see cref="EqualityComparer{T}.Default"/>) is returned.</value>
         public IEqualityComparer<T> Comparer
         {
             get

@@ -179,10 +179,10 @@ namespace ARWNI2S.Collections.Sorted
         /// have "a" and "b" associated with it, which key "bar" has values "b" and "c" associated with it.
         /// </summary>
         /// <remarks>The default ordering of keys and values will be used, as defined by TKey and TValue's implementation
-        /// of IComparable&lt;T&gt; (or IComparable if IComparable&lt;T&gt; is not implemented). If a different ordering should be
+        /// of <see cref="IComparable{T}"/> (or IComparable if <see cref="IComparable{T}"/> is not implemented). If a different ordering should be
         /// used, other constructors allow a custom Comparer or IComparer to be passed to changed the ordering.</remarks>
         /// <param name="allowDuplicateValues">Can the same value be associated with a key multiple times?</param>
-        /// <exception cref="InvalidOperationException">TKey or TValue does not implement either IComparable&lt;T&gt; or IComparable.</exception>
+        /// <exception cref="InvalidOperationException">TKey or TValue does not implement either <see cref="IComparable{T}"/> or IComparable.</exception>
         public OrderedMultiDictionary(bool allowDuplicateValues)
             : this(allowDuplicateValues, Comparers.DefaultComparer<TKey>(), Comparers.DefaultComparer<TValue>())
         {
@@ -226,7 +226,7 @@ namespace ARWNI2S.Collections.Sorted
         /// have "a" and "b" associated with it, which key "bar" has values "b" and "c" associated with it.
         /// </summary>
         /// <param name="allowDuplicateValues">Can the same value be associated with a key multiple times?</param>
-        /// <param name="keyComparer">An IComparer&lt;TKey&gt; instance that will be used to compare keys.</param>
+        /// <param name="keyComparer">An <see cref="IComparer{TKey}"/> instance that will be used to compare keys.</param>
         /// <exception cref="InvalidOperationException">TValue does not implement either IComparable&lt;TValue&gt; or IComparable.</exception>
         public OrderedMultiDictionary(bool allowDuplicateValues, IComparer<TKey> keyComparer)
             : this(allowDuplicateValues, keyComparer, Comparers.DefaultComparer<TValue>())
@@ -241,7 +241,7 @@ namespace ARWNI2S.Collections.Sorted
         /// have "a" and "b" associated with it, which key "bar" has values "b" and "c" associated with it.
         /// </summary>
         /// <param name="allowDuplicateValues">Can the same value be associated with a key multiple times?</param>
-        /// <param name="keyComparer">An IComparer&lt;TKey&gt; instance that will be used to compare keys.</param>
+        /// <param name="keyComparer">An <see cref="IComparer{TKey}"/> instance that will be used to compare keys.</param>
         /// <param name="valueComparer">An IComparer&lt;TValue&gt; instance that will be used to compare values.</param>
         public OrderedMultiDictionary(bool allowDuplicateValues, IComparer<TKey> keyComparer, IComparer<TValue> valueComparer)
         {
@@ -262,7 +262,7 @@ namespace ARWNI2S.Collections.Sorted
         /// </summary>
         /// <param name="allowDuplicateValues">Can the same value be associated with a key multiple times?</param>
         /// <param name="keyCount">Number of keys.</param>
-        /// <param name="keyComparer">An IComparer&lt;TKey&gt; instance that will be used to compare keys.</param>
+        /// <param name="keyComparer">An <see cref="IComparer{TKey}"/> instance that will be used to compare keys.</param>
         /// <param name="valueComparer">An IComparer&lt;TValue&gt; instance that will be used to compare values.</param>
         /// <param name="comparer">Comparer of key-value pairs.</param>
         /// <param name="tree">The red-black tree used to store the data.</param>
@@ -354,7 +354,7 @@ namespace ARWNI2S.Collections.Sorted
         #region Query items
 
         /// <summary>
-        /// Returns the IComparer&lt;T&gt; used to compare keys in this dictionary. 
+        /// Returns the <see cref="IComparer{T}"/> used to compare keys in this dictionary. 
         /// </summary>
         /// <value>If the dictionary was created using a comparer, that comparer is returned. If the dictionary was
         /// created using a comparison delegate, then a comparer equivalent to that delegate
@@ -369,7 +369,7 @@ namespace ARWNI2S.Collections.Sorted
         }
 
         /// <summary>
-        /// Returns the IComparer&lt;T&gt; used to compare values in this dictionary. 
+        /// Returns the <see cref="IComparer{T}"/> used to compare values in this dictionary. 
         /// </summary>
         /// <value>If the dictionary was created using a comparer, that comparer is returned. If the dictionary was
         /// created using a comparison delegate, then a comparer equivalent to that delegate

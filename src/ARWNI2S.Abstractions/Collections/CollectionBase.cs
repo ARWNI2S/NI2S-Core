@@ -6,12 +6,12 @@ namespace ARWNI2S.Collections
 {
     /// <summary>
     /// CollectionBase is a base class that can be used to more easily implement the
-    /// generic ICollection&lt;T&gt; and non-generic ICollection interfaces.
+    /// generic <see cref="ICollection{T}"/> and non-generic ICollection interfaces.
     /// </summary>
     /// <remarks>
     /// <para>To use CollectionBase as a base class, the derived class must override
     /// the Count, GetEnumerator, Add, Clear, and Remove methods. </para>
-    /// <para>ICollection&lt;T&gt;.Contains need not be implemented by the
+    /// <para><see cref="ICollection{T}"/>.Contains need not be implemented by the
     /// derived class, but it should be strongly considered, because the CollectionBase implementation
     /// may not be very efficient.</para>
     /// </remarks>
@@ -42,13 +42,13 @@ namespace ARWNI2S.Collections
         /// Add with a different return type (typically bool). In C#, this can be accomplished
         /// with code like the following:</p>
         /// <code>
-        ///     internal class MyCollection&lt;T&gt;: CollectionBase&lt;T&gt;, ICollection&lt;T&gt;
+        ///     internal class MyCollection&lt;T&gt;: CollectionBase&lt;T&gt;, <see cref="ICollection{T}"/>
         ///     {
         ///         public new bool Add(T item) {
         ///             /* Add the item */
         ///         }
         ///  
-        ///         void ICollection&lt;T&gt;.Add(T item) {
+        ///         void <see cref="ICollection{T}"/>.Add(T item) {
         ///             Add(item);
         ///         }
         ///     }
@@ -77,7 +77,7 @@ namespace ARWNI2S.Collections
         /// <summary>
         /// Determines if the collection contains a particular item. This default implementation
         /// iterates all of the items in the collection via GetEnumerator, testing each item
-        /// against <paramref name="item"/> using IComparable&lt;T&gt;.Equals or
+        /// against <paramref name="item"/> using <see cref="IComparable{T}"/>.Equals or
         /// object.Equals.
         /// </summary>
         /// <remarks>You should strongly consider overriding this method to provide
@@ -162,12 +162,12 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// Provides a read-only view of this collection. The returned ICollection&lt;T&gt; provides
+        /// Provides a read-only view of this collection. The returned <see cref="ICollection{T}"/> provides
         /// a view of the collection that prevents modifications to the collection. Use the method to provide
         /// access to the collection without allowing changes. Since the returned object is just a view,
         /// changes to the collection will be reflected in the view.
         /// </summary>
-        /// <returns>An ICollection&lt;T&gt; that provides read-only access to the collection.</returns>
+        /// <returns>An <see cref="ICollection{T}"/> that provides read-only access to the collection.</returns>
         public virtual ICollection<T> AsReadOnly()
         {
             return Algorithms.ReadOnly(this);
@@ -228,7 +228,7 @@ namespace ARWNI2S.Collections
         /// by <paramref name="predicate"/>.
         /// </summary>
         /// <param name="predicate">A delegate that defines the condition to check for.</param>
-        /// <returns>An IEnumerable&lt;T&gt; that enumerates the items that satisfy the condition.</returns>
+        /// <returns>An <see cref="IEnumerable{T}"/> that enumerates the items that satisfy the condition.</returns>
         public virtual IEnumerable<T> FindAll(Predicate<T> predicate)
         {
             if (predicate == null)
@@ -288,7 +288,7 @@ namespace ARWNI2S.Collections
         /// <summary>
         /// Must be overridden to enumerate all the members of the collection.
         /// </summary>
-        /// <returns>A generic IEnumerator&lt;T&gt; that can be used
+        /// <returns>A generic <see cref="IEnumerator{T}"/> that can be used
         /// to enumerate all the items in the collection.</returns>
         public abstract IEnumerator<T> GetEnumerator();
 
@@ -357,7 +357,7 @@ namespace ARWNI2S.Collections
 
         /// <summary>
         /// Provides an IEnumerator that can be used to iterate all the members of the
-        /// collection. This implementation uses the IEnumerator&lt;T&gt; that was overridden
+        /// collection. This implementation uses the <see cref="IEnumerator{T}"/> that was overridden
         /// by the derived classes to enumerate the members of the collection.
         /// </summary>
         /// <returns>An IEnumerator that can be used to iterate the collection.</returns>

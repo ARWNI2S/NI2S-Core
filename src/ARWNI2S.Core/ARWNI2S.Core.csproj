@@ -10,6 +10,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Core\Actions\**" />
+    <EmbeddedResource Remove="Core\Actions\**" />
+    <None Remove="Core\Actions\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Core\DefaultActorActivator.cs" />
+    <Compile Remove="Core\DefaultActorFactory.cs" />
+    <Compile Remove="Engine\Actor\ActorActivatorProvider.cs" />
+    <Compile Remove="Engine\Actor\ActorFactoryProvider.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Autofac.Extensions.DependencyInjection" />
     <PackageReference Include="AutoMapper" />
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" />

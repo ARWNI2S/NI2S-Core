@@ -11,7 +11,7 @@ namespace ARWNI2S.Collections
     /// does not handle duplicate values.
     /// </summary>
     /// <remarks>
-    /// The Hash manages items of type T, and uses a IComparer&lt;ItemTYpe&gt; that
+    /// The Hash manages items of type T, and uses a <see cref="IComparer{T}"/> that
     /// hashes compares items to hash items into the table.  
     ///</remarks>
     [Serializable]
@@ -565,7 +565,7 @@ namespace ARWNI2S.Collections
         /// Enumerate all of the items in the hash table. The items
         /// are enumerated in a haphazard, unpredictable order.
         /// </summary>
-        /// <returns>An IEnumerator&lt;T&gt; that enumerates the items
+        /// <returns>An <see cref="IEnumerator{T}"/> that enumerates the items
         /// in the hash table.</returns>
         public IEnumerator<T> GetEnumerator()
         {

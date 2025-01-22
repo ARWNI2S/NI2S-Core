@@ -9,9 +9,9 @@ namespace ARWNI2S.Collections.Sorted
     /// is permitted for each key.
     /// </summary>
     /// <remarks>
-    /// <p>The keys are compared in one of three ways. If TKey implements IComparable&lt;TKey&gt; or IComparable,
+    /// <p>The keys are compared in one of three ways. If TKey implements <see cref="IComparable{TKey}"/> or IComparable,
     /// then the CompareTo method of that interface will be used to compare elements. Alternatively, a comparison
-    /// function can be passed in either as a delegate, or as an instance of IComparer&lt;TKey&gt;.</p>
+    /// function can be passed in either as a delegate, or as an instance of <see cref="IComparer{TKey}"/>.</p>
     /// <p>OrderedDictionary is implemented as a balanced binary tree. Inserting, deleting, and looking up an
     /// an element all are done in log(N) type, where N is the number of keys in the tree.</p>
     /// <p><see cref="Dictionary&lt;TKey,TValue&gt;"/> is similar, but uses hashing instead of comparison, and does not maintain
@@ -55,11 +55,11 @@ namespace ARWNI2S.Collections.Sorted
         }
 
         /// <summary>
-        /// Creates a new OrderedDictionary. The TKey must implemented IComparable&lt;TKey&gt;
+        /// Creates a new OrderedDictionary. The TKey must implemented <see cref="IComparable{TKey}"/>
         /// or IComparable. 
         /// The CompareTo method of this interface will be used to compare keys in this dictionary.
         /// </summary>
-        /// <exception cref="InvalidOperationException">TKey does not implement IComparable&lt;TKey&gt;.</exception>
+        /// <exception cref="InvalidOperationException">TKey does not implement <see cref="IComparable{TKey}"/>.</exception>
         [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors", Justification = "Collection copy implementation.")]
         public OrderedDictionary() :
             this(Comparers.DefaultComparer<TKey>())
@@ -71,9 +71,9 @@ namespace ARWNI2S.Collections.Sorted
         /// will be used to compare keys in this dictionary.
         /// </summary>
         /// <remarks>
-        /// The GetHashCode and Equals methods of the provided IComparer&lt;TKey&gt; will never
+        /// The GetHashCode and Equals methods of the provided <see cref="IComparer{TKey}"/> will never
         /// be called, and need not be implemented.</remarks>
-        /// <param name="comparer">An instance of IComparer&lt;TKey&gt; that will be used to compare keys.</param>
+        /// <param name="comparer">An instance of <see cref="IComparer{TKey}"/> that will be used to compare keys.</param>
         [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors", Justification = "Collection copy implementation.")]
         public OrderedDictionary(IComparer<TKey> comparer) :
             this(null, comparer, Comparers.ComparerKeyValueFromComparerKey<TKey, TValue>(comparer))
@@ -93,14 +93,14 @@ namespace ARWNI2S.Collections.Sorted
         }
 
         /// <summary>
-        /// <para>Creates a new OrderedDictionary. The TKey must implemented IComparable&lt;TKey&gt;
+        /// <para>Creates a new OrderedDictionary. The TKey must implemented <see cref="IComparable{TKey}"/>
         /// or IComparable. 
         /// The CompareTo method of this interface will be used to compare keys in this dictionary.</para>
         /// <para>A collection and keys and values (typically another dictionary) is used to initialized the 
         /// contents of the dictionary.</para>
         /// </summary>
         /// <param name="keysAndValues">A collection of keys and values whose contents are used to initialized the dictionary.</param>
-        /// <exception cref="InvalidOperationException">TKey does not implement IComparable&lt;TKey&gt;.</exception>
+        /// <exception cref="InvalidOperationException">TKey does not implement <see cref="IComparable{TKey}"/>.</exception>
         [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors", Justification = "Collection copy implementation.")]
         public OrderedDictionary(IEnumerable<KeyValuePair<TKey, TValue>> keysAndValues)
             : this(keysAndValues, Comparers.DefaultComparer<TKey>())
@@ -114,10 +114,10 @@ namespace ARWNI2S.Collections.Sorted
         /// contents of the dictionary.</para>
         /// </summary>
         /// <remarks>
-        /// The GetHashCode and Equals methods of the provided IComparer&lt;TKey&gt; will never
+        /// The GetHashCode and Equals methods of the provided <see cref="IComparer{TKey}"/> will never
         /// be called, and need not be implemented.</remarks>
         /// <param name="keysAndValues">A collection of keys and values whose contents are used to initialized the dictionary.</param>
-        /// <param name="comparer">An instance of IComparer&lt;TKey&gt; that will be used to compare keys.</param>
+        /// <param name="comparer">An instance of <see cref="IComparer{TKey}"/> that will be used to compare keys.</param>
         [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors", Justification = "Collection copy implementation.")]
         public OrderedDictionary(IEnumerable<KeyValuePair<TKey, TValue>> keysAndValues, IComparer<TKey> comparer)
             : this(keysAndValues, comparer, Comparers.ComparerKeyValueFromComparerKey<TKey, TValue>(comparer))
@@ -251,7 +251,7 @@ namespace ARWNI2S.Collections.Sorted
         }
 
         /// <summary>
-        /// Returns the IComparer&lt;T&gt; used to compare keys in this dictionary. 
+        /// Returns the <see cref="IComparer{T}"/> used to compare keys in this dictionary. 
         /// </summary>
         /// <value>If the dictionary was created using a comparer, that comparer is returned. If the dictionary was
         /// created using a comparison delegate, then a comparer equivalent to that delegate
@@ -475,7 +475,7 @@ namespace ARWNI2S.Collections.Sorted
         /// <summary>
         /// Adds multiple key-value pairs to a dictionary. If a key exists in both the current instance and dictionaryToAdd,
         /// then the value is updated with the value from <paramref name="keysAndValues>"/> (no exception is thrown).
-        /// Since IDictionary&lt;TKey,TValue&gt; inherits from IEnumerable&lt;KeyValuePair&lt;TKey,TValue&gt;&gt;, this
+        /// Since <see cref="IDictionary{TKey, TValue}"/> inherits from IEnumerable&lt;KeyValuePair&lt;TKey,TValue&gt;&gt;, this
         /// method can be used to merge one dictionary into another.
         /// </summary>
         /// <remarks>AddMany takes time O(M log (N+M)), where M is the size of <paramref name="keysAndValues>"/>, and N is the size of

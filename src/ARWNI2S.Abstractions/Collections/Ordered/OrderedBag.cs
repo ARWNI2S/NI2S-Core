@@ -3,17 +3,17 @@ using System.Diagnostics.CodeAnalysis;
 
 // CONSIDER: RemoveIdentical to remove an identical item only. Can this be done with current RedBlack tree implementation? How useful is it?
 
-namespace ARWNI2S.Collections.Sorted
+namespace ARWNI2S.Collections.Ordered
 {
     /// <summary>
-    /// OrderedBag&lt;T&gt; is a collection that contains items of type T. 
+    /// <see cref="OrderedBag{T}"/> is a collection that contains items of type T. 
     /// The item are maintained in a sorted order. Unlike a OrderedSet, duplicate items (items that
     /// compare equal to each other) are allows in an OrderedBag.
     /// </summary>
     /// <remarks>
-    /// <p>The items are compared in one of three ways. If T implements IComparable&lt;TKey&gt; or IComparable,
+    /// <p>The items are compared in one of three ways. If T implements <see cref="IComparable{TKey}"/> or IComparable,
     /// then the CompareTo method of that interface will be used to compare items. Alternatively, a comparison
-    /// function can be passed in either as a delegate, or as an instance of IComparer&lt;TKey&gt;.</p>
+    /// function can be passed in either as a delegate, or as an instance of <see cref="IComparer{TKey}"/>.</p>
     /// <p>OrderedBag is implemented as a balanced binary tree. Inserting, deleting, and looking up an
     /// an element all are done in log(N) + M time, where N is the number of keys in the tree, and M is the current number
     /// of copies of the element being handled.</p>
@@ -34,14 +34,14 @@ namespace ARWNI2S.Collections.Sorted
         #region Constructors
 
         /// <summary>
-        /// Creates a new OrderedBag. The T must implement IComparable&lt;T&gt;
+        /// Creates a new OrderedBag. The T must implement <see cref="IComparable{T}"/>
         /// or IComparable. 
         /// The CompareTo method of this interface will be used to compare items in this bag.
         /// </summary>
         ///<remarks>
         /// Items that are null are permitted, and will be sorted before all other items.
         ///</remarks>
-        /// <exception cref="InvalidOperationException">T does not implement IComparable&lt;TKey&gt;.</exception>
+        /// <exception cref="InvalidOperationException">T does not implement <see cref="IComparable{TKey}"/>.</exception>
         public OrderedBag() :
             this(Comparers.DefaultComparer<T>())
         {
@@ -61,10 +61,10 @@ namespace ARWNI2S.Collections.Sorted
         /// will be used to compare items in this bag.
         /// </summary>
         /// <remarks>
-        /// The GetHashCode and Equals methods of the provided IComparer&lt;T&gt; will never
+        /// The GetHashCode and Equals methods of the provided <see cref="IComparer{T}"/> will never
         /// be called, and need not be implemented.
         /// </remarks>
-        /// <param name="comparer">An instance of IComparer&lt;T&gt; that will be used to compare items.</param>
+        /// <param name="comparer">An instance of <see cref="IComparer{T}"/> that will be used to compare items.</param>
         public OrderedBag(IComparer<T> comparer)
         {
             if (comparer == null)
@@ -75,7 +75,7 @@ namespace ARWNI2S.Collections.Sorted
         }
 
         /// <summary>
-        /// Creates a new OrderedBag. The T must implement IComparable&lt;T&gt;
+        /// Creates a new OrderedBag. The T must implement <see cref="IComparable{T}"/>
         /// or IComparable. 
         /// The CompareTo method of this interface will be used to compare items in this bag. The bag is
         /// initialized with all the items in the given collection.
@@ -84,7 +84,7 @@ namespace ARWNI2S.Collections.Sorted
         /// Items that are null are permitted, and will be sorted before all other items.
         ///</remarks>
         /// <param name="collection">A collection with items to be placed into the OrderedBag.</param>
-        /// <exception cref="InvalidOperationException">T does not implement IComparable&lt;TKey&gt;.</exception>
+        /// <exception cref="InvalidOperationException">T does not implement <see cref="IComparable{TKey}"/>.</exception>
         [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors", Justification = "Collection copy implementation.")]
         public OrderedBag(IEnumerable<T> collection) :
             this(collection, Comparers.DefaultComparer<T>())
@@ -109,11 +109,11 @@ namespace ARWNI2S.Collections.Sorted
         /// initialized with all the items in the given collection.
         /// </summary>
         /// <remarks>
-        /// The GetHashCode and Equals methods of the provided IComparer&lt;T&gt; will never
+        /// The GetHashCode and Equals methods of the provided <see cref="IComparer{T}"/> will never
         /// be called, and need not be implemented.
         /// </remarks>
         /// <param name="collection">A collection with items to be placed into the OrderedBag.</param>
-        /// <param name="comparer">An instance of IComparer&lt;T&gt; that will be used to compare items.</param>
+        /// <param name="comparer">An instance of <see cref="IComparer{T}"/> that will be used to compare items.</param>
         [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors", Justification = "Collection copy implementation.")]
         public OrderedBag(IEnumerable<T> collection, IComparer<T> comparer) :
             this(comparer)
@@ -206,12 +206,12 @@ namespace ARWNI2S.Collections.Sorted
         #region Basic collection containment
 
         /// <summary>
-        /// Returns the IComparer&lt;T&gt; used to compare items in this bag. 
+        /// Returns the <see cref="IComparer{T}"/> used to compare items in this bag. 
         /// </summary>
         /// <value>If the bag was created using a comparer, that comparer is returned. If the bag was
         /// created using a comparison delegate, then a comparer equivalent to that delegate
         /// is returned. Otherwise
-        /// the default comparer for T (Comparer&lt;T&gt;.Default) is returned.</value>
+        /// the default comparer for T (<see cref="Comparer{T}.Default"/>) is returned.</value>
         public IComparer<T> Comparer
         {
             get
@@ -287,7 +287,7 @@ namespace ARWNI2S.Collections.Sorted
         /// <remarks>Enumeration the items in the bag equal to <paramref name="item"/> takes time O(log N + M), where N 
         /// is the total number of items in the bag, and M is the number of items equal to <paramref name="item"/>.</remarks>
         /// <param name="item">The item to search for.</param>
-        /// <returns>An IEnumerable&lt;T&gt; that enumerates all the items in the bag equal to <paramref name="item"/>. </returns>
+        /// <returns>An <see cref="IEnumerable{T}"/> that enumerates all the items in the bag equal to <paramref name="item"/>. </returns>
         public IEnumerable<T> GetEqualItems(T item)
         {
             return _tree.EnumerateRange(_tree.EqualRangeTester(item));
@@ -299,7 +299,7 @@ namespace ARWNI2S.Collections.Sorted
         /// </summary>
         /// <remarks>If the bag is changed while items are being enumerated, the
         /// enumeration will terminate with an InvalidOperationException.</remarks>
-        /// <returns>An IEnumerable&lt;T&gt; that enumerates the unique items.</returns>
+        /// <returns>An <see cref="IEnumerable{T}"/> that enumerates the unique items.</returns>
         public IEnumerable<T> DistinctItems()
         {
             T previous = default;
@@ -1162,7 +1162,7 @@ namespace ARWNI2S.Collections.Sorted
         /// at index 0. This view does not copy any data, and reflects any
         /// changes to the underlying OrderedBag.
         /// </summary>
-        /// <returns>A read-only IList&lt;T&gt; view onto this OrderedBag.</returns>
+        /// <returns>A read-only <see cref="IList{T}"/> view onto this OrderedBag.</returns>
         public IList<T> AsList()
         {
             return new ListView(this, _tree.EntireRangeTester, true, false);
@@ -1391,7 +1391,7 @@ namespace ARWNI2S.Collections.Sorted
         #region View nested class
 
         /// <summary>
-        /// The OrderedBag&lt;T&gt;.View class is used to look at a subset of the items
+        /// The <see cref="OrderedBag{T}"/>.View class is used to look at a subset of the items
         /// inside an ordered bag. It is returned from the Range, RangeTo, RangeFrom, and Reversed methods. 
         /// </summary>
         ///<remarks>
@@ -1442,7 +1442,7 @@ namespace ARWNI2S.Collections.Sorted
             /// <summary>
             /// Enumerate all the items in this view.
             /// </summary>
-            /// <returns>An IEnumerator&lt;T&gt; with the items in this view.</returns>
+            /// <returns>An <see cref="IEnumerator{T}"/> with the items in this view.</returns>
             public sealed override IEnumerator<T> GetEnumerator()
             {
                 if (_reversed)
@@ -1700,7 +1700,7 @@ namespace ARWNI2S.Collections.Sorted
             /// at index 0. This view does not copy any data, and reflects any
             /// changes to the underlying OrderedSet.
             /// </summary>
-            /// <returns>A read-only IList&lt;T&gt; view onto this view.</returns>
+            /// <returns>A read-only <see cref="IList{T}"/> view onto this view.</returns>
             public IList<T> AsList()
             {
                 return new ListView(_myBag, _rangeTester, _entireTree, _reversed);

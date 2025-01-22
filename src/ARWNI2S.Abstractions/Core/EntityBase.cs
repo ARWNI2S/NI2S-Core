@@ -1,6 +1,6 @@
 ﻿namespace ARWNI2S.Core
 {
-    public abstract class EntityBase : INiisEntity
+    public abstract class EntityBase :  INiisEntity
     {
         internal virtual EntityId Id { get; set; }
 

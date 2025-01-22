@@ -1,3 +1,5 @@
+using ARWNI2S.Diagnostics;
+using ARWNI2S.Serialization.TypeSystem;
 using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Runtime.ExceptionServices;
@@ -133,8 +135,8 @@ namespace ARWNI2S
 
         private static WrappedException CreateFromException(Exception exception)
         {
-            var originalExceptionType = ""; //HACK RuntimeTypeNameFormatter.Format(exception.GetType());
-            var detailedMessage = ""; //HACK LogFormatter.PrintException(exception);
+            var originalExceptionType = RuntimeTypeNameFormatter.Format(exception.GetType());
+            var detailedMessage = LogFormatter.PrintException(exception);
             var result = new WrappedException(detailedMessage)
             {
                 OriginalExceptionType = originalExceptionType,

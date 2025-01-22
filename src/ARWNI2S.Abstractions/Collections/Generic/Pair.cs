@@ -74,7 +74,7 @@ namespace ARWNI2S.Collections.Generic
 
         /// <summary>
         /// Determines if this pair is equal to another pair. The pair is equal if  the first and second elements
-        /// both compare equal using IComparable&lt;T&gt;.Equals or object.Equals.
+        /// both compare equal using <see cref="IComparable{T}"/>.Equals or object.Equals.
         /// </summary>
         /// <param name="other">Pair to compare with for equality.</param>
         /// <returns>True if the pairs are equal. False if the pairs are not equal.</returns>
@@ -99,10 +99,10 @@ namespace ARWNI2S.Collections.Generic
 
         /// <summary>
         /// <para> Compares this pair to another pair of the some type. The pairs are compared by using
-        /// the IComparable&lt;T&gt; or IComparable interface on TFirst and TSecond. The pairs
+        /// the <see cref="IComparable{T}"/> or IComparable interface on TFirst and TSecond. The pairs
         /// are compared by their first elements first, if their first elements are equal, then they
         /// are compared by their second elements.</para>
-        /// <para>If either TFirst or TSecond does not implement IComparable&lt;T&gt; or IComparable, then
+        /// <para>If either TFirst or TSecond does not implement <see cref="IComparable{T}"/> or IComparable, then
         /// an NotSupportedException is thrown, because the pairs cannot be compared.</para>
         /// </summary>
         /// <param name="other">The pair to compare to.</param>
@@ -111,7 +111,7 @@ namespace ARWNI2S.Collections.Generic
         /// equals to <paramref name="other"/>. Greater than zero indicates this pair is greater than
         /// <paramref name="other"/>.</returns>
         /// <exception cref="NotSupportedException">Either FirstSecond or TSecond is not comparable
-        /// via the IComparable&lt;T&gt; or IComparable interfaces.</exception>
+        /// via the <see cref="IComparable{T}"/> or IComparable interfaces.</exception>
         public int CompareTo(Pair<TFirst, TSecond> other)
         {
             try
@@ -142,10 +142,10 @@ namespace ARWNI2S.Collections.Generic
 
         /// <summary>
         /// <para> Compares this pair to another pair of the some type. The pairs are compared by using
-        /// the IComparable&lt;T&gt; or IComparable interface on TFirst and TSecond. The pairs
+        /// the <see cref="IComparable{T}"/> or IComparable interface on TFirst and TSecond. The pairs
         /// are compared by their first elements first, if their first elements are equal, then they
         /// are compared by their second elements.</para>
-        /// <para>If either TFirst or TSecond does not implement IComparable&lt;T&gt; or IComparable, then
+        /// <para>If either TFirst or TSecond does not implement <see cref="IComparable{T}"/> or IComparable, then
         /// an NotSupportedException is thrown, because the pairs cannot be compared.</para>
         /// </summary>
         /// <param name="obj">The pair to compare to.</param>
@@ -155,7 +155,7 @@ namespace ARWNI2S.Collections.Generic
         /// <paramref name="obj"/>.</returns>
         /// <exception cref="ArgumentException"><paramref name="obj"/> is not of the correct type.</exception>
         /// <exception cref="NotSupportedException">Either FirstSecond or TSecond is not comparable
-        /// via the IComparable&lt;T&gt; or IComparable interfaces.</exception>
+        /// via the <see cref="IComparable{T}"/> or IComparable interfaces.</exception>
         int IComparable.CompareTo(object obj)
         {
             if (obj is Pair<TFirst, TSecond>)
@@ -179,7 +179,7 @@ namespace ARWNI2S.Collections.Generic
 
         /// <summary>
         /// Determines if two pairs are equal. Two pairs are equal if  the first and second elements
-        /// both compare equal using IComparable&lt;T&gt;.Equals or object.Equals.
+        /// both compare equal using <see cref="IComparable{T}"/>.Equals or object.Equals.
         /// </summary>
         /// <param name="pair1">First pair to compare.</param>
         /// <param name="pair2">Second pair to compare.</param>
@@ -191,7 +191,7 @@ namespace ARWNI2S.Collections.Generic
 
         /// <summary>
         /// Determines if two pairs are not equal. Two pairs are equal if  the first and second elements
-        /// both compare equal using IComparable&lt;T&gt;.Equals or object.Equals.
+        /// both compare equal using <see cref="IComparable{T}"/>.Equals or object.Equals.
         /// </summary>
         /// <param name="pair1">First pair to compare.</param>
         /// <param name="pair2">Second pair to compare.</param>

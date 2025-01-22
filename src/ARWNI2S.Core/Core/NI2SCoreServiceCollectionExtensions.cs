@@ -5,6 +5,7 @@ using ARWNI2S.Core.Caching;
 using ARWNI2S.Core.Configuration;
 using ARWNI2S.Core.Models;
 using ARWNI2S.Diagnostics;
+using ARWNI2S.Engine.Actor;
 using ARWNI2S.Engine.Configuration;
 using ARWNI2S.Engine.Object;
 using ARWNI2S.Engine.Parts;
@@ -58,14 +59,14 @@ namespace ARWNI2S.Core
             return (T)(services.LastOrDefault((d) => d.ServiceType == typeof(T))?.ImplementationInstance);
         }
 
-        ////public static INiisCoreBuilder AddNI2SCore(this IServiceCollection services, Action<NI2SOptions> setupAction)
-        ////{
-        ////    ArgumentNullException.ThrowIfNull(services, "services");
-        ////    ArgumentNullException.ThrowIfNull(setupAction, "setupAction");
-        ////    INiisCoreBuilder result = services.AddNI2SCore();
-        ////    services.Configure(setupAction);
-        ////    return result;
-        ////}
+        public static INiisCoreBuilder AddNI2SCore(this IServiceCollection services, Action<NI2SOptions> setupAction)
+        {
+            ArgumentNullException.ThrowIfNull(services, nameof(services));
+            ArgumentNullException.ThrowIfNull(setupAction, nameof(setupAction));
+            INiisCoreBuilder result = services.AddNI2SCore();
+            services.Configure(setupAction);
+            return result;
+        }
 
         internal static void AddNI2SCoreServices(IServiceCollection services)
         {
@@ -83,31 +84,31 @@ namespace ARWNI2S.Core
             services.TryAddEnumerable(ServiceDescriptor.Transient<IConfigureOptions<NI2SOptions>, NI2SCoreNI2SOptionsSetup>());
             services.TryAddEnumerable(ServiceDescriptor.Transient<IPostConfigureOptions<NI2SOptions>, NI2SCoreNI2SOptionsSetup>());
             services.TryAddEnumerable(ServiceDescriptor.Transient<IConfigureOptions<BehaviorOptions>, BehaviorOptionsSetup>());
-            ////services.TryAddEnumerable(ServiceDescriptor.Transient<IConfigureOptions<RouteOptions>, NI2SCoreRouteOptionsSetup>());
+            //services.TryAddEnumerable(ServiceDescriptor.Transient<IConfigureOptions<NetwoekingOptions>, NI2SCoreNetwoekingOptionsSetup>());
 
-            ////services.TryAddSingleton<EngineModelFactory>();
-            ////services.TryAddEnumerable(ServiceDescriptor.Transient<IEngineModelProvider, DefaultEngineModelProvider>());
-            ////services.TryAddEnumerable(ServiceDescriptor.Transient<IEngineModelProvider, AiBehaviorEngineModelProvider>());
+            //services.TryAddSingleton<EngineModelFactory>();
+            //services.TryAddEnumerable(ServiceDescriptor.Transient<IEngineModelProvider, DefaultEngineModelProvider>());
+            //services.TryAddEnumerable(ServiceDescriptor.Transient<IEngineModelProvider, AiBehaviorEngineModelProvider>());
 
-            services.TryAddEnumerable(ServiceDescriptor.Transient<IActionDescriptorProvider, ActorActionDescriptorProvider>());
-            services.TryAddSingleton<IActionDescriptorCollectionProvider, DefaultActionDescriptorCollectionProvider>();
-            services.TryAddSingleton<IActionSelector, ActionSelector>();
-            services.TryAddSingleton<ActionConstraintCache>();
-            services.TryAddEnumerable(ServiceDescriptor.Transient<IActionConstraintProvider, DefaultActionConstraintProvider>());
-            services.TryAddEnumerable(ServiceDescriptor.Singleton<MatcherPolicy, ActionConstraintMatcherPolicy>());
+            //services.TryAddEnumerable(ServiceDescriptor.Transient<IActionDescriptorProvider, ActorActionDescriptorProvider>());
+            //services.TryAddSingleton<IActionDescriptorCollectionProvider, DefaultActionDescriptorCollectionProvider>();
+            //services.TryAddSingleton<IActionSelector, ActionSelector>();
+            //services.TryAddSingleton<ActionConstraintCache>();
+            //services.TryAddEnumerable(ServiceDescriptor.Transient<IActionConstraintProvider, DefaultActionConstraintProvider>());
+            //services.TryAddEnumerable(ServiceDescriptor.Singleton<MatcherPolicy, ActionConstraintMatcherPolicy>());
 
-            services.TryAddSingleton<IActorFactory, DefaultActorFactory>();
-            services.TryAddTransient<IActorActivator, DefaultActorActivator>();
-            services.TryAddSingleton<IActorFactoryProvider, ActorFactoryProvider>();
-            services.TryAddSingleton<IActorActivatorProvider, ActorActivatorProvider>();
+            //services.TryAddSingleton<IActorFactory, DefaultActorFactory>();
+            //services.TryAddTransient<IActorActivator, DefaultActorActivator>();
+            //services.TryAddSingleton<IActorFactoryProvider, ActorFactoryProvider>();
+            //services.TryAddSingleton<IActorActivatorProvider, ActorActivatorProvider>();
 
             services.TryAddEnumerable(ServiceDescriptor.Transient<IActorStateActivator, DefaultActorStateActivator>());
 
-            services.TryAddSingleton<IActionInvokerFactory, ActionInvokerFactory>();
-            services.TryAddEnumerable(ServiceDescriptor.Transient<IActionInvokerProvider, ActorActionInvokerProvider>());
-            services.TryAddSingleton<ActorActionInvokerCache>();
-            services.TryAddEnumerable(ServiceDescriptor.Singleton<IActionFilterProvider, DefaultFilterProvider>());
-            services.TryAddSingleton<IActionResultTypeMapper, ActionResultTypeMapper>();
+            //services.TryAddSingleton<IActionInvokerFactory, ActionInvokerFactory>();
+            //services.TryAddEnumerable(ServiceDescriptor.Transient<IActionInvokerProvider, ActorActionInvokerProvider>());
+            //services.TryAddSingleton<ActorActionInvokerCache>();
+            //services.TryAddEnumerable(ServiceDescriptor.Singleton<IActionFilterProvider, DefaultFilterProvider>());
+            //services.TryAddSingleton<IActionResultTypeMapper, ActionResultTypeMapper>();
 
             ////services.TryAddTransient<RequestSizeLimitFilter>();
             ////services.TryAddTransient<DisableRequestSizeLimitFilter>();Update

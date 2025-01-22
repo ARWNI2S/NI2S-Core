@@ -61,6 +61,51 @@ namespace ARWNI2S {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a .
+        /// </summary>
+        internal static string Arg_NonZeroLowerBound {
+            get {
+                return ResourceManager.GetString("Arg_NonZeroLowerBound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a .
+        /// </summary>
+        internal static string Arg_RankMultiDimNotSupported {
+            get {
+                return ResourceManager.GetString("Arg_RankMultiDimNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a .
+        /// </summary>
+        internal static string Argument_IncompatibleArrayType {
+            get {
+                return ResourceManager.GetString("Argument_IncompatibleArrayType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a .
+        /// </summary>
+        internal static string Argument_InvalidOffLen {
+            get {
+                return ResourceManager.GetString("Argument_InvalidOffLen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a .
+        /// </summary>
+        internal static string ArgumentOutOfRange_IndexMustBeLessOrEqual {
+            get {
+                return ResourceManager.GetString("ArgumentOutOfRange_IndexMustBeLessOrEqual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a The argument may not be less than zero..
         /// </summary>
         internal static string Collections_ArgMustNotBeNegative {
@@ -300,6 +345,42 @@ namespace ARWNI2S {
         internal static string Collections_WrongType {
             get {
                 return ResourceManager.GetString("Collections_WrongType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a .
+        /// </summary>
+        internal static string InvalidOperation_EmptyQueue {
+            get {
+                return ResourceManager.GetString("InvalidOperation_EmptyQueue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a .
+        /// </summary>
+        internal static string InvalidOperation_EnumEnded {
+            get {
+                return ResourceManager.GetString("InvalidOperation_EnumEnded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a .
+        /// </summary>
+        internal static string InvalidOperation_EnumFailedVersion {
+            get {
+                return ResourceManager.GetString("InvalidOperation_EnumFailedVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a .
+        /// </summary>
+        internal static string InvalidOperation_EnumNotStarted {
+            get {
+                return ResourceManager.GetString("InvalidOperation_EnumNotStarted", resourceCulture);
             }
         }
         

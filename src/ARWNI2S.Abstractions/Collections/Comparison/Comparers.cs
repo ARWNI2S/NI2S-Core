@@ -41,7 +41,7 @@
         }
 
         /// <summary>
-        /// Class to change an IComparer&lt;TKey&gt; to an IComparer&lt;KeyValuePair&lt;TKey, TValue&gt;&gt; 
+        /// Class to change an <see cref="IComparer{TKey}"/> to an IComparer&lt;KeyValuePair&lt;TKey, TValue&gt;&gt; 
         /// Only the keys are compared.
         /// </summary>
         [Serializable]
@@ -71,7 +71,7 @@
         }
 
         /// <summary>
-        /// Class to change an IComparer&lt;TKey&gt; and IComparer&lt;TValue&gt; to an IComparer&lt;KeyValuePair&lt;TKey, TValue&gt;&gt; 
+        /// Class to change an <see cref="IComparer{TKey}"/> and IComparer&lt;TValue&gt; to an IComparer&lt;KeyValuePair&lt;TKey, TValue&gt;&gt; 
         /// Keys are compared, followed by values.
         /// </summary>
         [Serializable]
@@ -113,7 +113,7 @@
         }
 
         /// <summary>
-        /// Class to change an Comparison&lt;T&gt; to an IComparer&lt;T&gt;.
+        /// Class to change an <see cref="Comparison{T}"/> to an <see cref="IComparer{T}"/>.
         /// </summary>
         [Serializable]
         [GenerateSerializer]
@@ -254,11 +254,11 @@
         }
 
         /// <summary>
-        /// Given an element type, check that it implements IComparable&lt;T&gt; or IComparable, then returns
+        /// Given an element type, check that it implements <see cref="IComparable{T}"/> or IComparable, then returns
         /// a IComparer that can be used to compare elements of that type.
         /// </summary>
-        /// <returns>The IComparer&lt;T&gt; instance.</returns>
-        /// <exception cref="InvalidOperationException">T does not implement IComparable&lt;T&gt;.</exception>
+        /// <returns>The <see cref="IComparer{T}"/> instance.</returns>
+        /// <exception cref="InvalidOperationException">T does not implement <see cref="IComparable{T}"/>.</exception>
         public static IComparer<T> DefaultComparer<T>()
         {
             if (typeof(IComparable<T>).IsAssignableFrom(typeof(T)) ||
@@ -273,11 +273,11 @@
         }
 
         /// <summary>
-        /// Given an key and value type, check that TKey implements IComparable&lt;T&gt; or IComparable, then returns
+        /// Given an key and value type, check that TKey implements <see cref="IComparable{T}"/> or IComparable, then returns
         /// a IComparer that can be used to compare KeyValuePairs of those types.
         /// </summary>
         /// <returns>The IComparer&lt;KeyValuePair&lt;TKey, TValue&gt;&gt; instance.</returns>
-        /// <exception cref="InvalidOperationException">TKey does not implement IComparable&lt;T&gt;.</exception>
+        /// <exception cref="InvalidOperationException">TKey does not implement <see cref="IComparable{T}"/>.</exception>
         public static IComparer<KeyValuePair<TKey, TValue>> DefaultKeyValueComparer<TKey, TValue>()
         {
             IComparer<TKey> keyComparer = DefaultComparer<TKey>();

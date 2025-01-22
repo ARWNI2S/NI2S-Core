@@ -7,15 +7,15 @@ namespace ARWNI2S.Collections
     /// <summary>
     /// Algorithms contains a number of static methods that implement
     /// algorithms that work on collections. Most of the methods deal with
-    /// the standard generic collection interfaces such as IEnumerable&lt;T&gt;,
-    /// ICollection&lt;T&gt; and IList&lt;T&gt;.
+    /// the standard generic collection interfaces such as <see cref="IEnumerable{T}"/>,
+    /// <see cref="ICollection{T}"/> and <see cref="IList{T}"/>.
     /// </summary>
     internal static class Algorithms
     {
         #region Collection wrappers
 
         /// <summary>
-        /// The class that is used to implement IList&lt;T&gt; to view a sub-range
+        /// The class that is used to implement <see cref="IList{T}"/> to view a sub-range
         /// of a list. The object stores a wrapped list, and a start/count indicating
         /// a sub-range of the list. Insertion/deletions through the sub-range view
         /// cause the count to change also; insertions and deletions directly on
@@ -117,7 +117,7 @@ namespace ARWNI2S.Collections
 
         /// <summary>
         /// Returns a view onto a sub-range of a list. Items from <paramref name="list"/> are not copied; the
-        /// returned IList&lt;T&gt; is simply a different view onto the same underlying items. Changes to <paramref name="list"/>
+        /// returned <see cref="IList{T}"/> is simply a different view onto the same underlying items. Changes to <paramref name="list"/>
         /// are reflected in the view, and vice versa. Insertions and deletions in the view change the size of the 
         /// view, but insertions and deletions in the underlying list do not.
         /// </summary>
@@ -146,7 +146,7 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// The class that is used to implement IList&lt;T&gt; to view a sub-range
+        /// The class that is used to implement <see cref="IList{T}"/> to view a sub-range
         /// of an array. The object stores a wrapped array, and a start/count indicating
         /// a sub-range of the array. Insertion/deletions through the sub-range view
         /// cause the count to change up to the size of the underlying array. Elements
@@ -239,7 +239,7 @@ namespace ARWNI2S.Collections
 
         /// <summary>
         /// Returns a view onto a sub-range of an array. Items from <paramref name="array"/> are not copied; the
-        /// returned IList&lt;T&gt; is simply a different view onto the same underlying items. Changes to <paramref name="array"/>
+        /// returned <see cref="IList{T}"/> is simply a different view onto the same underlying items. Changes to <paramref name="array"/>
         /// are reflected in the view, and vice versa. Insertions and deletions in the view change the size of the 
         /// view. After an insertion, the last item in <paramref name="array"/> "falls off the end". After a deletion, the
         /// last item in array becomes the default value (0 or null).
@@ -268,7 +268,7 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// The read-only ICollection&lt;T&gt; implementation that is used by the ReadOnly method.
+        /// The read-only <see cref="ICollection{T}"/> implementation that is used by the ReadOnly method.
         /// Methods that modify the collection throw a NotSupportedException, methods that don't
         /// modify are fowarded through to the wrapped collection.
         /// </summary>
@@ -328,7 +328,7 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// Returns a read-only view onto a collection. The returned ICollection&lt;T&gt; interface
+        /// Returns a read-only view onto a collection. The returned <see cref="ICollection{T}"/> interface
         /// only allows operations that do not change the collection: GetEnumerator, Contains, CopyTo,
         /// Count. The ReadOnly property returns false, indicating that the collection is read-only. All other
         /// methods on the interface throw a NotSupportedException.
@@ -347,7 +347,7 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// The read-only IList&lt;T&gt; implementation that is used by the ReadOnly method.
+        /// The read-only <see cref="IList{T}"/> implementation that is used by the ReadOnly method.
         /// Methods that modify the list throw a NotSupportedException, methods that don't
         /// modify are fowarded through to the wrapped list.
         /// </summary>
@@ -422,7 +422,7 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// Returns a read-only view onto a list. The returned IList&lt;T&gt; interface
+        /// Returns a read-only view onto a list. The returned <see cref="IList{T}"/> interface
         /// only allows operations that do not change the list: GetEnumerator, Contains, CopyTo,
         /// Count, IndexOf, and the get accessor of the indexer. 
         /// The IsReadOnly property returns true, indicating that the list is read-only. All other
@@ -446,7 +446,7 @@ namespace ARWNI2S.Collections
 
         /// <summary>
         /// The private class that implements a read-only wrapped for 
-        /// IDictionary &lt;TKey,TValue&gt;.
+        /// <see cref="IDictionary{TKey, TValue}"/>.
         /// </summary>
         [Serializable]
         private class ReadOnlyDictionary<TKey, TValue> : IDictionary<TKey, TValue>
@@ -457,7 +457,7 @@ namespace ARWNI2S.Collections
             /// <summary>
             /// Create a read-only dictionary wrapped around the given dictionary.
             /// </summary>
-            /// <param name="wrappedDictionary">The IDictionary&lt;TKey,TValue&gt; to wrap.</param>
+            /// <param name="wrappedDictionary">The <see cref="IDictionary{TKey, TValue}"/> to wrap.</param>
             public ReadOnlyDictionary(IDictionary<TKey, TValue> wrappedDictionary)
             {
                 _wrappedDictionary = wrappedDictionary;
@@ -538,7 +538,7 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// Returns a read-only view onto a dictionary. The returned IDictionary&lt;TKey,TValue&gt; interface
+        /// Returns a read-only view onto a dictionary. The returned <see cref="IDictionary{TKey, TValue}"/> interface
         /// only allows operations that do not change the dictionary. 
         /// The IsReadOnly property returns true, indicating that the dictionary is read-only. All other
         /// methods on the interface throw a NotSupportedException.
@@ -559,7 +559,7 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        ///  The class that provides a typed IEnumerator&lt;T&gt;
+        ///  The class that provides a typed <see cref="IEnumerator{T}"/>
         /// view onto an untyped IEnumerator interface.
         /// </summary>
         [Serializable]
@@ -568,7 +568,7 @@ namespace ARWNI2S.Collections
             private readonly IEnumerator _wrappedEnumerator;
 
             /// <summary>
-            /// Create a typed IEnumerator&lt;T&gt;
+            /// Create a typed <see cref="IEnumerator{T}"/>
             /// view onto an untyped IEnumerator interface 
             /// </summary>
             /// <param name="wrappedEnumerator">IEnumerator to wrap.</param>
@@ -605,7 +605,7 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// The class that provides a typed IEnumerable&lt;T&gt; view
+        /// The class that provides a typed <see cref="IEnumerable{T}"/> view
         /// onto an untyped IEnumerable interface.
         /// </summary>
         [Serializable]
@@ -614,7 +614,7 @@ namespace ARWNI2S.Collections
             private readonly IEnumerable _wrappedEnumerable;
 
             /// <summary>
-            /// Create a typed IEnumerable&lt;T&gt; view
+            /// Create a typed <see cref="IEnumerable{T}"/> view
             /// onto an untyped IEnumerable interface.
             /// </summary>
             /// <param name="wrappedEnumerable">IEnumerable interface to wrap.</param>
@@ -636,7 +636,7 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// Given a non-generic IEnumerable interface, wrap a generic IEnumerable&lt;T&gt;
+        /// Given a non-generic IEnumerable interface, wrap a generic <see cref="IEnumerable{T}"/>
         /// interface around it. The generic interface will enumerate the same objects as the 
         /// underlying non-generic collection, but can be used in places that require a generic interface.
         /// The underlying non-generic collection must contain only items that
@@ -644,12 +644,12 @@ namespace ARWNI2S.Collections
         /// when interfacing older, non-generic collections to newer code that uses generic interfaces.
         /// </summary>
         /// <remarks>Some collections implement both generic and non-generic interfaces. For efficiency,
-        /// this method will first attempt to cast <paramref name="untypedCollection"/> to IEnumerable&lt;T&gt;. 
+        /// this method will first attempt to cast <paramref name="untypedCollection"/> to <see cref="IEnumerable{T}"/>. 
         /// If that succeeds, it is returned; otherwise, a wrapper object is created.</remarks>
         /// <typeparam name="T">The item type of the wrapper collection.</typeparam>
         /// <param name="untypedCollection">An untyped collection. This collection should only contain
         /// items of type <typeparamref name="T"/> or a type derived from it. </param>
-        /// <returns>A generic IEnumerable&lt;T&gt; wrapper around <paramref name="untypedCollection"/>. 
+        /// <returns>A generic <see cref="IEnumerable{T}"/> wrapper around <paramref name="untypedCollection"/>. 
         /// If <paramref name="untypedCollection"/> is null, then null is returned.</returns>
         public static IEnumerable<T> TypedAs<T>(IEnumerable untypedCollection)
         {
@@ -662,8 +662,8 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// The class that provides a typed ICollection&lt;T&gt; view
-        /// onto an untyped ICollection interface. The ICollection&lt;T&gt;
+        /// The class that provides a typed <see cref="ICollection{T}"/> view
+        /// onto an untyped ICollection interface. The <see cref="ICollection{T}"/>
         /// is read-only.
         /// </summary>
         [Serializable]
@@ -672,7 +672,7 @@ namespace ARWNI2S.Collections
             private readonly ICollection _wrappedCollection;
 
             /// <summary>
-            /// Create a typed ICollection&lt;T&gt; view
+            /// Create a typed <see cref="ICollection{T}"/> view
             /// onto an untyped ICollection interface.
             /// </summary>
             /// <param name="wrappedCollection">ICollection interface to wrap.</param>
@@ -730,7 +730,7 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// Given a non-generic ICollection interface, wrap a generic ICollection&lt;T&gt;
+        /// Given a non-generic ICollection interface, wrap a generic <see cref="ICollection{T}"/>
         /// interface around it. The generic interface will enumerate the same objects as the 
         /// underlying non-generic collection, but can be used in places that require a generic interface.
         /// The underlying non-generic collection must contain only items that
@@ -738,15 +738,15 @@ namespace ARWNI2S.Collections
         /// when interfacing older, non-generic collections to newer code that uses generic interfaces.
         /// </summary>
         /// <remarks><para>Some collections implement both generic and non-generic interfaces. For efficiency,
-        /// this method will first attempt to cast <paramref name="untypedCollection"/> to ICollection&lt;T&gt;. 
+        /// this method will first attempt to cast <paramref name="untypedCollection"/> to <see cref="ICollection{T}"/>. 
         /// If that succeeds, it is returned; otherwise, a wrapper object is created.</para>
         /// <para>Unlike the generic interface, the non-generic ICollection interfaces does
         /// not contain methods for adding or removing items from the collection. For this reason,
-        /// the returned ICollection&lt;T&gt; will be read-only.</para></remarks>
+        /// the returned <see cref="ICollection{T}"/> will be read-only.</para></remarks>
         /// <typeparam  name="T">The item type of the wrapper collection.</typeparam>
         /// <param name="untypedCollection">An untyped collection. This collection should only contain
         /// items of type <typeparamref  name="T"/> or a type derived from it. </param>
-        /// <returns>A generic ICollection&lt;T&gt; wrapper around <paramref name="untypedCollection"/>.
+        /// <returns>A generic <see cref="ICollection{T}"/> wrapper around <paramref name="untypedCollection"/>.
         /// If <paramref name="untypedCollection"/> is null, then null is returned.</returns>
         public static ICollection<T> TypedAs<T>(ICollection untypedCollection)
         {
@@ -759,7 +759,7 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// The class used to create a typed IList&lt;T&gt; view onto
+        /// The class used to create a typed <see cref="IList{T}"/> view onto
         /// an untype IList interface.
         /// </summary>
         [Serializable]
@@ -768,7 +768,7 @@ namespace ARWNI2S.Collections
             private readonly IList _wrappedList;
 
             /// <summary>
-            /// Create a typed IList&lt;T&gt; view onto
+            /// Create a typed <see cref="IList{T}"/> view onto
             /// an untype IList interface.
             /// </summary>
             /// <param name="wrappedList">The IList to wrap.</param>
@@ -836,7 +836,7 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// Given a non-generic IList interface, wrap a generic IList&lt;T&gt;
+        /// Given a non-generic IList interface, wrap a generic <see cref="IList{T}"/>
         /// interface around it. The generic interface will enumerate the same objects as the 
         /// underlying non-generic list, but can be used in places that require a generic interface.
         /// The underlying non-generic list must contain only items that
@@ -844,12 +844,12 @@ namespace ARWNI2S.Collections
         /// when interfacing older, non-generic lists to newer code that uses generic interfaces.
         /// </summary>
         /// <remarks>Some collections implement both generic and non-generic interfaces. For efficiency,
-        /// this method will first attempt to cast <paramref name="untypedList"/> to IList&lt;T&gt;. 
+        /// this method will first attempt to cast <paramref name="untypedList"/> to <see cref="IList{T}"/>. 
         /// If that succeeds, it is returned; otherwise, a wrapper object is created.</remarks>
         /// <typeparam name="T">The item type of the wrapper list.</typeparam>
         /// <param name="untypedList">An untyped list. This list should only contain
         /// items of type <typeparamref name="T"/> or a type derived from it. </param>
-        /// <returns>A generic IList&lt;T&gt; wrapper around <paramref name="untypedList"/>.
+        /// <returns>A generic <see cref="IList{T}"/> wrapper around <paramref name="untypedList"/>.
         /// If <paramref name="untypedList"/> is null, then null is returned.</returns>
         public static IList<T> TypedAs<T>(IList untypedList)
         {
@@ -863,7 +863,7 @@ namespace ARWNI2S.Collections
 
         /// <summary>
         /// The class that is used to provide an untyped ICollection
-        /// view onto a typed ICollection&lt;T&gt; interface.
+        /// view onto a typed <see cref="ICollection{T}"/> interface.
         /// </summary>
         [Serializable]
         private class UntypedCollection<T> : ICollection
@@ -872,9 +872,9 @@ namespace ARWNI2S.Collections
 
             /// <summary>
             /// Create an untyped ICollection
-            /// view onto a typed ICollection&lt;T&gt; interface.
+            /// view onto a typed <see cref="ICollection{T}"/> interface.
             /// </summary>
-            /// <param name="wrappedCollection">The ICollection&lt;T&gt; to wrap.</param>
+            /// <param name="wrappedCollection">The <see cref="ICollection{T}"/> to wrap.</param>
             public UntypedCollection(ICollection<T> wrappedCollection)
             {
                 _wrappedCollection = wrappedCollection;
@@ -927,7 +927,7 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// Given a generic ICollection&lt;T&gt; interface, wrap a non-generic (untyped)
+        /// Given a generic <see cref="ICollection{T}"/> interface, wrap a non-generic (untyped)
         /// ICollection interface around it. The non-generic interface will contain the same objects as the 
         /// underlying generic collection, but can be used in places that require a non-generic interface.
         /// This method is useful when interfacing generic interfaces with older code that uses non-generic interfaces.
@@ -951,7 +951,7 @@ namespace ARWNI2S.Collections
 
         /// <summary>
         /// The class that implements a non-generic IList wrapper
-        /// around a generic IList&lt;T&gt; interface.
+        /// around a generic <see cref="IList{T}"/> interface.
         /// </summary>
         [Serializable]
         private class UntypedList<T> : IList
@@ -960,9 +960,9 @@ namespace ARWNI2S.Collections
 
             /// <summary>
             /// Create a non-generic IList wrapper
-            /// around a generic IList&lt;T&gt; interface.
+            /// around a generic <see cref="IList{T}"/> interface.
             /// </summary>
-            /// <param name="wrappedList">The IList&lt;T&gt; interface to wrap.</param>
+            /// <param name="wrappedList">The <see cref="IList{T}"/> interface to wrap.</param>
             public UntypedList(IList<T> wrappedList)
             {
                 _wrappedList = wrappedList;
@@ -1085,7 +1085,7 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// Given a generic IList&lt;T&gt; interface, wrap a non-generic (untyped)
+        /// Given a generic <see cref="IList{T}"/> interface, wrap a non-generic (untyped)
         /// IList interface around it. The non-generic interface will contain the same objects as the 
         /// underlying generic list, but can be used in places that require a non-generic interface.
         /// This method is useful when interfacing generic interfaces with older code that uses non-generic interfaces.
@@ -1108,7 +1108,7 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// The class that is used to implement IList&lt;T&gt; to view an array
+        /// The class that is used to implement <see cref="IList{T}"/> to view an array
         /// in a read-write way. Insertions cause the last item in the array
         /// to fall off, deletions replace the last item with the default value.
         /// </summary>
@@ -1217,20 +1217,20 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// <para>Creates a read-write IList&lt;T&gt; wrapper around an array. When an array is
-        /// implicitely converted to an IList&lt;T&gt;, changes to the items in the array cannot
-        /// be made through the interface. This method creates a read-write IList&lt;T&gt; wrapper
+        /// <para>Creates a read-write <see cref="IList{T}"/> wrapper around an array. When an array is
+        /// implicitely converted to an <see cref="IList{T}"/>, changes to the items in the array cannot
+        /// be made through the interface. This method creates a read-write <see cref="IList{T}"/> wrapper
         /// on an array that can be used to make changes to the array. </para>
         /// <para>Use this method when you need to pass an array to an algorithms that takes an 
-        /// IList&lt;T&gt; and that tries to modify items in the list. Algorithms in this class generally do not
+        /// <see cref="IList{T}"/> and that tries to modify items in the list. Algorithms in this class generally do not
         /// need this method, since they have been design to operate on arrays even when they
-        /// are passed as an IList&lt;T&gt;.</para>
+        /// are passed as an <see cref="IList{T}"/>.</para>
         /// </summary>
         /// <remarks>Since arrays cannot be resized, inserting an item causes the last item in the array to be automatically
         /// removed. Removing an item causes the last item in the array to be replaced with a default value (0 or null). Clearing
         /// the list causes all the items to be replaced with a default value.</remarks>
         /// <param name="array">The array to wrap.</param>
-        /// <returns>An IList&lt;T&gt; wrapper onto <paramref name="array"/>.</returns>
+        /// <returns>An <see cref="IList{T}"/> wrapper onto <paramref name="array"/>.</returns>
         public static IList<T> ReadWriteList<T>(T[] array)
         {
             if (array == null)
@@ -1247,7 +1247,7 @@ namespace ARWNI2S.Collections
         /// Replace all items in a collection equal to a particular value with another values, yielding another collection.
         /// </summary>
         /// <remarks>The default sense of equality for T is used, as defined by T's
-        /// implementation of IComparable&lt;T&gt;.Equals or object.Equals.</remarks>
+        /// implementation of <see cref="IComparable{T}"/>.Equals or object.Equals.</remarks>
         /// <param name="collection">The collection to process.</param>
         /// <param name="itemFind">The value to find and replace within <paramref name="collection"/>.</param>
         /// <param name="replaceWith">The new value to replace with.</param>
@@ -1265,7 +1265,7 @@ namespace ARWNI2S.Collections
         /// <param name="collection">The collection to process.</param>
         /// <param name="itemFind">The value to find and replace within <paramref name="collection"/>.</param>
         /// <param name="replaceWith">The new value to replace with.</param>
-        /// <param name="equalityComparer">The IEqualityComparer&lt;T&gt; used to compare items for equality. Only the Equals method will be called.</param>
+        /// <param name="equalityComparer">The <see cref="IEqualityComparer{T}"/> used to compare items for equality. Only the Equals method will be called.</param>
         /// <returns>An new collection with the items from <paramref name="collection"/>, in the same order, 
         /// with the appropriate replacements made.</returns>
         public static IEnumerable<T> Replace<T>(IEnumerable<T> collection, T itemFind, T replaceWith, IEqualityComparer<T> equalityComparer)
@@ -1314,8 +1314,8 @@ namespace ARWNI2S.Collections
         /// the list.
         /// </summary>
         /// <remarks><para>The default sense of equality for T is used, as defined by T's
-        /// implementation of IComparable&lt;T&gt;.Equals or object.Equals.</para>
-        /// <para>Although arrays cast to IList&lt;T&gt; are normally read-only, this method
+        /// implementation of <see cref="IComparable{T}"/>.Equals or object.Equals.</para>
+        /// <para>Although arrays cast to <see cref="IList{T}"/> are normally read-only, this method
         /// will work correctly and modify an array passed as <paramref name="list"/>.</para></remarks>
         /// <param name="list">The list or array to process.</param>
         /// <param name="itemFind">The value to find and replace within <paramtype name="T"/>.</param>
@@ -1330,12 +1330,12 @@ namespace ARWNI2S.Collections
         /// The replacement is done in-place, changing
         /// the list. A passed IEqualityComparer is used to determine equality.
         /// </summary>
-        /// <remarks>Although arrays cast to IList&lt;T&gt; are normally read-only, this method
+        /// <remarks>Although arrays cast to <see cref="IList{T}"/> are normally read-only, this method
         /// will work correctly and modify an array passed as <paramref name="list"/>.</remarks>
         /// <param name="list">The list or array to process.</param>
         /// <param name="itemFind">The value to find and replace within <paramtype name="T"/>.</param>
         /// <param name="replaceWith">The new value to replace with.</param>
-        /// <param name="equalityComparer">The IEqualityComparer&lt;T&gt; used to compare items for equality. Only the Equals method will be called.</param>
+        /// <param name="equalityComparer">The <see cref="IEqualityComparer{T}"/> used to compare items for equality. Only the Equals method will be called.</param>
         public static void ReplaceInPlace<T>(IList<T> list, T itemFind, T replaceWith, IEqualityComparer<T> equalityComparer)
         {
             if (list == null)
@@ -1359,7 +1359,7 @@ namespace ARWNI2S.Collections
         /// Replace all items in a list or array that a predicate evaluates at true with a value. The replacement is done in-place, changing
         /// the list.
         /// </summary>
-        /// <remarks>Although arrays cast to IList&lt;T&gt; are normally read-only, this method
+        /// <remarks>Although arrays cast to <see cref="IList{T}"/> are normally read-only, this method
         /// will work correctly and modify an array passed as <paramref name="list"/>.</remarks>
         /// <param name="list">The list or array to process.</param>
         /// <param name="predicate">The predicate used to evaluate items with the collection. If the predicate returns true for a particular
@@ -1393,7 +1393,7 @@ namespace ARWNI2S.Collections
         /// in the collection, all items after the first item in the run are removed. 
         /// </summary>
         /// <remarks>The default sense of equality for T is used, as defined by T's
-        /// implementation of IComparable&lt;T&gt;.Equals or object.Equals.</remarks>
+        /// implementation of <see cref="IComparable{T}"/>.Equals or object.Equals.</remarks>
         /// <param name="collection">The collection to process.</param>
         /// <returns>An new collection with the items from <paramref name="collection"/>, in the same order, 
         /// with consecutive duplicates removed.</returns>
@@ -1409,7 +1409,7 @@ namespace ARWNI2S.Collections
         /// IEqualityComparer is used to determine equality.
         /// </summary>
         /// <param name="collection">The collection to process.</param>
-        /// <param name="equalityComparer">The IEqualityComparer&lt;T&gt; used to compare items for equality. Only the Equals method will be called.</param>
+        /// <param name="equalityComparer">The <see cref="IEqualityComparer{T}"/> used to compare items for equality. Only the Equals method will be called.</param>
         /// <returns>An new collection with the items from <paramref name="collection"/>, in the same order, 
         /// with consecutive duplicates removed.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="collection"/> or <paramref name="equalityComparer"/> is null.</exception>
@@ -1462,8 +1462,8 @@ namespace ARWNI2S.Collections
         /// the list. 
         /// </summary>
         /// <remarks><para>The default sense of equality for T is used, as defined by T's
-        /// implementation of IComparable&lt;T&gt;.Equals or object.Equals.</para>
-        /// <para>Although arrays cast to IList&lt;T&gt; are normally read-only, this method
+        /// implementation of <see cref="IComparable{T}"/>.Equals or object.Equals.</para>
+        /// <para>Although arrays cast to <see cref="IList{T}"/> are normally read-only, this method
         /// will work correctly and modify an array passed as <paramref name="list"/>.</para></remarks>
         /// <param name="list">The list or array to process.</param>
         public static void RemoveDuplicatesInPlace<T>(IList<T> list)
@@ -1477,10 +1477,10 @@ namespace ARWNI2S.Collections
         /// The replacement is done in-place, changing
         /// the list. A passed IEqualityComparer is used to determine equality.
         /// </summary>
-        /// <remarks>Although arrays cast to IList&lt;T&gt; are normally read-only, this method
+        /// <remarks>Although arrays cast to <see cref="IList{T}"/> are normally read-only, this method
         /// will work correctly and modify an array passed as <paramref name="list"/>.</remarks>
         /// <param name="list">The list or array to process.</param>
-        /// <param name="equalityComparer">The IEqualityComparer&lt;T&gt; used to compare items for equality. Only the Equals method will be called.</param>
+        /// <param name="equalityComparer">The <see cref="IEqualityComparer{T}"/> used to compare items for equality. Only the Equals method will be called.</param>
         public static void RemoveDuplicatesInPlace<T>(IList<T> list, IEqualityComparer<T> equalityComparer)
         {
             if (equalityComparer == null)
@@ -1496,7 +1496,7 @@ namespace ARWNI2S.Collections
         /// the list. The passed BinaryPredicate is used to determine if two items are "equal".
         /// </summary>
         /// <remarks><para>Since an arbitrary BinaryPredicate is passed to this function, what is being tested for need not be true equality. </para>
-        /// <para>Although arrays cast to IList&lt;T&gt; are normally read-only, this method
+        /// <para>Although arrays cast to <see cref="IList{T}"/> are normally read-only, this method
         /// will work correctly and modify an array passed as <paramref name="list"/>.</para></remarks>
         /// <param name="list">The list or array to process.</param>
         /// <param name="predicate">The BinaryPredicate used to compare items for "equality". </param>
@@ -1558,7 +1558,7 @@ namespace ARWNI2S.Collections
         /// list.
         /// </summary>
         /// <remarks>The default sense of equality for T is used, as defined by T's
-        /// implementation of IComparable&lt;T&gt;.Equals or object.Equals.</remarks>
+        /// implementation of <see cref="IComparable{T}"/>.Equals or object.Equals.</remarks>
         /// <param name="list">The list to examine.</param>
         /// <param name="count">The number of consecutive equal items to look for. The count must be at least 1.</param>
         /// <returns>The index of the first item in the first run of <paramref name="count"/> consecutive equal items, or -1 if no such run exists..</returns>
@@ -1573,7 +1573,7 @@ namespace ARWNI2S.Collections
         /// </summary>
         /// <param name="list">The list to examine.</param>
         /// <param name="count">The number of consecutive equal items to look for. The count must be at least 1.</param>
-        /// <param name="equalityComparer">The IEqualityComparer&lt;T&gt; used to compare items for equality. Only the Equals method will be called.</param>
+        /// <param name="equalityComparer">The <see cref="IEqualityComparer{T}"/> used to compare items for equality. Only the Equals method will be called.</param>
         /// <returns>The index of the first item in the first run of <paramref name="count"/> consecutive equal items, or -1 if no such run exists.</returns>
         public static int FirstConsecutiveEqual<T>(IList<T> list, int count, IEqualityComparer<T> equalityComparer)
         {
@@ -1742,7 +1742,7 @@ namespace ARWNI2S.Collections
         /// Finds the last item in a collection that satisfies the condition
         /// defined by <paramref name="predicate"/>.
         /// </summary>
-        /// <remarks><para>If the collection implements IList&lt;T&gt;, then the list is scanned in reverse until a 
+        /// <remarks><para>If the collection implements <see cref="IList{T}"/>, then the list is scanned in reverse until a 
         /// matching item is found. Otherwise, the entire collection is iterated in the forward direction.</para>
         /// <para>If the default value for T could be present in the collection, and 
         /// would be matched by the predicate, then this method is inappropriate, because
@@ -1766,7 +1766,7 @@ namespace ARWNI2S.Collections
         /// Finds the last item in a collection that satisfies the condition
         /// defined by <paramref name="predicate"/>.
         /// </summary>
-        /// <remarks>If the collection implements IList&lt;T&gt;, then the list is scanned in reverse until a 
+        /// <remarks>If the collection implements <see cref="IList{T}"/>, then the list is scanned in reverse until a 
         /// matching item is found. Otherwise, the entire collection is iterated in the forward direction.</remarks>
         /// <param name="collection">The collection to search.</param>
         /// <param name="predicate">A delegate that defined the condition to check for.</param>
@@ -1823,7 +1823,7 @@ namespace ARWNI2S.Collections
         /// </summary>
         /// <param name="collection">The collection to check all the items in.</param>
         /// <param name="predicate">A delegate that defines the condition to check for.</param>
-        /// <returns>An IEnumerable&lt;T&gt; that enumerates the items that satisfy the condition.</returns>
+        /// <returns>An <see cref="IEnumerable{T}"/> that enumerates the items that satisfy the condition.</returns>
         public static IEnumerable<T> FindWhere<T>(IEnumerable<T> collection, Predicate<T> predicate)
         {
             if (collection == null)
@@ -1900,7 +1900,7 @@ namespace ARWNI2S.Collections
         /// </summary>
         /// <param name="list">The list to check all the items in.</param>
         /// <param name="predicate">A delegate that defines the condition to check for.</param>
-        /// <returns>An IEnumerable&lt;T&gt; that enumerates the indices of items that satisfy the condition.</returns>
+        /// <returns>An <see cref="IEnumerable{T}"/> that enumerates the indices of items that satisfy the condition.</returns>
         public static IEnumerable<int> FindIndicesWhere<T>(IList<T> list, Predicate<T> predicate)
         {
             if (list == null)
@@ -1923,7 +1923,7 @@ namespace ARWNI2S.Collections
         /// Finds the index of the first item in a list equal to a given item.
         /// </summary>
         /// <remarks>The default sense of equality for T is used, as defined by T's
-        /// implementation of IComparable&lt;T&gt;.Equals or object.Equals.</remarks>
+        /// implementation of <see cref="IComparable{T}"/>.Equals or object.Equals.</remarks>
         /// <param name="list">The list to search.</param>
         /// <param name="item">The item to search for.</param>
         /// <returns>The index of the first item equal to <paramref name="item"/>. -1 if no such item exists in the list.</returns>
@@ -1938,7 +1938,7 @@ namespace ARWNI2S.Collections
         /// </summary>
         /// <param name="list">The list to search.</param>
         /// <param name="item">The item to search for.</param>
-        /// <param name="equalityComparer">The IEqualityComparer&lt;T&gt; used to compare items for equality. Only the Equals method will be called.</param>
+        /// <param name="equalityComparer">The <see cref="IEqualityComparer{T}"/> used to compare items for equality. Only the Equals method will be called.</param>
         /// <returns>The index of the first item equal to <paramref name="item"/>. -1 if no such item exists in the list.</returns>
         public static int FirstIndexOf<T>(IList<T> list, T item, IEqualityComparer<T> equalityComparer)
         {
@@ -1965,7 +1965,7 @@ namespace ARWNI2S.Collections
         /// Finds the index of the last item in a list equal to a given item.
         /// </summary>
         /// <remarks>The default sense of equality for T is used, as defined by T's
-        /// implementation of IComparable&lt;T&gt;.Equals or object.Equals.</remarks>
+        /// implementation of <see cref="IComparable{T}"/>.Equals or object.Equals.</remarks>
         /// <param name="list">The list to search.</param>
         /// <param name="item">The item to search for.</param>
         /// <returns>The index of the last item equal to <paramref name="item"/>. -1 if no such item exists in the list.</returns>
@@ -1980,7 +1980,7 @@ namespace ARWNI2S.Collections
         /// </summary>
         /// <param name="list">The list to search.</param>
         /// <param name="item">The item to search for.</param>
-        /// <param name="equalityComparer">The IEqualityComparer&lt;T&gt; used to compare items for equality. Only the Equals method will be called.</param>
+        /// <param name="equalityComparer">The <see cref="IEqualityComparer{T}"/> used to compare items for equality. Only the Equals method will be called.</param>
         /// <returns>The index of the last item equal to <paramref name="item"/>. -1 if no such item exists in the list.</returns>
         public static int LastIndexOf<T>(IList<T> list, T item, IEqualityComparer<T> equalityComparer)
         {
@@ -2005,10 +2005,10 @@ namespace ARWNI2S.Collections
         /// Enumerates the indices of all the items in a list equal to a given item.
         /// </summary>
         /// <remarks>The default sense of equality for T is used, as defined by T's
-        /// implementation of IComparable&lt;T&gt;.Equals or object.Equals.</remarks>
+        /// implementation of <see cref="IComparable{T}"/>.Equals or object.Equals.</remarks>
         /// <param name="list">The list to search.</param>
         /// <param name="item">The item to search for.</param>
-        /// <returns>An IEnumerable&lt;T&gt; that enumerates the indices of items equal to <paramref name="item"/>. </returns>
+        /// <returns>An <see cref="IEnumerable{T}"/> that enumerates the indices of items equal to <paramref name="item"/>. </returns>
         public static IEnumerable<int> IndicesOf<T>(IList<T> list, T item)
         {
             return IndicesOf(list, item, EqualityComparer<T>.Default);
@@ -2020,8 +2020,8 @@ namespace ARWNI2S.Collections
         /// </summary>
         /// <param name="list">The list to search.</param>
         /// <param name="item">The item to search for.</param>
-        /// <param name="equalityComparer">The IEqualityComparer&lt;T&gt; used to compare items for equality. Only the Equals method will be called.</param>
-        /// <returns>An IEnumerable&lt;T&gt; that enumerates the indices of items equal to <paramref name="item"/>. </returns>
+        /// <param name="equalityComparer">The <see cref="IEqualityComparer{T}"/> used to compare items for equality. Only the Equals method will be called.</param>
+        /// <returns>An <see cref="IEnumerable{T}"/> that enumerates the indices of items equal to <paramref name="item"/>. </returns>
         public static IEnumerable<int> IndicesOf<T>(IList<T> list, T item, IEqualityComparer<T> equalityComparer)
         {
             if (list == null)
@@ -2044,7 +2044,7 @@ namespace ARWNI2S.Collections
         /// Finds the index of the first item in a list equal to one of several given items.
         /// </summary>
         /// <remarks>The default sense of equality for T is used, as defined by T's
-        /// implementation of IComparable&lt;T&gt;.Equals or object.Equals.</remarks>
+        /// implementation of <see cref="IComparable{T}"/>.Equals or object.Equals.</remarks>
         /// <param name="list">The list to search.</param>
         /// <param name="itemsToLookFor">The items to search for.</param>
         /// <returns>The index of the first item equal to any of the items in the collection <paramref name="itemsToLookFor"/>. 
@@ -2060,7 +2060,7 @@ namespace ARWNI2S.Collections
         /// </summary>
         /// <param name="list">The list to search.</param>
         /// <param name="itemsToLookFor">The items to search for.</param>
-        /// <param name="equalityComparer">The IEqualityComparer&lt;T&gt; used to compare items for equality. 
+        /// <param name="equalityComparer">The <see cref="IEqualityComparer{T}"/> used to compare items for equality. 
         /// Only the Equals and GetHashCode methods will be called.</param>
         /// <returns>The index of the first item equal to any of the items in the collection <paramref name="itemsToLookFor"/>. 
         /// -1 if no such item exists in the list.</returns>
@@ -2135,7 +2135,7 @@ namespace ARWNI2S.Collections
         /// Finds the index of the last item in a list equal to one of several given items.
         /// </summary>
         /// <remarks>The default sense of equality for T is used, as defined by T's
-        /// implementation of IComparable&lt;T&gt;.Equals or object.Equals.</remarks>
+        /// implementation of <see cref="IComparable{T}"/>.Equals or object.Equals.</remarks>
         /// <param name="list">The list to search.</param>
         /// <param name="itemsToLookFor">The items to search for.</param>
         /// <returns>The index of the last item equal to any of the items in the collection <paramref name="itemsToLookFor"/>. 
@@ -2151,7 +2151,7 @@ namespace ARWNI2S.Collections
         /// </summary>
         /// <param name="list">The list to search.</param>
         /// <param name="itemsToLookFor">The items to search for.</param>
-        /// <param name="equalityComparer">The IEqualityComparer&lt;T&gt; used to compare items for equality.</param>
+        /// <param name="equalityComparer">The <see cref="IEqualityComparer{T}"/> used to compare items for equality.</param>
         /// <returns>The index of the last item equal to any of the items in the collection <paramref name="itemsToLookFor"/>. 
         /// -1 if no such item exists in the list.</returns>
         public static int LastIndexOfMany<T>(IList<T> list, IEnumerable<T> itemsToLookFor, IEqualityComparer<T> equalityComparer)
@@ -2220,10 +2220,10 @@ namespace ARWNI2S.Collections
         /// Enumerates the indices of all the items in a list equal to one of several given items. 
         /// </summary>
         /// <remarks>The default sense of equality for T is used, as defined by T's
-        /// implementation of IComparable&lt;T&gt;.Equals or object.Equals.</remarks>
+        /// implementation of <see cref="IComparable{T}"/>.Equals or object.Equals.</remarks>
         /// <param name="list">The list to search.</param>
         /// <param name="itemsToLookFor">A collection of items to search for.</param>
-        /// <returns>An IEnumerable&lt;T&gt; that enumerates the indices of items equal to
+        /// <returns>An <see cref="IEnumerable{T}"/> that enumerates the indices of items equal to
         /// any of the items in the collection <paramref name="itemsToLookFor"/>. </returns>
         public static IEnumerable<int> IndicesOfMany<T>(IList<T> list, IEnumerable<T> itemsToLookFor)
         {
@@ -2236,8 +2236,8 @@ namespace ARWNI2S.Collections
         /// </summary>
         /// <param name="list">The list to search.</param>
         /// <param name="itemsToLookFor">A collection of items to search for.</param>
-        /// <param name="equalityComparer">The IEqualityComparer&lt;T&gt; used to compare items for equality. </param>
-        /// <returns>An IEnumerable&lt;T&gt; that enumerates the indices of items equal to
+        /// <param name="equalityComparer">The <see cref="IEqualityComparer{T}"/> used to compare items for equality. </param>
+        /// <returns>An <see cref="IEnumerable{T}"/> that enumerates the indices of items equal to
         /// any of the items in the collection <paramref name="itemsToLookFor"/>. </returns>
         public static IEnumerable<int> IndicesOfMany<T>(IList<T> list, IEnumerable<T> itemsToLookFor, IEqualityComparer<T> equalityComparer)
         {
@@ -2272,7 +2272,7 @@ namespace ARWNI2S.Collections
         /// <param name="list">The list to search.</param>
         /// <param name="itemsToLookFor">A collection of items to search for.</param>
         /// <param name="predicate">The BinaryPredicate used to compare items for "equality". </param>
-        /// <returns>An IEnumerable&lt;T&gt; that enumerates the indices of items "equal" to any of the items 
+        /// <returns>An <see cref="IEnumerable{T}"/> that enumerates the indices of items "equal" to any of the items 
         /// in the collection <paramref name="itemsToLookFor"/>, using 
         /// <paramtest name="BinaryPredicate"/> as the test for equality. </returns>
         public static IEnumerable<int> IndicesOfMany<T>(IList<T> list, IEnumerable<T> itemsToLookFor, BinaryPredicate<T> predicate)
@@ -2307,7 +2307,7 @@ namespace ARWNI2S.Collections
         /// and so forth for all the items in <paramref name="pattern"/>.
         /// </summary>
         /// <remarks>The default sense of equality for T is used, as defined by T's
-        /// implementation of IComparable&lt;T&gt;.Equals or object.Equals.</remarks>
+        /// implementation of <see cref="IComparable{T}"/>.Equals or object.Equals.</remarks>
         /// <typeparam name="T">The type of items in the list.</typeparam>
         /// <param name="list">The list to search.</param>
         /// <param name="pattern">The sequence of items to search for.</param>
@@ -2373,12 +2373,12 @@ namespace ARWNI2S.Collections
         /// of <paramref name="list"/> matches pattern at index i if list[i] is equal to the first item
         /// in <paramref name="pattern"/>, list[i+1] is equal to the second item in <paramref name="pattern"/>,
         /// and so forth for all the items in <paramref name="pattern"/>. The passed 
-        /// instance of IEqualityComparer&lt;T&gt; is used for determining if two items are equal.
+        /// instance of <see cref="IEqualityComparer{T}"/> is used for determining if two items are equal.
         /// </summary>
         /// <typeparam name="T">The type of items in the list.</typeparam>
         /// <param name="list">The list to search.</param>
         /// <param name="pattern">The sequence of items to search for.</param>
-        /// <param name="equalityComparer">The IEqualityComparer&lt;T&gt; used to compare items for equality. Only the Equals method will be called.</param>
+        /// <param name="equalityComparer">The <see cref="IEqualityComparer{T}"/> used to compare items for equality. Only the Equals method will be called.</param>
         /// <returns>The first index with <paramref name="list"/> that matches the items in <paramref name="pattern"/>.</returns>
         public static int SearchForSubsequence<T>(IList<T> list, IEnumerable<T> pattern, IEqualityComparer<T> equalityComparer)
         {
@@ -2399,7 +2399,7 @@ namespace ARWNI2S.Collections
         /// </summary>
         /// <remarks>
         /// <para>The default sense of equality for T is used, as defined by T's
-        /// implementation of IComparable&lt;T&gt;.Equals or object.Equals.</para>
+        /// implementation of <see cref="IComparable{T}"/>.Equals or object.Equals.</para>
         /// <para>If both collections are Set, Bag, OrderedSet, or OrderedBag
         /// collections, it is more efficient to use the IsSubsetOf method on that class.</para>
         /// </remarks>
@@ -2423,7 +2423,7 @@ namespace ARWNI2S.Collections
         /// </remarks>
         /// <param name="collection1">The first collection.</param>
         /// <param name="collection2">The second collection.</param>
-        /// <param name="equalityComparer">The IEqualityComparer&lt;T&gt; used to compare items for equality.</param>
+        /// <param name="equalityComparer">The <see cref="IEqualityComparer{T}"/> used to compare items for equality.</param>
         /// <returns>True if <paramref name="collection1"/> is a subset of <paramref name="collection2"/>, considered as sets.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="collection1"/> or <paramref name="collection2"/> is null.</exception>
         public static bool IsSubsetOf<T>(IEnumerable<T> collection1, IEnumerable<T> collection2, IEqualityComparer<T> equalityComparer)
@@ -2448,7 +2448,7 @@ namespace ARWNI2S.Collections
         /// </summary>
         /// <remarks>
         /// <para>The default sense of equality for T is used, as defined by T's
-        /// implementation of IComparable&lt;T&gt;.Equals or object.Equals.</para>
+        /// implementation of <see cref="IComparable{T}"/>.Equals or object.Equals.</para>
         /// <para>If both collections are Set, Bag, OrderedSet, or OrderedBag
         /// collections, it is more efficient to use the IsSubsetOf method on that class.</para>
         /// </remarks>
@@ -2473,7 +2473,7 @@ namespace ARWNI2S.Collections
         /// </remarks>
         /// <param name="collection1">The first collection.</param>
         /// <param name="collection2">The second collection.</param>
-        /// <param name="equalityComparer">The IEqualityComparer&lt;T&gt; used to compare items for equality. 
+        /// <param name="equalityComparer">The <see cref="IEqualityComparer{T}"/> used to compare items for equality. 
         /// Only the Equals and GetHashCode member functions of this interface are called.</param>
         /// <returns>True if <paramref name="collection1"/> is a proper subset of <paramref name="collection2"/>, considered as sets.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="collection1"/> or <paramref name="collection2"/> is null.</exception>
@@ -2499,7 +2499,7 @@ namespace ARWNI2S.Collections
         /// </summary>
         /// <remarks>
         /// <para>The default sense of equality for T is used, as defined by T's
-        /// implementation of IComparable&lt;T&gt;.Equals or object.Equals.</para>
+        /// implementation of <see cref="IComparable{T}"/>.Equals or object.Equals.</para>
         /// <para>If both collections are Set, Bag, OrderedSet, or OrderedBag
         /// collections, it is more efficient to use the IsDisjoint method on that class.</para>
         /// </remarks>
@@ -2522,7 +2522,7 @@ namespace ARWNI2S.Collections
         /// </remarks>
         /// <param name="collection1">The first collection.</param>
         /// <param name="collection2">The second collection.</param>
-        /// <param name="equalityComparer">The IEqualityComparerComparer&lt;T&gt; used to compare items for equality. 
+        /// <param name="equalityComparer">The <see cref="IEqualityComparer{T}"/> used to compare items for equality. 
         /// Only the Equals and GetHashCode member functions of this interface are called.</param>
         /// <returns>True if <paramref name="collection1"/> are <paramref name="collection2"/> are disjoint, considered as sets.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="collection1"/> or <paramref name="collection2"/> is null.</exception>
@@ -2552,7 +2552,7 @@ namespace ARWNI2S.Collections
         /// </summary>
         /// <remarks>
         /// <para>The default sense of equality for T is used, as defined by T's
-        /// implementation of IComparable&lt;T&gt;.Equals or object.Equals.</para>
+        /// implementation of <see cref="IComparable{T}"/>.Equals or object.Equals.</para>
         /// <para>If both collections are Set, Bag, OrderedSet, or OrderedBag
         /// collections, it is more efficient to use the EqualTo method on that class.</para>
         /// </remarks>
@@ -2575,7 +2575,7 @@ namespace ARWNI2S.Collections
         /// </remarks>
         /// <param name="collection1">The first collection.</param>
         /// <param name="collection2">The second collection.</param>
-        /// <param name="equalityComparer">The IEqualityComparer&lt;T&gt; used to compare items for equality. 
+        /// <param name="equalityComparer">The <see cref="IEqualityComparer{T}"/> used to compare items for equality. 
         /// Only the Equals and GetHashCode member functions of this interface are called.</param>
         /// <returns>True if <paramref name="collection1"/> are <paramref name="collection2"/> are equal, considered as sets.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="collection1"/> or <paramref name="collection2"/> is null.</exception>
@@ -2605,7 +2605,7 @@ namespace ARWNI2S.Collections
         /// <para>When equal items appear in both collections, the returned collection will include an arbitrary choice of one of the
         /// two equal items.</para>
         /// <para>The default sense of equality for T is used, as defined by T's
-        /// implementation of IComparable&lt;T&gt;.Equals or object.Equals.</para>
+        /// implementation of <see cref="IComparable{T}"/>.Equals or object.Equals.</para>
         /// <para>If both collections are Set, Bag, OrderedSet, or OrderedBag
         /// collections, it is more efficient to use the Intersection or IntersectionWith methods on that class.</para>
         /// </remarks>
@@ -2634,7 +2634,7 @@ namespace ARWNI2S.Collections
         /// </remarks>
         /// <param name="collection1">The first collection to intersect.</param>
         /// <param name="collection2">The second collection to intersect.</param>
-        /// <param name="equalityComparer">The IEqualityComparer&lt;T&gt; used to compare items for equality. 
+        /// <param name="equalityComparer">The <see cref="IEqualityComparer{T}"/> used to compare items for equality. 
         /// Only the Equals and GetHashCode member functions of this interface are called.</param>
         /// <returns>The intersection of the two collections, considered as sets.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="collection1"/> or <paramref name="collection2"/> is null.</exception>
@@ -2664,7 +2664,7 @@ namespace ARWNI2S.Collections
         /// <para>When equal items appear in both collections, the returned collection will include an arbitrary choice of one of the
         /// two equal items.</para>
         /// <para>The default sense of equality for T is used, as defined by T's
-        /// implementation of IComparable&lt;T&gt;.Equals or object.Equals.</para>
+        /// implementation of <see cref="IComparable{T}"/>.Equals or object.Equals.</para>
         /// <para>If both collections are Set, Bag, OrderedSet, or OrderedBag
         /// collections, it is more efficient to use the Union or UnionWith methods on that class.</para>
         /// </remarks>
@@ -2693,7 +2693,7 @@ namespace ARWNI2S.Collections
         /// </remarks>
         /// <param name="collection1">The first collection to union.</param>
         /// <param name="collection2">The second collection to union.</param>
-        /// <param name="equalityComparer">The IEqualityComparer&lt;T&gt; used to compare items for equality. 
+        /// <param name="equalityComparer">The <see cref="IEqualityComparer{T}"/> used to compare items for equality. 
         /// Only the Equals and GetHashCode member functions of this interface are called.</param>
         /// <returns>The union of the two collections, considered as sets.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="collection1"/> or <paramref name="collection2"/> is null.</exception>
@@ -2732,7 +2732,7 @@ namespace ARWNI2S.Collections
         /// <para>When equal items appear in both collections, the returned collection will include an arbitrary choice of one of the
         /// two equal items.</para>
         /// <para>The default sense of equality for T is used, as defined by T's
-        /// implementation of IComparable&lt;T&gt;.Equals or object.Equals.</para>
+        /// implementation of <see cref="IComparable{T}"/>.Equals or object.Equals.</para>
         /// <para>If both collections are Set, Bag, OrderedSet, or OrderedBag
         /// collections, it is more efficient to use the Difference or DifferenceWith methods on that class.</para>
         /// </remarks>
@@ -2761,7 +2761,7 @@ namespace ARWNI2S.Collections
         /// </remarks>
         /// <param name="collection1">The first collection to difference.</param>
         /// <param name="collection2">The second collection to difference.</param>
-        /// <param name="equalityComparer">The IEqualityComparer&lt;T&gt; used to compare items for equality. 
+        /// <param name="equalityComparer">The <see cref="IEqualityComparer{T}"/> used to compare items for equality. 
         /// Only the Equals and GetHashCode member functions of this interface are called.</param>
         /// <returns>The difference of <paramref name="collection1"/> and <paramref name="collection2"/>, considered as sets.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="collection1"/> or <paramref name="collection2"/> is null.</exception>
@@ -2792,7 +2792,7 @@ namespace ARWNI2S.Collections
         /// <para>When equal items appear in both collections, the returned collection will include an arbitrary choice of one of the
         /// two equal items.</para>
         /// <para>The default sense of equality for T is used, as defined by T's
-        /// implementation of IComparable&lt;T&gt;.Equals or object.Equals.</para>
+        /// implementation of <see cref="IComparable{T}"/>.Equals or object.Equals.</para>
         /// <para>If both collections are Set, Bag, OrderedSet, or OrderedBag
         /// collections, it is more efficient to use the SymmetricDifference or SymmetricDifferenceWith methods on that class.</para>
         /// </remarks>
@@ -2821,7 +2821,7 @@ namespace ARWNI2S.Collections
         /// </remarks>
         /// <param name="collection1">The first collection to symmetric difference.</param>
         /// <param name="collection2">The second collection to symmetric difference.</param>
-        /// <param name="equalityComparer">The IEqualityComparer&lt;T&gt; used to compare items for equality. 
+        /// <param name="equalityComparer">The <see cref="IEqualityComparer{T}"/> used to compare items for equality. 
         /// Only the Equals and GetHashCode member functions of this interface are called.</param>
         /// <returns>The symmetric difference of <paramref name="collection1"/> and <paramref name="collection2"/>, considered as sets.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="collection1"/> or <paramref name="collection2"/> is null.</exception>
@@ -3062,7 +3062,7 @@ namespace ARWNI2S.Collections
         /// <summary>
         /// Randomly shuffles the items in a list or array, in place.
         /// </summary>
-        /// <remarks>Although arrays cast to IList&lt;T&gt; are normally read-only, this method
+        /// <remarks>Although arrays cast to <see cref="IList{T}"/> are normally read-only, this method
         /// will work correctly and modify an array passed as <paramref name="list"/>.</remarks>
         /// <param name="list">The list or array to shuffle.</param>
         public static void RandomShuffleInPlace<T>(IList<T> list)
@@ -3073,7 +3073,7 @@ namespace ARWNI2S.Collections
         /// <summary>
         /// Randomly shuffles the items in a list or array, in place.
         /// </summary>
-        /// <remarks>Although arrays cast to IList&lt;T&gt; are normally read-only, this method
+        /// <remarks>Although arrays cast to <see cref="IList{T}"/> are normally read-only, this method
         /// will work correctly and modify an array passed as <paramref name="list"/>.</remarks>
         /// <param name="list">The list or array to shuffle.</param>
         /// <param name="randomGenerator">The random number generator to use to select the random order.</param>
@@ -3105,7 +3105,7 @@ namespace ARWNI2S.Collections
         /// Picks a random subset of <paramref name="count"/> items from <paramref name="collection"/>, and places
         /// those items into a random order. No item is selected more than once.
         /// </summary>
-        /// <remarks>If the collection implements IList&lt;T&gt;, then this method takes time O(<paramref name="count"/>).
+        /// <remarks>If the collection implements <see cref="IList{T}"/>, then this method takes time O(<paramref name="count"/>).
         /// Otherwise, this method takes time O(N), where N is the number of items in the collection.</remarks>
         /// <typeparam name="T">The type of items in the collection.</typeparam>
         /// <param name="collection">The collection of items to select from. This collection is not changed.</param>
@@ -3121,7 +3121,7 @@ namespace ARWNI2S.Collections
         /// Picks a random subset of <paramref name="count"/> items from <paramref name="collection"/>, and places
         /// those items into a random order. No item is selected more than once.
         /// </summary>
-        /// <remarks>If the collection implements IList&lt;T&gt;, then this method takes time O(<paramref name="count"/>).
+        /// <remarks>If the collection implements <see cref="IList{T}"/>, then this method takes time O(<paramref name="count"/>).
         /// Otherwise, this method takes time O(N), where N is the number of items in the collection.</remarks>
         /// <typeparam name="T">The type of items in the collection.</typeparam>
         /// <param name="collection">The collection of items to select from. This collection is not changed.</param>
@@ -3186,7 +3186,7 @@ namespace ARWNI2S.Collections
         /// </summary>
         /// <typeparam name="T">The type of items to permute.</typeparam>
         /// <param name="collection">The collection of items to permute.</param>
-        /// <returns>An IEnumerable&lt;T[]&gt; that enumerations all the possible permutations of the 
+        /// <returns>An <see cref="IEnumerable{T}"/> that enumerations all the possible permutations of the 
         /// items in <paramref name="collection"/>. Each permutations is returned as an array. The items in the array
         /// should be copied if they need to be used after the next permutation is generated; each permutation may
         /// reuse the same array instance.</returns>
@@ -3256,7 +3256,7 @@ namespace ARWNI2S.Collections
         /// </summary>
         /// <typeparam name="T">The type of items to permute.</typeparam>
         /// <param name="collection">The collection of items to permute.</param>
-        /// <returns>An IEnumerable&lt;T[]&gt; that enumerations all the possible permutations of the 
+        /// <returns>An <see cref="IEnumerable{T}"/> that enumerations all the possible permutations of the 
         /// items in <paramref name="collection"/>. Each permutations is returned as an array. The items in the array
         /// should be copied if they need to be used after the next permutation is generated; each permutation may
         /// reuse the same array instance.</returns>
@@ -3268,15 +3268,15 @@ namespace ARWNI2S.Collections
 
         /// <summary>
         /// Generates all the possible permutations of the items in <paramref name="collection"/>, in lexicographical order. A
-        /// supplied IComparer&lt;T&gt; instance is used to compare the items.
+        /// supplied <see cref="IComparer{T}"/> instance is used to compare the items.
         /// Even if some items are equal, the same permutation will not be generated more than once. For example,
         /// if the collections contains the three items A, A, and B, then this method will generate only the three permutations, AAB, ABA,
         /// BAA. 
         /// </summary>
         /// <typeparam name="T">The type of items to permute.</typeparam>
         /// <param name="collection">The collection of items to permute.</param>
-        /// <param name="comparer">The IComparer&lt;T&gt; used to compare the items.</param>
-        /// <returns>An IEnumerable&lt;T[]&gt; that enumerations all the possible permutations of the 
+        /// <param name="comparer">The <see cref="IComparer{T}"/> used to compare the items.</param>
+        /// <returns>An <see cref="IEnumerable{T}"/> that enumerations all the possible permutations of the 
         /// items in <paramref name="collection"/>. Each permutations is returned as an array. The items in the array
         /// should be copied if they need to be used after the next permutation is generated; each permutation may
         /// reuse the same array instance.</returns>
@@ -3341,15 +3341,15 @@ namespace ARWNI2S.Collections
 
         /// <summary>
         /// Generates all the possible permutations of the items in <paramref name="collection"/>, in lexicographical order. A
-        /// supplied Comparison&lt;T&gt; delegate is used to compare the items.
+        /// supplied <see cref="Comparison{T}"/> delegate is used to compare the items.
         /// Even if some items are equal, the same permutation will not be generated more than once. For example,
         /// if the collections contains the three items A, A, and B, then this method will generate only the three permutations, AAB, ABA,
         /// BAA. 
         /// </summary>
         /// <typeparam name="T">The type of items to permute.</typeparam>
         /// <param name="collection">The collection of items to permute.</param>
-        /// <param name="comparison">The Comparison&lt;T&gt; delegate used to compare the items.</param>
-        /// <returns>An IEnumerable&lt;T[]&gt; that enumerations all the possible permutations of the 
+        /// <param name="comparison">The <see cref="Comparison{T}"/> delegate used to compare the items.</param>
+        /// <returns>An <see cref="IEnumerable{T}"/> that enumerations all the possible permutations of the 
         /// items in <paramref name="collection"/>. Each permutations is returned as an array. The items in the array
         /// should be copied if they need to be used after the next permutation is generated; each permutation may
         /// reuse the same array instance.</returns>
@@ -3365,7 +3365,7 @@ namespace ARWNI2S.Collections
         /// <summary>
         /// Finds the maximum value in a collection.
         /// </summary>
-        /// <remarks>Values in the collection are compared by using the IComparable&lt;T&gt;
+        /// <remarks>Values in the collection are compared by using the <see cref="IComparable{T}"/>
         /// interfaces implementation on the type T.</remarks>
         /// <typeparam name="T">The type of items in the collection.</typeparam>
         /// <param name="collection">The collection to search.</param>
@@ -3379,7 +3379,7 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// Finds the maximum value in a collection. A supplied IComparer&lt;T&gt; is used
+        /// Finds the maximum value in a collection. A supplied <see cref="IComparer{T}"/> is used
         /// to compare the items in the collection.
         /// </summary>
         /// <typeparam name="T">The type of items in the collection.</typeparam>
@@ -3417,7 +3417,7 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// Finds the maximum value in a collection. A supplied Comparison&lt;T&gt; delegate is used
+        /// Finds the maximum value in a collection. A supplied <see cref="Comparison{T}"/> delegate is used
         /// to compare the items in the collection.
         /// </summary>
         /// <typeparam name="T">The type of items in the collection.</typeparam>
@@ -3434,7 +3434,7 @@ namespace ARWNI2S.Collections
         /// <summary>
         /// Finds the minimum value in a collection.
         /// </summary>
-        /// <remarks>Values in the collection are compared by using the IComparable&lt;T&gt;
+        /// <remarks>Values in the collection are compared by using the <see cref="IComparable{T}"/>
         /// interfaces implementation on the type T.</remarks>
         /// <typeparam name="T">The type of items in the collection.</typeparam>
         /// <param name="collection">The collection to search.</param>
@@ -3448,7 +3448,7 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// Finds the minimum value in a collection. A supplied IComparer&lt;T&gt; is used
+        /// Finds the minimum value in a collection. A supplied <see cref="IComparer{T}"/> is used
         /// to compare the items in the collection.
         /// </summary>
         /// <typeparam name="T">The type of items in the collection.</typeparam>
@@ -3486,7 +3486,7 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// Finds the minimum value in a collection. A supplied Comparison&lt;T&gt; delegate is used
+        /// Finds the minimum value in a collection. A supplied <see cref="Comparison{T}"/> delegate is used
         /// to compare the items in the collection.
         /// </summary>
         /// <typeparam name="T">The type of items in the collection.</typeparam>
@@ -3503,7 +3503,7 @@ namespace ARWNI2S.Collections
         /// <summary>
         /// Finds the index of the maximum value in a list.
         /// </summary>
-        /// <remarks>Values in the list are compared by using the IComparable&lt;T&gt;
+        /// <remarks>Values in the list are compared by using the <see cref="IComparable{T}"/>
         /// interfaces implementation on the type T.</remarks>
         /// <typeparam name="T">The type of items in the list.</typeparam>
         /// <param name="list">The list to search.</param>
@@ -3517,7 +3517,7 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// Finds the index of the maximum value in a list. A supplied IComparer&lt;T&gt; is used
+        /// Finds the index of the maximum value in a list. A supplied <see cref="IComparer{T}"/> is used
         /// to compare the items in the collection. 
         /// </summary>
         /// <typeparam name="T">The type of items in the list.</typeparam>
@@ -3553,7 +3553,7 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// Finds the index of the maximum value in a list. A supplied Comparison&lt;T&gt; delegate is used
+        /// Finds the index of the maximum value in a list. A supplied <see cref="Comparison{T}"/> delegate is used
         /// to compare the items in the collection.
         /// </summary>
         /// <typeparam name="T">The type of items in the list.</typeparam>
@@ -3570,7 +3570,7 @@ namespace ARWNI2S.Collections
         /// <summary>
         /// Finds the index of the minimum value in a list.
         /// </summary>
-        /// <remarks>Values in the list are compared by using the IComparable&lt;T&gt;
+        /// <remarks>Values in the list are compared by using the <see cref="IComparable{T}"/>
         /// interfaces implementation on the type T.</remarks>
         /// <typeparam name="T">The type of items in the list.</typeparam>
         /// <param name="list">The list to search.</param>
@@ -3585,7 +3585,7 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// Finds the index of the minimum value in a list. A supplied IComparer&lt;T&gt; is used
+        /// Finds the index of the minimum value in a list. A supplied <see cref="IComparer{T}"/> is used
         /// to compare the items in the collection. 
         /// </summary>
         /// <typeparam name="T">The type of items in the list.</typeparam>
@@ -3622,7 +3622,7 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// Finds the index of the minimum value in a list. A supplied Comparison&lt;T&gt; delegate is used
+        /// Finds the index of the minimum value in a list. A supplied <see cref="Comparison{T}"/> delegate is used
         /// to compare the items in the collection.
         /// </summary>
         /// <typeparam name="T">The type of items in the list.</typeparam>
@@ -3644,7 +3644,7 @@ namespace ARWNI2S.Collections
         /// <summary>
         /// Creates a sorted version of a collection.
         /// </summary>
-        /// <remarks>Values are compared by using the IComparable&lt;T&gt;
+        /// <remarks>Values are compared by using the <see cref="IComparable{T}"/>
         /// interfaces implementation on the type T.</remarks>
         /// <param name="collection">The collection to sort.</param>
         /// <returns>An array containing the sorted version of the collection.</returns>
@@ -3655,7 +3655,7 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// Creates a sorted version of a collection. A supplied IComparer&lt;T&gt; is used
+        /// Creates a sorted version of a collection. A supplied <see cref="IComparer{T}"/> is used
         /// to compare the items in the collection. 
         /// </summary>
         /// <param name="collection">The collection to sort.</param>
@@ -3678,7 +3678,7 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// Creates a sorted version of a collection. A supplied Comparison&lt;T&gt; delegate is used
+        /// Creates a sorted version of a collection. A supplied <see cref="Comparison{T}"/> delegate is used
         /// to compare the items in the collection.
         /// </summary>
         /// <param name="collection">The collection to sort.</param>
@@ -3694,9 +3694,9 @@ namespace ARWNI2S.Collections
         /// </summary>
         /// <remarks><para>The Quicksort algorithms is used to sort the items. In virtually all cases,
         /// this takes time O(N log N), where N is the number of items in the list.</para>
-        /// <para>Values are compared by using the IComparable&lt;T&gt;
+        /// <para>Values are compared by using the <see cref="IComparable{T}"/>
         /// interfaces implementation on the type T.</para>
-        /// <para>Although arrays cast to IList&lt;T&gt; are normally read-only, this method
+        /// <para>Although arrays cast to <see cref="IList{T}"/> are normally read-only, this method
         /// will work correctly and modify an array passed as <paramref name="list"/>.</para></remarks>
         /// <param name="list">The list or array to sort.</param>
         public static void SortInPlace<T>(IList<T> list)
@@ -3706,12 +3706,12 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// Sorts a list or array in place. A supplied IComparer&lt;T&gt; is used
+        /// Sorts a list or array in place. A supplied <see cref="IComparer{T}"/> is used
         /// to compare the items in the list. 
         /// </summary>
         /// <remarks><para>The Quicksort algorithms is used to sort the items. In virtually all cases,
         /// this takes time O(N log N), where N is the number of items in the list.</para>
-        /// <para>Although arrays cast to IList&lt;T&gt; are normally read-only, this method
+        /// <para>Although arrays cast to <see cref="IList{T}"/> are normally read-only, this method
         /// will work correctly and modify an array passed as <paramref name="list"/>.</para></remarks>
         /// <param name="list">The list or array to sort.</param>
         /// <param name="comparer">The comparer instance used to compare items in the collection. Only
@@ -3863,12 +3863,12 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// Sorts a list or array in place. A supplied Comparison&lt;T&gt; delegate is used
+        /// Sorts a list or array in place. A supplied <see cref="Comparison{T}"/> delegate is used
         /// to compare the items in the list.
         /// </summary>
         /// <remarks><para>The Quicksort algorithms is used to sort the items. In virtually all cases,
         /// this takes time O(N log N), where N is the number of items in the list.</para>
-        /// <para>Although arrays cast to IList&lt;T&gt; are normally read-only, this method
+        /// <para>Although arrays cast to <see cref="IList{T}"/> are normally read-only, this method
         /// will work correctly and modify an array passed as <paramref name="list"/>.</para></remarks>
         /// <param name="list">The list or array to sort.</param>
         /// <param name="comparison">The comparison delegate used to compare items in the collection.</param>
@@ -3881,7 +3881,7 @@ namespace ARWNI2S.Collections
         /// Creates a sorted version of a collection. The sort is stable, which means that if items X and Y are equal,
         /// and X precedes Y in the unsorted collection, X will precede Y is the sorted collection.
         /// </summary>
-        /// <remarks>Values are compared by using the IComparable&lt;T&gt;
+        /// <remarks>Values are compared by using the <see cref="IComparable{T}"/>
         /// interfaces implementation on the type T.</remarks>
         /// <param name="collection">The collection to sort.</param>
         /// <returns>An array containing the sorted version of the collection.</returns>
@@ -3893,7 +3893,7 @@ namespace ARWNI2S.Collections
 
         /// <summary>
         /// Creates a sorted version of a collection. The sort is stable, which means that if items X and Y are equal,
-        /// and X precedes Y in the unsorted collection, X will precede Y is the sorted collection. A supplied IComparer&lt;T&gt; is used
+        /// and X precedes Y in the unsorted collection, X will precede Y is the sorted collection. A supplied <see cref="IComparer{T}"/> is used
         /// to compare the items in the collection. 
         /// </summary>
         /// <param name="collection">The collection to sort.</param>
@@ -3918,10 +3918,10 @@ namespace ARWNI2S.Collections
         /// <summary>
         /// Creates a sorted version of a collection. The sort is stable, which means that if items X and Y are equal,
         /// and X precedes Y in the unsorted collection, X will precede Y is the sorted collection. 
-        /// A supplied Comparison&lt;T&gt; delegate is used
+        /// A supplied <see cref="Comparison{T}"/> delegate is used
         /// to compare the items in the collection.
         /// </summary>
-        /// <remarks>Values are compared by using the IComparable&lt;T&gt;
+        /// <remarks>Values are compared by using the <see cref="IComparable{T}"/>
         /// interfaces implementation on the type T.</remarks>
         /// <param name="collection">The collection to sort.</param>
         /// <param name="comparison">The comparison delegate used to compare items in the collection.</param>
@@ -3935,9 +3935,9 @@ namespace ARWNI2S.Collections
         /// Sorts a list or array in place. The sort is stable, which means that if items X and Y are equal,
         /// and X precedes Y in the unsorted collection, X will precede Y is the sorted collection. 
         /// </summary>
-        /// <remarks><para>Values are compared by using the IComparable&lt;T&gt;
+        /// <remarks><para>Values are compared by using the <see cref="IComparable{T}"/>
         /// interfaces implementation on the type T.</para>
-        /// <para>Although arrays cast to IList&lt;T&gt; are normally read-only, this method
+        /// <para>Although arrays cast to <see cref="IList{T}"/> are normally read-only, this method
         /// will work correctly and modify an array passed as <paramref name="list"/>.</para></remarks>
         /// <param name="list">The list or array to sort.</param>
         public static void StableSortInPlace<T>(IList<T> list)
@@ -3949,10 +3949,10 @@ namespace ARWNI2S.Collections
         /// <summary>
         /// Sorts a list or array in place. The sort is stable, which means that if items X and Y are equal,
         /// and X precedes Y in the unsorted collection, X will precede Y is the sorted collection. 
-        /// A supplied IComparer&lt;T&gt; is used
+        /// A supplied <see cref="IComparer{T}"/> is used
         /// to compare the items in the list. 
         /// </summary>
-        /// <remarks>Although arrays cast to IList&lt;T&gt; are normally read-only, this method
+        /// <remarks>Although arrays cast to <see cref="IList{T}"/> are normally read-only, this method
         /// will work correctly and modify an array passed as <paramref name="list"/>.</remarks>
         /// <param name="list">The list or array to sort.</param>
         /// <param name="comparer">The comparer instance used to compare items in the collection. Only
@@ -4116,10 +4116,10 @@ namespace ARWNI2S.Collections
         /// <summary>
         /// Sorts a list or array in place. The sort is stable, which means that if items X and Y are equal,
         /// and X precedes Y in the unsorted collection, X will precede Y is the sorted collection. 
-        /// A supplied Comparison&lt;T&gt; delegate is used
+        /// A supplied <see cref="Comparison{T}"/> delegate is used
         /// to compare the items in the list.
         /// </summary>
-        /// <remarks>Although arrays cast to IList&lt;T&gt; are normally read-only, this method
+        /// <remarks>Although arrays cast to <see cref="IList{T}"/> are normally read-only, this method
         /// will work correctly and modify an array passed as <paramref name="list"/>.</remarks>
         /// <param name="list">The list or array to sort.</param>
         /// <param name="comparison">The comparison delegate used to compare items in the collection.</param>
@@ -4130,7 +4130,7 @@ namespace ARWNI2S.Collections
 
         /// <summary>
         /// Searches a sorted list for an item via binary search. The list must be sorted
-        /// by the natural ordering of the type (it's implementation of IComparable&lt;T&gt;).
+        /// by the natural ordering of the type (it's implementation of <see cref="IComparable{T}"/>).
         /// </summary>
         /// <param name="list">The sorted list to search.</param>
         /// <param name="item">The item to search for.</param>
@@ -4147,7 +4147,7 @@ namespace ARWNI2S.Collections
 
         /// <summary>
         /// Searches a sorted list for an item via binary search. The list must be sorted
-        /// by the ordering in the passed instance of IComparer&lt;T&gt;.
+        /// by the ordering in the passed instance of <see cref="IComparer{T}"/>.
         /// </summary>
         /// <param name="list">The sorted list to search.</param>
         /// <param name="item">The item to search for.</param>
@@ -4241,7 +4241,7 @@ namespace ARWNI2S.Collections
 
         /// <summary>
         /// Searches a sorted list for an item via binary search. The list must be sorted
-        /// by the ordering in the passed Comparison&lt;T&gt; delegate.
+        /// by the ordering in the passed <see cref="Comparison{T}"/> delegate.
         /// </summary>
         /// <param name="list">The sorted list to search.</param>
         /// <param name="item">The item to search for.</param>
@@ -4258,13 +4258,13 @@ namespace ARWNI2S.Collections
 
         /// <summary>
         /// Merge several sorted collections into a single sorted collection. Each input collection must be sorted
-        /// by the natural ordering of the type (it's implementation of IComparable&lt;T&gt;). The merging
+        /// by the natural ordering of the type (it's implementation of <see cref="IComparable{T}"/>). The merging
         /// is stable; equal items maintain their ordering, and equal items in different collections are placed
         /// in the order of the collections.
         /// </summary>
         /// <param name="collections">The set of collections to merge. In many languages, this parameter
         /// can be specified as several individual parameters.</param>
-        /// <returns>An IEnumerable&lt;T&gt; that enumerates all the items in all the collections
+        /// <returns>An <see cref="IEnumerable{T}"/> that enumerates all the items in all the collections
         /// in sorted order. </returns>
         public static IEnumerable<T> MergeSorted<T>(params IEnumerable<T>[] collections)
             where T : IComparable<T>
@@ -4274,7 +4274,7 @@ namespace ARWNI2S.Collections
 
         /// <summary>
         /// Merge several sorted collections into a single sorted collection. Each input collection must be sorted
-        /// by the ordering in the passed instance of IComparer&lt;T&gt;. The merging
+        /// by the ordering in the passed instance of <see cref="IComparer{T}"/>. The merging
         /// is stable; equal items maintain their ordering, and equal items in different collections are placed
         /// in the order of the collections.
         /// </summary>
@@ -4282,7 +4282,7 @@ namespace ARWNI2S.Collections
         /// can be specified as several individual parameters.</param>
         /// <param name="comparer">The comparer instance used to sort the list. Only
         /// the Compare method is used.</param>
-        /// <returns>An IEnumerable&lt;T&gt; that enumerates all the items in all the collections
+        /// <returns>An <see cref="IEnumerable{T}"/> that enumerates all the items in all the collections
         /// in sorted order. </returns>
         public static IEnumerable<T> MergeSorted<T>(IComparer<T> comparer, params IEnumerable<T>[] collections)
         {
@@ -4349,14 +4349,14 @@ namespace ARWNI2S.Collections
 
         /// <summary>
         /// Merge several sorted collections into a single sorted collection. Each input collection must be sorted
-        /// by the ordering in the passed Comparison&lt;T&gt; delegate. The merging
+        /// by the ordering in the passed <see cref="Comparison{T}"/> delegate. The merging
         /// is stable; equal items maintain their ordering, and equal items in different collections are placed
         /// in the order of the collections.
         /// </summary>
         /// <param name="collections">The set of collections to merge. In many languages, this parameter
         /// can be specified as several individual parameters.</param>
         /// <param name="comparison">The comparison delegate used to sort the collections.</param>
-        /// <returns>An IEnumerable&lt;T&gt; that enumerates all the items in all the collections
+        /// <returns>An <see cref="IEnumerable{T}"/> that enumerates all the items in all the collections
         /// in sorted order. </returns>
         public static IEnumerable<T> MergeSorted<T>(Comparison<T> comparison, params IEnumerable<T>[] collections)
         {
@@ -4371,16 +4371,16 @@ namespace ARWNI2S.Collections
         /// are equal, then the comparison proceeds to the second element of each sequence. If one sequence is shorter than the other,
         /// but corresponding elements are all equal, then the shorter sequence is considered less than the longer one.
         /// </summary>
-        /// <remarks>T must implement either IComparable&lt;T&gt; and this implementation is used
+        /// <remarks>T must implement either <see cref="IComparable{T}"/> and this implementation is used
         /// to compare the items. </remarks>
-        /// <typeparam name="T">Types of items to compare. This type must implement IComparable&lt;T&gt; to allow 
+        /// <typeparam name="T">Types of items to compare. This type must implement <see cref="IComparable{T}"/> to allow 
         /// items to be compared.</typeparam>
         /// <param name="sequence1">The first sequence to compare.</param>
         /// <param name="sequence2">The second sequence to compare.</param>
         /// <returns>Less than zero if <paramref name="sequence1"/> is lexicographically less than <paramref name="sequence2"/>.
         /// Greater than zero if <paramref name="sequence1"/> is lexicographically greater than <paramref name="sequence2"/>.
         /// Zero if <paramref name="sequence1"/> is equal to <paramref name="sequence2"/>.</returns>
-        /// <exception cref="NotSupportedException">T does not implement IComparable&lt;T&gt; or IComparable.</exception>
+        /// <exception cref="NotSupportedException">T does not implement <see cref="IComparable{T}"/> or IComparable.</exception>
         public static int LexicographicalCompare<T>(IEnumerable<T> sequence1, IEnumerable<T> sequence2)
             where T : IComparable<T>
         {
@@ -4397,7 +4397,7 @@ namespace ARWNI2S.Collections
         /// <typeparam name="T">Types of items to compare.</typeparam>
         /// <param name="sequence1">The first sequence to compare.</param>
         /// <param name="sequence2">The second sequence to compare.</param>
-        /// <param name="comparison">The IComparison&lt;T&gt; delegate to compare items. 
+        /// <param name="comparison">The <see cref="Comparison{T}"/> delegate to compare items. 
         /// Only the Compare member function of this interface is called.</param>
         /// <returns>Less than zero if <paramref name="sequence1"/> is lexicographically less than <paramref name="sequence2"/>.
         /// Greater than zero if <paramref name="sequence1"/> is lexicographically greater than <paramref name="sequence2"/>.
@@ -4417,7 +4417,7 @@ namespace ARWNI2S.Collections
         /// <typeparam name="T">Types of items to compare.</typeparam>
         /// <param name="sequence1">The first sequence to compare.</param>
         /// <param name="sequence2">The second sequence to compare.</param>
-        /// <param name="comparer">The IComparer&lt;T&gt; used to compare items. 
+        /// <param name="comparer">The <see cref="IComparer{T}"/> used to compare items. 
         /// Only the Compare member function of this interface is called.</param>
         /// <returns>Less than zero if <paramref name="sequence1"/> is lexicographically less than <paramref name="sequence2"/>.
         /// Greater than zero if <paramref name="sequence1"/> is lexicographically greater than <paramref name="sequence2"/>.
@@ -4510,9 +4510,9 @@ namespace ARWNI2S.Collections
         /// for collections or algorithms that use sequences of T as an item type. The Lexicographical
         /// ordered of sequences is for comparison.
         /// </summary>
-        /// <remarks>T must implement either IComparable&lt;T&gt; and this implementation is used
+        /// <remarks>T must implement either <see cref="IComparable{T}"/> and this implementation is used
         /// to compare the items. </remarks>
-        /// <returns>At IComparer&lt;IEnumerable&lt;T&gt;&gt; that compares sequences of T.</returns>
+        /// <returns>At IComparer&lt;<see cref="IEnumerable{T}"/>&gt; that compares sequences of T.</returns>
         public static IComparer<IEnumerable<T>> GetLexicographicalComparer<T>()
             where T : IComparable<T>
         {
@@ -4526,7 +4526,7 @@ namespace ARWNI2S.Collections
         /// ordered of sequences is for comparison.
         /// </summary>
         /// <param name="comparer">A comparer instance used to compare individual items of type T.</param>
-        /// <returns>At IComparer&lt;IEnumerable&lt;T&gt;&gt; that compares sequences of T.</returns>
+        /// <returns>At IComparer&lt;<see cref="IEnumerable{T}"/>&gt; that compares sequences of T.</returns>
         public static IComparer<IEnumerable<T>> GetLexicographicalComparer<T>(IComparer<T> comparer)
         {
             if (comparer == null)
@@ -4542,7 +4542,7 @@ namespace ARWNI2S.Collections
         /// ordered of sequences is for comparison.
         /// </summary>
         /// <param name="comparison">A comparison delegate used to compare individual items of type T.</param>
-        /// <returns>At IComparer&lt;IEnumerable&lt;T&gt;&gt; that compares sequences of T.</returns>
+        /// <returns>At IComparer&lt;<see cref="IEnumerable{T}"/>&gt; that compares sequences of T.</returns>
         public static IComparer<IEnumerable<T>> GetLexicographicalComparer<T>(Comparison<T> comparison)
         {
             if (comparison == null)
@@ -4590,12 +4590,12 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// Reverses the order of comparison of an IComparer&lt;T&gt;. The resulting comparer can be used,
+        /// Reverses the order of comparison of an <see cref="IComparer{T}"/>. The resulting comparer can be used,
         /// for example, to sort a collection in descending order. Equality and hash codes are unchanged.
         /// </summary>
         /// <typeparam name="T">The type of items thta are being compared.</typeparam>
         /// <param name="comparer">The comparer to reverse.</param>
-        /// <returns>An IComparer&lt;T&gt; that compares items in the reverse order of <paramref name="comparer"/>.</returns>
+        /// <returns>An <see cref="IComparer{T}"/> that compares items in the reverse order of <paramref name="comparer"/>.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="comparer"/> is null.</exception>
         public static IComparer<T> GetReverseComparer<T>(IComparer<T> comparer)
         {
@@ -4606,7 +4606,7 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// A class, implementing IEqualityComparer&lt;T&gt;, that compares objects
+        /// A class, implementing <see cref="IEqualityComparer{T}"/>, that compares objects
         /// for object identity only. Only Equals and GetHashCode can be used;
         /// this implementation is not appropriate for ordering.
         /// </summary>
@@ -4638,11 +4638,11 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// Gets an IEqualityComparer&lt;T&gt; instance that can be used to compare objects
+        /// Gets an <see cref="IEqualityComparer{T}"/> instance that can be used to compare objects
         /// of type T for object identity only. Two objects compare equal only if they
         /// are references to the same object. 
         /// </summary>
-        /// <returns>An IEqualityComparer&lt;T&gt; instance for identity comparison.</returns>
+        /// <returns>An <see cref="IEqualityComparer{T}"/> instance for identity comparison.</returns>
         public static IEqualityComparer<T> GetIdentityComparer<T>()
             where T : class
         {
@@ -4650,12 +4650,12 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// Reverses the order of comparison of an Comparison&lt;T&gt;. The resulting comparison can be used,
+        /// Reverses the order of comparison of an <see cref="Comparison{T}"/>. The resulting comparison can be used,
         /// for example, to sort a collection in descending order. 
         /// </summary>
         /// <typeparam name="T">The type of items that are being compared.</typeparam>
         /// <param name="comparison">The comparison to reverse.</param>
-        /// <returns>A Comparison&lt;T&gt; that compares items in the reverse order of <paramref name="comparison"/>.</returns>
+        /// <returns>A <see cref="Comparison{T}"/> that compares items in the reverse order of <paramref name="comparison"/>.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="comparison"/> is null.</exception>
         public static Comparison<T> GetReverseComparison<T>(Comparison<T> comparison)
         {
@@ -4667,10 +4667,10 @@ namespace ARWNI2S.Collections
 
         /// <summary>
         /// Given a comparison delegate that compares two items of type T, gets an
-        /// IComparer&lt;T&gt; instance that performs the same comparison.
+        /// <see cref="IComparer{T}"/> instance that performs the same comparison.
         /// </summary>
         /// <param name="comparison">The comparison delegate to use.</param>
-        /// <returns>An IComparer&lt;T&gt; that performs the same comparing operation
+        /// <returns>An <see cref="IComparer{T}"/> that performs the same comparing operation
         /// as <paramref name="comparison"/>.</returns>
         public static IComparer<T> GetComparerFromComparison<T>(Comparison<T> comparison)
         {
@@ -4681,11 +4681,11 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// Given in IComparer&lt;T&gt; instenace that comparers two items from type T, 
+        /// Given in <see cref="IComparer{T}"/> instenace that comparers two items from type T, 
         /// gets a Comparison delegate that performs the same comparison.
         /// </summary>
-        /// <param name="comparer">The IComparer&lt;T&gt; instance to use.</param>
-        /// <returns>A Comparison&lt;T&gt; delegate that performans the same comparing
+        /// <param name="comparer">The <see cref="IComparer{T}"/> instance to use.</param>
+        /// <returns>A <see cref="Comparison{T}"/> delegate that performans the same comparing
         /// operation as <paramref name="comparer"/>.</returns>
         public static Comparison<T> GetComparisonFromComparer<T>(IComparer<T> comparer)
         {
@@ -4697,7 +4697,7 @@ namespace ARWNI2S.Collections
 
         /// <summary>
         /// A private class used to implement GetCollectionEqualityComparer(). This
-        /// class implements IEqualityComparer&lt;IEnumerable&lt;T&gt;gt; to compare
+        /// class implements IEqualityComparer&lt;<see cref="IEnumerable{T}"/>gt; to compare
         /// two enumerables for equality, where order is significant.
         /// </summary>
         [Serializable]
@@ -4730,11 +4730,11 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// Gets an IEqualityComparer&lt;IEnumerable&lt;T&gt;&gt; implementation 
+        /// Gets an IEqualityComparer&lt;<see cref="IEnumerable{T}"/>&gt; implementation 
         /// that can be used to compare collections of elements (of type T). Two collections
         /// of T's are equal if they have the same number of items, and corresponding 
         /// items are equal, considered in order. This is the same notion of equality as
-        /// in Algorithms.EqualCollections, but encapsulated in an IEqualityComparer&lt;IEnumerable&lt;T&gt;&gt; implementation.
+        /// in Algorithms.EqualCollections, but encapsulated in an IEqualityComparer&lt;<see cref="IEnumerable{T}"/>&gt; implementation.
         /// </summary>
         /// <example>
         /// The following code creates a Dictionary where the keys are a collection of strings.
@@ -4743,7 +4743,7 @@ namespace ARWNI2S.Collections
         ///         new Dictionary&lt;IEnumerable&lt;string&gt;, int&gt;(Algorithms.GetCollectionEqualityComparer&lt;string&gt;());
         /// </code>
         /// </example>
-        /// <returns>IEqualityComparer&lt;IEnumerable&lt;T&gt;&gt; implementation suitable for 
+        /// <returns>IEqualityComparer&lt;<see cref="IEnumerable{T}"/>&gt; implementation suitable for 
         /// comparing collections of T for equality.</returns>
         /// <seealso cref="EqualCollections{T}(IEnumerable{T}, IEnumerable{T})"/>
         /// <seealso cref="EqualCollections{T}(IEnumerable{T}, IEnumerable{T}, IEqualityComparer{T})"/>
@@ -4753,12 +4753,12 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// <para>Gets an IEqualityComparer&lt;IEnumerable&lt;T&gt;&gt; implementation 
+        /// <para>Gets an IEqualityComparer&lt;<see cref="IEnumerable{T}"/>&gt; implementation 
         /// that can be used to compare collections of elements (of type T). Two collections
         /// of T's are equal if they have the same number of items, and corresponding 
         /// items are equal, considered in order. This is the same notion of equality as
-        /// in Algorithms.EqualCollections, but encapsulated in an IEqualityComparer&lt;IEnumerable&lt;T&gt;&gt; implementation.</para>
-        /// <para>An IEqualityComparer&lt;T&gt; is used to determine if individual T's are equal</para>
+        /// in Algorithms.EqualCollections, but encapsulated in an IEqualityComparer&lt;<see cref="IEnumerable{T}"/>&gt; implementation.</para>
+        /// <para>An <see cref="IEqualityComparer{T}"/> is used to determine if individual T's are equal</para>
         /// </summary>
         /// <example>
         /// The following code creates a Dictionary where the keys are a collection of strings, compared in a case-insensitive way
@@ -4767,8 +4767,8 @@ namespace ARWNI2S.Collections
         ///         new Dictionary&lt;IEnumerable&lt;string&gt;, int&gt;(Algorithms.GetCollectionEqualityComparer&lt;string&gt;(StringComparer.CurrentCultureIgnoreCase));
         /// </code>
         /// </example>
-        /// <param name="equalityComparer">An IEqualityComparer&lt;T&gt; implementation used to compare individual T's.</param>
-        /// <returns>IEqualityComparer&lt;IEnumerable&lt;T&gt;&gt; implementation suitable for 
+        /// <param name="equalityComparer">An <see cref="IEqualityComparer{T}"/> implementation used to compare individual T's.</param>
+        /// <returns>IEqualityComparer&lt;<see cref="IEnumerable{T}"/>&gt; implementation suitable for 
         /// comparing collections of T for equality.</returns>
         /// <seealso cref="EqualCollections{T}(IEnumerable{T}, IEnumerable{T})"/>
         /// <seealso cref="EqualCollections{T}(IEnumerable{T}, IEnumerable{T}, IEqualityComparer{T})"/>
@@ -4782,7 +4782,7 @@ namespace ARWNI2S.Collections
 
         /// <summary>
         /// A private class used to implement GetSetEqualityComparer(). This
-        /// class implements IEqualityComparer&lt;IEnumerable&lt;T&gt;gt; to compare
+        /// class implements IEqualityComparer&lt;<see cref="IEnumerable{T}"/>gt; to compare
         /// two enumerables for equality, where order is not significant.
         /// </summary>
         [Serializable]
@@ -4814,12 +4814,12 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// <para>Gets an IEqualityComparer&lt;IEnumerable&lt;T&gt;&gt; implementation 
+        /// <para>Gets an IEqualityComparer&lt;<see cref="IEnumerable{T}"/>&gt; implementation 
         /// that can be used to compare collections of elements (of type T). Two collections
         /// of T's are equal if they have the same number of items, and corresponding 
         /// items are equal, without regard to order. This is the same notion of equality as
-        /// in Algorithms.EqualSets, but encapsulated in an IEqualityComparer&lt;IEnumerable&lt;T&gt;&gt; implementation.</para>
-        /// <para>An IEqualityComparer&lt;T&gt; is used to determine if individual T's are equal</para>
+        /// in Algorithms.EqualSets, but encapsulated in an IEqualityComparer&lt;<see cref="IEnumerable{T}"/>&gt; implementation.</para>
+        /// <para>An <see cref="IEqualityComparer{T}"/> is used to determine if individual T's are equal</para>
         /// </summary>
         /// <example>
         /// The following code creates a Dictionary where the keys are a set of strings, without regard to order
@@ -4828,7 +4828,7 @@ namespace ARWNI2S.Collections
         ///         new Dictionary&lt;IEnumerable&lt;string&gt;, int&gt;(Algorithms.GetSetEqualityComparer&lt;string&gt;(StringComparer.CurrentCultureIgnoreCase));
         /// </code>
         /// </example>
-        /// <returns>IEqualityComparer&lt;IEnumerable&lt;T&gt;&gt; implementation suitable for 
+        /// <returns>IEqualityComparer&lt;<see cref="IEnumerable{T}"/>&gt; implementation suitable for 
         /// comparing collections of T for equality, without regard to order.</returns>
         /// <seealso cref="EqualSets{T}(IEnumerable{T}, IEnumerable{T})"/>
         /// <seealso cref="EqualSets{T}(IEnumerable{T}, IEnumerable{T}, IEqualityComparer{T})"/>
@@ -4838,11 +4838,11 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// Gets an IEqualityComparer&lt;IEnumerable&lt;T&gt;&gt; implementation 
+        /// Gets an IEqualityComparer&lt;<see cref="IEnumerable{T}"/>&gt; implementation 
         /// that can be used to compare collections of elements (of type T). Two collections
         /// of T's are equal if they have the same number of items, and corresponding 
         /// items are equal, without regard to order. This is the same notion of equality as
-        /// in Algorithms.EqualSets, but encapsulated in an IEqualityComparer&lt;IEnumerable&lt;T&gt;&gt; implementation.
+        /// in Algorithms.EqualSets, but encapsulated in an IEqualityComparer&lt;<see cref="IEnumerable{T}"/>&gt; implementation.
         /// </summary>
         /// <example>
         /// The following code creates a Dictionary where the keys are a set of strings, without regard to order
@@ -4851,8 +4851,8 @@ namespace ARWNI2S.Collections
         ///         new Dictionary&lt;IEnumerable&lt;string&gt;, int&gt;(Algorithms.GetSetEqualityComparer&lt;string&gt;());
         /// </code>
         /// </example>
-        /// <param name="equalityComparer">An IEqualityComparer&lt;T&gt; implementation used to compare individual T's.</param>
-        /// <returns>IEqualityComparer&lt;IEnumerable&lt;T&gt;&gt; implementation suitable for 
+        /// <param name="equalityComparer">An <see cref="IEqualityComparer{T}"/> implementation used to compare individual T's.</param>
+        /// <returns>IEqualityComparer&lt;<see cref="IEnumerable{T}"/>&gt; implementation suitable for 
         /// comparing collections of T for equality, without regard to order.</returns>
         /// <seealso cref="EqualSets{T}(IEnumerable{T}, IEnumerable{T})"/>
         /// <seealso cref="EqualSets{T}(IEnumerable{T}, IEnumerable{T}, IEqualityComparer{T})"/>
@@ -4946,8 +4946,8 @@ namespace ARWNI2S.Collections
         /// Removes all the items in the collection that satisfy the condition
         /// defined by <paramref name="predicate"/>.
         /// </summary>
-        /// <remarks>If the collection if an array or implements IList&lt;T&gt;, an efficient algorithm that
-        /// compacts items is used. If not, then ICollection&lt;T&gt;.Remove is used
+        /// <remarks>If the collection if an array or implements <see cref="IList{T}"/>, an efficient algorithm that
+        /// compacts items is used. If not, then <see cref="ICollection{T}"/>.Remove is used
         /// to remove items from the collection. If the collection is an array or fixed-size list,
         /// the non-removed elements are placed, in order, at the beginning of
         /// the list, and the remaining list items are filled with a default value (0 or null).</remarks>
@@ -5113,7 +5113,7 @@ namespace ARWNI2S.Collections
         /// Partition a list or array based on a predicate. After partitioning, all items for which
         /// the predicate returned true precede all items for which the predicate returned false.
         /// </summary>
-        /// <remarks>Although arrays cast to IList&lt;T&gt; are normally read-only, this method
+        /// <remarks>Although arrays cast to <see cref="IList{T}"/> are normally read-only, this method
         /// will work correctly and modify an array passed as <paramref name="list"/>.</remarks>
         /// <param name="list">The list or array to partition.</param>
         /// <param name="predicate">A delegate that defines the partitioning condition.</param>
@@ -5162,7 +5162,7 @@ namespace ARWNI2S.Collections
         /// the predicate, and X precedes Y in the original list, X will precede Y in the 
         /// partitioned list.
         /// </summary>
-        /// <remarks>Although arrays cast to IList&lt;T&gt; are normally read-only, this method
+        /// <remarks>Although arrays cast to <see cref="IList{T}"/> are normally read-only, this method
         /// will work correctly and modify an array passed as <paramref name="list"/>.</remarks>
         /// <param name="list">The list or array to partition.</param>
         /// <param name="predicate">A delegate that defines the partitioning condition.</param>
@@ -5237,7 +5237,7 @@ namespace ARWNI2S.Collections
         /// to be of the same type; it is permissible to compare an array and an OrderedBag, for instance.
         /// </summary>
         /// <remarks>The default sense of equality for T is used, as defined by T's
-        /// implementation of IComparable&lt;T&gt;.Equals or object.Equals.</remarks>
+        /// implementation of <see cref="IComparable{T}"/>.Equals or object.Equals.</remarks>
         /// <typeparam name="T">The type of items in the collections.</typeparam>
         /// <param name="collection1">The first collection to compare.</param>
         /// <param name="collection2">The second collection to compare.</param>
@@ -5249,12 +5249,12 @@ namespace ARWNI2S.Collections
 
         /// <summary>
         /// Determines if the two collections contain equal items in the same order. The passed 
-        /// instance of IEqualityComparer&lt;T&gt; is used for determining if two items are equal.
+        /// instance of <see cref="IEqualityComparer{T}"/> is used for determining if two items are equal.
         /// </summary>
         /// <typeparam name="T">The type of items in the collections.</typeparam>
         /// <param name="collection1">The first collection to compare.</param>
         /// <param name="collection2">The second collection to compare.</param>
-        /// <param name="equalityComparer">The IEqualityComparer&lt;T&gt; used to compare items for equality. 
+        /// <param name="equalityComparer">The <see cref="IEqualityComparer{T}"/> used to compare items for equality. 
         /// Only the Equals member function of this interface is called.</param>
         /// <returns>True if the collections have equal items in the same order. If both collections are empty, true is returned.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="collection1"/>, <paramref name="collection2"/>, or
@@ -5343,8 +5343,8 @@ namespace ARWNI2S.Collections
         /// <summary>
         /// Create an array with the items in a collection.
         /// </summary>
-        /// <remarks>If <paramref name="collection"/> implements ICollection&lt;T&gt;T, then 
-        /// ICollection&lt;T&gt;.CopyTo() is used to fill the array. Otherwise, the IEnumerable&lt;T&gt;.GetEnumerator()
+        /// <remarks>If <paramref name="collection"/> implements <see cref="ICollection{T}"/>T, then 
+        /// <see cref="ICollection{T}"/>.CopyTo() is used to fill the array. Otherwise, the <see cref="IEnumerable{T}"/>.GetEnumerator()
         /// is used to fill the array.</remarks>
         /// <typeparam name="T">Element type of the collection.</typeparam>
         /// <param name="collection">Collection to create array from.</param>
@@ -5376,12 +5376,12 @@ namespace ARWNI2S.Collections
         }
 
         /// <summary>
-        /// Count the number of items in an IEnumerable&lt;T&gt; collection. If 
+        /// Count the number of items in an <see cref="IEnumerable{T}"/> collection. If 
         /// a more specific collection type is being used, it is more efficient to use
         /// the Count property, if one is provided.
         /// </summary>
-        /// <remarks>If the collection implements ICollection&lt;T&gt;, this method
-        /// simply returns ICollection&lt;T&gt;.Count. Otherwise, it enumerates all items
+        /// <remarks>If the collection implements <see cref="ICollection{T}"/>, this method
+        /// simply returns <see cref="ICollection{T}"/>.Count. Otherwise, it enumerates all items
         /// and counts them.</remarks>
         /// <param name="collection">The collection to count items in.</param>
         /// <returns>The number of items in the collection.</returns>
@@ -5408,7 +5408,7 @@ namespace ARWNI2S.Collections
         /// Counts the number of items in the collection that are equal to <paramref name="find"/>.
         /// </summary>
         /// <remarks>The default sense of equality for T is used, as defined by T's
-        /// implementation of IComparable&lt;T&gt;.Equals or object.Equals.</remarks>
+        /// implementation of <see cref="IComparable{T}"/>.Equals or object.Equals.</remarks>
         /// <param name="collection">The collection to count items in.</param>
         /// <param name="find">The item to compare to.</param>
         /// <returns>The number of items in the collection that are equal to <paramref name="find"/>.</returns>
@@ -5454,7 +5454,7 @@ namespace ARWNI2S.Collections
         /// </code></example>
         /// <param name="n">The number of times to enumerate the item.</param>
         /// <param name="item">The item that should occur in the enumeration.</param>
-        /// <returns>An IEnumerable&lt;T&gt; that yields <paramref name="n"/> copies
+        /// <returns>An <see cref="IEnumerable{T}"/> that yields <paramref name="n"/> copies
         /// of <paramref name="item"/>.</returns>
         /// <exception cref="ArgumentOutOfRangeException">The argument <paramref name="n"/> is less than zero.</exception>
         public static IEnumerable<T> NCopiesOf<T>(int n, T item)
@@ -5851,7 +5851,7 @@ namespace ARWNI2S.Collections
         /// <summary>
         /// Reverses a list or array in place.
         /// </summary>
-        /// <remarks>Although arrays cast to IList&lt;T&gt; are normally read-only, this method
+        /// <remarks>Although arrays cast to <see cref="IList{T}"/> are normally read-only, this method
         /// will work correctly and modify an array passed as <paramref name="list"/>.</remarks>
         /// <param name="list">The list or array to reverse.</param>
         /// <exception cref="ArgumentNullException"><paramref name="list"/> is null.</exception>
@@ -5910,7 +5910,7 @@ namespace ARWNI2S.Collections
         /// <summary>
         /// Rotates a list or array in place.
         /// </summary>
-        /// <remarks>Although arrays cast to IList&lt;T&gt; are normally read-only, this method
+        /// <remarks>Although arrays cast to <see cref="IList{T}"/> are normally read-only, this method
         /// will work correctly and modify an array passed as <paramref name="list"/>.</remarks>
         /// <param name="list">The list or array to rotate.</param>
         /// <param name="amountToRotate">The number of elements to rotate. This value can be positive or negative. 

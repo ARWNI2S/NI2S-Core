@@ -1,15 +1,16 @@
 ﻿using ARWNI2S.Collections.Comparison;
+using ARWNI2S.Collections.Ordered;
 
 namespace ARWNI2S.Collections.Generic
 {
     /// <summary>
-    /// Bag&lt;T&gt; is a collection that contains items of type T. 
+    /// <see cref="Bag{T}"/> is a collection that contains items of type T. 
     /// Unlike a Set, duplicate items (items that compare equal to each other) are allowed in an Bag. 
     /// </summary>
     /// <remarks>
-    /// <p>The items are compared in one of two ways. If T implements IComparable&lt;T&gt; 
+    /// <p>The items are compared in one of two ways. If T implements <see cref="IComparable{T}"/> 
     /// then the Equals method of that interface will be used to compare items, otherwise the Equals
-    /// method from object will be used. Alternatively, an instance of IComparer&lt;T&gt; can be passed
+    /// method from object will be used. Alternatively, an instance of <see cref="IComparer{T}"/> can be passed
     /// to the constructor to use to compare items.</p>
     /// <p>Bag is implemented as a hash table. Inserting, deleting, and looking up an
     /// an element all are done in approximately constant time, regardless of the number of items in the bag.</p>
@@ -17,10 +18,10 @@ namespace ARWNI2S.Collections.Generic
     /// If equal items can be distinguished, this may be noticable. For example, if a case-insensitive
     /// comparer is used with a Bag&lt;string&gt;, and both "hello", and "HELLO" are added to the bag, then the
     /// bag will appear to contain two copies of "hello" (the representative item).</p>
-    /// <p><see cref="Sorted.OrderedBag{T}"/> is similar, but uses comparison instead of hashing, maintain
+    /// <p><see cref="Collections.Ordered.OrderedBag{T}"/> is similar, but uses comparison instead of hashing, maintain
     /// the items in sorted order, and stores distinct copies of items that compare equal.</p>
     ///</remarks>
-    ///<seealso cref="Sorted.OrderedBag{T}" />
+    ///<seealso cref="OrderedBag{T}" />
     [Serializable]
     [GenerateSerializer]
     internal class Bag<T> : CollectionBase<T>, ICloneable
@@ -78,7 +79,7 @@ namespace ARWNI2S.Collections.Generic
         /// Creates a new Bag. The Equals and GetHashCode methods of the passed comparison object
         /// will be used to compare items in this bag for equality.
         /// </summary>
-        /// <param name="equalityComparer">An instance of IEqualityComparer&lt;T&gt; that will be used to compare items.</param>
+        /// <param name="equalityComparer">An instance of <see cref="IEqualityComparer{T}"/> that will be used to compare items.</param>
         public Bag(IEqualityComparer<T> equalityComparer)
         {
             if (equalityComparer == null)
@@ -108,7 +109,7 @@ namespace ARWNI2S.Collections.Generic
         /// initialized with all the items in the given collection.
         /// </summary>
         /// <param name="collection">A collection with items to be placed into the Bag.</param>
-        /// <param name="equalityComparer">An instance of IEqualityComparer&lt;T&gt; that will be used to compare items.</param>
+        /// <param name="equalityComparer">An instance of <see cref="IEqualityComparer{T}"/> that will be used to compare items.</param>
         public Bag(IEnumerable<T> collection, IEqualityComparer<T> equalityComparer)
             : this(equalityComparer)
         {
@@ -202,10 +203,10 @@ namespace ARWNI2S.Collections.Generic
         #region Basic collection containment
 
         /// <summary>
-        /// Returns the IEqualityComparer&lt;T&gt; used to compare items in this bag. 
+        /// Returns the <see cref="IEqualityComparer{T}"/> used to compare items in this bag. 
         /// </summary>
         /// <value>If the bag was created using a comparer, that comparer is returned. Otherwise
-        /// the default comparer for T (EqualityComparer&lt;T&gt;.Default) is returned.</value>
+        /// the default comparer for T (<see cref="EqualityComparer{T}.Default"/>) is returned.</value>
         public IEqualityComparer<T> Comparer
         {
             get
@@ -309,7 +310,7 @@ namespace ARWNI2S.Collections.Generic
         /// </summary>
         /// <remarks>If the bag is changed while items are being enumerated, the
         /// enumeration will terminate with an InvalidOperationException.</remarks>
-        /// <returns>An IEnumerable&lt;T&gt; that enumerates the unique items.</returns>
+        /// <returns>An <see cref="IEnumerable{T}"/> that enumerates the unique items.</returns>
         public IEnumerable<T> DistinctItems()
         {
             foreach (KeyValuePair<T, int> pair in _hash)

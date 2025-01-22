@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Collections\Ordered\OrderedQueue.cs" />
     <Compile Remove="Utilities.Interop.cs" />
   </ItemGroup>
 

@@ -71,7 +71,7 @@
 
         /// <summary>
         /// Determines if this triple is equal to another triple. Two triples are equal if the all three elements
-        /// compare equal using IComparable&lt;T&gt;.Equals or object.Equals.
+        /// compare equal using <see cref="IComparable{T}"/>.Equals or object.Equals.
         /// </summary>
         /// <param name="other">Triple to compare with for equality.</param>
         /// <returns>True if the triples are equal. False if the triples are not equal.</returns>
@@ -99,11 +99,11 @@
 
         /// <summary>
         /// <para> Compares this triple to another triple of the some type. The triples are compared by using
-        /// the IComparable&lt;T&gt; or IComparable interface on TFirst, TSecond, and TThird. The triples
+        /// the <see cref="IComparable{T}"/> or IComparable interface on TFirst, TSecond, and TThird. The triples
         /// are compared by their first elements first, if their first elements are equal, then they
         /// are compared by their second elements. If their second elements are also equal, then they
         /// are compared by their third elements.</para>
-        /// <para>If TFirst, TSecond, or TThird does not implement IComparable&lt;T&gt; or IComparable, then
+        /// <para>If TFirst, TSecond, or TThird does not implement <see cref="IComparable{T}"/> or IComparable, then
         /// an NotSupportedException is thrown, because the triples cannot be compared.</para>
         /// </summary>
         /// <param name="other">The triple to compare to.</param>
@@ -112,7 +112,7 @@
         /// equals to <paramref name="other"/>. Greater than zero indicates this triple is greater than
         /// <paramref name="other"/>.</returns>
         /// <exception cref="NotSupportedException">Either FirstSecond, TSecond, or TThird is not comparable
-        /// via the IComparable&lt;T&gt; or IComparable interfaces.</exception>
+        /// via the <see cref="IComparable{T}"/> or IComparable interfaces.</exception>
         public int CompareTo(Triple<TFirst, TSecond, TThird> other)
         {
             try
@@ -151,11 +151,11 @@
 
         /// <summary>
         /// <para> Compares this triple to another triple of the some type. The triples are compared by using
-        /// the IComparable&lt;T&gt; or IComparable interface on TFirst, TSecond, and TThird. The triples
+        /// the <see cref="IComparable{T}"/> or IComparable interface on TFirst, TSecond, and TThird. The triples
         /// are compared by their first elements first, if their first elements are equal, then they
         /// are compared by their second elements. If their second elements are also equal, then they
         /// are compared by their third elements.</para>
-        /// <para>If TFirst, TSecond, or TThird does not implement IComparable&lt;T&gt; or IComparable, then
+        /// <para>If TFirst, TSecond, or TThird does not implement <see cref="IComparable{T}"/> or IComparable, then
         /// an NotSupportedException is thrown, because the triples cannot be compared.</para>
         /// </summary>
         /// <param name="obj">The triple to compare to.</param>
@@ -165,7 +165,7 @@
         /// <paramref name="obj"/>.</returns>
         /// <exception cref="ArgumentException"><paramref name="obj"/> is not of the correct type.</exception>
         /// <exception cref="NotSupportedException">Either FirstSecond, TSecond, or TThird is not comparable
-        /// via the IComparable&lt;T&gt; or IComparable interfaces.</exception>
+        /// via the <see cref="IComparable{T}"/> or IComparable interfaces.</exception>
         int IComparable.CompareTo(object obj)
         {
             if (obj is Triple<TFirst, TSecond, TThird>)
@@ -192,7 +192,7 @@
 
         /// <summary>
         /// Determines if two triples are equal. Two triples are equal if the all three elements
-        /// compare equal using IComparable&lt;T&gt;.Equals or object.Equals.
+        /// compare equal using <see cref="IComparable{T}"/>.Equals or object.Equals.
         /// </summary>
         /// <param name="pair1">First triple to compare.</param>
         /// <param name="pair2">Second triple to compare.</param>
@@ -204,7 +204,7 @@
 
         /// <summary>
         /// Determines if two triples are not equal. Two triples are equal if the all three elements
-        /// compare equal using IComparable&lt;T&gt;.Equals or object.Equals.
+        /// compare equal using <see cref="IComparable{T}"/>.Equals or object.Equals.
         /// </summary>
         /// <param name="pair1">First triple to compare.</param>
         /// <param name="pair2">Second triple to compare.</param>

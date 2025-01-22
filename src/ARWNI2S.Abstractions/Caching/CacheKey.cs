@@ -1,4 +1,6 @@
-﻿namespace ARWNI2S.Caching
+﻿using ARWNI2S.Configuration;
+
+namespace ARWNI2S.Caching
 {
     /// <summary>
     /// Represents key for caching objects
@@ -60,7 +62,7 @@
         /// <summary>
         /// Gets or sets a cache time in minutes
         /// </summary>
-        public int CacheTime { get; set; } //HACK & TODO check alternatives to = Singleton<NodeSettings>.Instance.Get<CacheConfig>().DefaultCacheTime;
+        public int CacheTime { get; set; } = Singleton<NI2SSettings>.Instance.Get<CacheConfig>().DefaultCacheTime;
 
         #endregion
     }
