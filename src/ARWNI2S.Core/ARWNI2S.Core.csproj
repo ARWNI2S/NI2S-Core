@@ -19,7 +19,9 @@
     <Compile Remove="Core\DefaultActorActivator.cs" />
     <Compile Remove="Core\DefaultActorFactory.cs" />
     <Compile Remove="Engine\Actor\ActorActivatorProvider.cs" />
+    <Compile Remove="Engine\Actor\ActorBaseObject.cs" />
     <Compile Remove="Engine\Actor\ActorFactoryProvider.cs" />
+    <Compile Remove="Engine\Actor\NI2SActor.cs" />
   </ItemGroup>
 
   <ItemGroup>

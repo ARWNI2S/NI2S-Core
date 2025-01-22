@@ -2,7 +2,7 @@
 
 namespace ARWNI2S.Engine.Actor.Components
 {
-    public class ComponentTree : IEnumerable<IActorComponent>, IEnumerator<IActorComponent>
+    internal class ComponentTree : IEnumerable<IActorComponent>, IEnumerator<IActorComponent>
     {
         public IActorComponent Current => throw new NotImplementedException();
 

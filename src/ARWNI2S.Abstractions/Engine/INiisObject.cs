@@ -2,7 +2,7 @@
 
 namespace ARWNI2S.Engine
 {
-    public interface INiisObject : INiisEntity
+    internal interface INiisObject : INiisEntity
     {
     }
 }

@@ -1,8 +1,8 @@
 ﻿namespace ARWNI2S.Engine
 {
-    public interface INiisActor : INiisObject
+    internal interface INiisActor : INiisObject
     {
-        IEnumerable<IActorComponent> Components { get; }
+        IEnumerable<INiisObject> Components { get; }
 
         Task OnActivateAsync(CancellationToken cancellationToken);
         Task OnDeactivateAsync(DeactivationReason reason, CancellationToken cancellationToken);

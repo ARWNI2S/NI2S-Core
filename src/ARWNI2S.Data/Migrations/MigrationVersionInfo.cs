@@ -84,7 +84,7 @@ namespace ARWNI2S.Data.Migrations
         public string AppliedOnColumnName { get; }
 
         /// <summary>
-        /// TODO: FluentMigrator.Runner.VersionTableInfo NEW VERSION
+        /// UNDONE: FluentMigrator.Runner.VersionTableInfo NEW VERSION
         /// </summary>
         public bool CreateWithPrimaryKey { get; }
 

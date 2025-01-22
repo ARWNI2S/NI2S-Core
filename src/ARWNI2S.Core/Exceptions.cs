@@ -65,4 +65,20 @@ namespace ARWNI2S
             Dependency = dependency;
         }
     }
+
+
+    [Serializable]
+    [GenerateSerializer]
+    internal class EngineInitializationException : Exception
+    {
+        // TODO: Check resources...
+        public EngineInitializationException(Exception exception) : this(Resources.NodeRuntime_Error_100332, exception)
+        {
+        }
+
+        public EngineInitializationException(string message, Exception innerException) : base(message, innerException)
+        {
+        }
+    }
+
 }

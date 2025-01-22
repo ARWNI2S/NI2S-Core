@@ -1,11 +1,9 @@
 ﻿using ARWNI2S.Caching;
-using ARWNI2S.Core.Actions;
 using ARWNI2S.Core.Builder;
 using ARWNI2S.Core.Caching;
 using ARWNI2S.Core.Configuration;
 using ARWNI2S.Core.Models;
 using ARWNI2S.Diagnostics;
-using ARWNI2S.Engine.Actor;
 using ARWNI2S.Engine.Configuration;
 using ARWNI2S.Engine.Object;
 using ARWNI2S.Engine.Parts;
@@ -70,14 +68,14 @@ namespace ARWNI2S.Core
 
         internal static void AddNI2SCoreServices(IServiceCollection services)
         {
-            services.AddSingleton<IObjectFactory<INiisObject>, DefaultObjectFactory>();
+            services.AddSingleton<IObjectFactory<NI2SObject>, DefaultObjectFactory>();
 
             // Registrar el servicio genérico de resolución de factorías
             services.AddTransient(typeof(IObjectFactory<>), sp =>
             {
                 var requestedType = sp.GetService(typeof(IObjectFactory<>))?.GetType();
                 var specificFactory = sp.GetService(requestedType);
-                return specificFactory ?? sp.GetRequiredService<IObjectFactory<INiisObject>>();
+                return specificFactory ?? sp.GetRequiredService<IObjectFactory<NI2SObject>>();
             });
 
 

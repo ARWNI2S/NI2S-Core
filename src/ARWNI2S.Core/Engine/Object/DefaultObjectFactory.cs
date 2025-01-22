@@ -1,17 +1,23 @@
 ﻿namespace ARWNI2S.Engine.Object
 {
-    internal class DefaultObjectFactory : ObjectFactoryBase, IObjectFactory<INiisObject>
+    internal class DefaultObjectFactory : ObjectFactoryBase, IObjectFactory<NI2SObject>
     {
-        public override TObject CreateInstance<TObject>()
+
+
+
+        protected override TObject CreateInstance<TObject>()
         {
             return (TObject)CreateInstance(typeof(TObject));
         }
 
-        public override INiisObject CreateInstance(Type type)
+        protected override ObjectBase CreateInstance(Type type)
         {
-            return (INiisObject)Activator.CreateInstance(type);
+            return (ObjectBase)Activator.CreateInstance(type);
         }
 
-        public INiisObject CreateInstance() { throw new InvalidOperationException(); }
+        NI2SObject IObjectFactory<NI2SObject>.CreateInstance()
+        {
+            throw new InvalidOperationException($"Direct creation of {nameof(NI2SObject)} is not allowed when using the {nameof(DefaultObjectFactory)}, please use the generic {nameof(Create)} method.");
+        }
     }
 }

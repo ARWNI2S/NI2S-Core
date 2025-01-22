@@ -1,6 +1,6 @@
 ﻿namespace ARWNI2S.Engine
 {
-    public interface IActorComponent : INiisObject
+    internal interface IActorComponent
     {
         INiisActor Owner { get; }
         IActorComponent Parent { get; }

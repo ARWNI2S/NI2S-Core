@@ -5,7 +5,7 @@ namespace ARWNI2S.Caching
     /// <summary>
     /// Represents default values related to caching entities
     /// </summary>
-    public static partial class EntityCacheDefaults<TEntity> where TEntity : INiisEntity
+    public static partial class EntityCacheDefaults<TEntity> where TEntity : EntityBase
     {
         /// <summary>
         /// Gets an entity type name used in cache keys

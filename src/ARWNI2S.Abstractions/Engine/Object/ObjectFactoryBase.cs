@@ -2,8 +2,21 @@
 {
     public abstract class ObjectFactoryBase : IObjectFactory
     {
-        public abstract TObject CreateInstance<TObject>() where TObject : INiisObject;
+        protected ObjectFactoryBase() { }
 
-        public abstract INiisObject CreateInstance(Type type);
+        public virtual TObject Create<TObject>() where TObject : ObjectBase
+        {
+            var newObj = CreateInstance<TObject>();
+
+            return newObj;
+        }
+
+        protected abstract TObject CreateInstance<TObject>() where TObject : ObjectBase;
+
+        protected abstract ObjectBase CreateInstance(Type type);
+
+        TObject IObjectFactory.CreateInstance<TObject>() => (TObject)((IObjectFactory)this).CreateInstance(typeof(TObject));
+        INiisObject IObjectFactory.CreateInstance(Type type) => (INiisObject)CreateInstance(type);
     }
+
 }
