@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>ARWNI2S.Core.Network</PackageId>
+    <Title>ARWNI2S Core Network</Title>
+    <Description>Core networking framework for ARWNI2S</Description>
+    <TargetFrameworks>$(DefaultTargetFrameworks)</TargetFrameworks>
+    <NI2SBuildTimeCodeGen>true</NI2SBuildTimeCodeGen>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(SourceRoot)src\ARWNI2S.Abstractions\ARWNI2S.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>

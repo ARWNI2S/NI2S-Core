@@ -1,6 +1,6 @@
 ﻿namespace ARWNI2S.Core
 {
-    internal interface INiisEntity
+    public interface INiisEntity
     {
         object Id { get; }
     }
